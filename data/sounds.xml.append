@@ -19,10 +19,7 @@
 
 <chronosphereUse volume="4">ui/sfx_chronosphere_use.ogg</chronosphereUse>
 
-<prismLaser volume="2">weapons/bp_prism.ogg</prismLaser>
-<prismHitHull1 volume="10">explosions/bp_prism_hit_hull_1.ogg</prismHitHull1>
-<prismHitHull2 volume="10">explosions/bp_prism_hit_hull_2.ogg</prismHitHull2>
-<prismHitHull3 volume="10">explosions/bp_prism_hit_hull_2.ogg</prismHitHull3>
+<beamPrism volume="3">weapons/bp_prism.ogg</beamPrism>
 
 <combatChrono volume="2">weapons/bp_combatChrono.ogg</combatChrono>
 <chronoDisch volume="2">explosions/bp_chronoDisch.ogg</chronoDisch>
@@ -38,3 +35,11 @@
 <fiendShoot1 volume="3">aliens/bp_sfx_TibFiend_Throw1.ogg</fiendShoot1>
 <fiendShoot2 volume="3">aliens/bp_sfx_TibFiend_Throw2.ogg</fiendShoot2>
 <fiendShoot3 volume="3">aliens/bp_sfx_TibFiend_Throw3.ogg</fiendShoot3>
+
+<psiExplosion volume="4">explosions/bp_explosion_psi.ogg</psiExplosion>
+<GB_cannonLight1 volume="4">weapons/GB_cannonLight1.ogg</GB_cannonLight1>
+<GB_cannonLight2 volume="4">weapons/GB_cannonLight2.ogg</GB_cannonLight2>
+<GB_cannonLight3 volume="4">weapons/GB_cannonLight3.ogg</GB_cannonLight3>
+<psiShotSmall volume="4">weapons/bp_psiShotSmall.ogg</psiShotSmall>
+<psiShotLarge volume="4">weapons/bp_psiShotLarge.ogg</psiShotLarge>
+<psiRelease volume="3">weapons/bp_psiRelease.ogg</psiRelease>

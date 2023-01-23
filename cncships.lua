@@ -20,32 +20,12 @@ mods.cnconquer.allPlayerWeaponsFuncs["HANDLE_TARGET_SCANNERS"] = function(weapon
     end
 end
 
--- Prism cannon tracking stuff
-mods.cnconquer.prismProjectiles = {}
-mods.cnconquer.prismProjLifetimes = {}
-
 -- All ontick code for C&C
--- Manage prism cannon and combat chronosphere
+-- Manage combat chronosphere
 if not mods.cnconquer.OnTick then
     function mods.cnconquer.OnTick()
         -- We only need to do any of this if the game isn't paused
         if not Hyperspace.Global.GetInstance():GetCApp().world.space.gamePaused then
-            -- Garbage collect saved projectiles
-            local toRemove = {}
-            for i, projectile in ipairs(mods.cnconquer.prismProjectiles) do
-                mods.cnconquer.prismProjLifetimes[i] = mods.cnconquer.prismProjLifetimes[i] - Hyperspace.FPS.SpeedFactor/16
-                if projectile:Dead() or projectile.missed then
-                    mods.cnconquer.prismProjLifetimes[i] = math.min(mods.cnconquer.prismProjLifetimes[i], Hyperspace.FPS.SpeedFactor/8)
-                end
-                if mods.cnconquer.prismProjLifetimes[i] <= 0 then
-                    table.insert(toRemove, 1, i)
-                end
-            end
-            for i, index in ipairs(toRemove) do
-                table.remove(mods.cnconquer.prismProjectiles, index)
-                table.remove(mods.cnconquer.prismProjLifetimes, index)
-            end
-            
             -- Check for weapons
             local weapons = nil
             pcall(function() weapons = Hyperspace.ships.player.weaponSystem.weapons end)
@@ -62,16 +42,6 @@ if not mods.cnconquer.OnTick then
                     -- Get the number of combat chronospheres powered
                     if weapon.name:sub(1, 19) == "Combat Chronosphere" and weapon.powered then
                         combatChronosPowered = combatChronosPowered + 1
-                    end
-                    
-                    -- Capture projectiles fired by prism cannon
-                    if weapon.name == "Prism Cannon" then
-                        local projectile = weapon:GetProjectile()
-                        if projectile then
-                            Hyperspace.Global.GetInstance():GetCApp().world.space.projectiles:push_back(projectile)
-                            table.insert(mods.cnconquer.prismProjectiles, projectile)
-                            table.insert(mods.cnconquer.prismProjLifetimes, 20)
-                        end
                     end
                 end
                 
@@ -92,6 +62,116 @@ if not mods.cnconquer.OnTick then
     script.on_internal_event(Defines.InternalEvents.ON_TICK, mods.cnconquer.OnTick)
 end
 
+-- Handle crew mind controlled via a weapon
+if not mods.cnconquer.CrewLoop then
+    function mods.cnconquer.CrewLoop(crewmem)
+        local crewmemData = mods.chronoutil.crew_data(crewmem)
+        if crewmemData.mcTime then
+            if crewmem.bDead then
+                crewmemData.mcTime = nil
+            else
+                crewmemData.mcTime = math.max(crewmemData.mcTime - Hyperspace.FPS.SpeedFactor/16, 0)
+                if crewmemData.mcTime == 0 then
+                    crewmem:SetMindControl(false)
+                    crewmemData.mcTime = nil
+                    Hyperspace.Global.GetInstance():GetSoundControl():PlaySoundMix("psiRelease", 0.18, false)
+                end
+            end
+        end
+    end
+    script.on_internal_event(Defines.InternalEvents.CREW_LOOP, mods.cnconquer.CrewLoop)
+end
+
+-- Mind control beam list and duration of MC (in seconds)
+mods.cnconquer.mcBeamTimes = {}
+mods.cnconquer.mcBeamTimes["FOCUS_MC_COMBAT"] = 9
+mods.cnconquer.mcBeamTimes["FOCUS_MC_SABOTAGE"] = 9
+mods.cnconquer.mcBeamTimes["BEAM_MC_COMBAT"] = 12
+mods.cnconquer.mcBeamTimes["BEAM_MC_SABOTAGE"] = 12
+
+-- Prism beam list and refraction count
+mods.cnconquer.prismRefractCount = {}
+mods.cnconquer.prismRefractCount["BEAM_PRISM_1"] = 3
+mods.cnconquer.prismRefrectBlueprint = Hyperspace.Global.GetInstance():GetBlueprints():GetWeaponBlueprint("BEAM_PRISM_REFRACT")
+
+-- Handle special beams
+if not mods.cnconquer.BeamDamage then
+    function mods.cnconquer.BeamDamage(shipManager, projectile, location, damage, realNewTile, beamHitType)
+        -- Mind control beams
+        local thisMcTime = mods.cnconquer.mcBeamTimes[Hyperspace.Get_Projectile_Extend(projectile).name]
+        if thisMcTime then -- Doesn't check realNewTile anymore 'cause the beam kept missing crew that were on the move
+            for i, crewmem in ipairs(mods.chronoutil.get_ship_crew_point(shipManager, location.x, location.y)) do
+                if not (crewmem:IsTelepathic() or crewmem:IsDrone()) and not mods.chronoutil.under_mind_system(crewmem) then
+                    crewmem:SetMindControl(true)
+                    mods.chronoutil.crew_data(crewmem).mcTime = thisMcTime
+                end
+            end
+        end
+        
+        -- Prism beams
+        local refractions = mods.cnconquer.prismRefractCount[Hyperspace.Get_Projectile_Extend(projectile).name]
+        if refractions and realNewTile then
+            -- Make any room cell orthogonally adjecent to the targeted room a potential target
+            local targetShipGraph = Hyperspace.ShipGraph.GetShipInfo(shipManager.iShipId)
+            local originRoomShape = targetShipGraph:GetRoomShape(targetShipGraph:GetSelectedRoom(location.x, location.y, false))
+            local validTargets = {}
+            local currentX = nil
+            local currentY = nil
+            for offset = 0, originRoomShape.w - 35, 35 do
+                currentX = originRoomShape.x + offset + 17
+                currentY = originRoomShape.y - 17
+                if targetShipGraph:GetSelectedRoom(currentX, currentY, false) > -1 then
+                    table.insert(validTargets, Hyperspace.Pointf(currentX, currentY))
+                end
+                currentY = originRoomShape.y + originRoomShape.h + 17
+                if targetShipGraph:GetSelectedRoom(currentX, currentY, false) > -1 then
+                    table.insert(validTargets, Hyperspace.Pointf(currentX, currentY))
+                end
+            end
+            for offset = 0, originRoomShape.h - 35, 35 do
+                currentY = originRoomShape.y + offset + 17
+                currentX = originRoomShape.x - 17
+                if targetShipGraph:GetSelectedRoom(currentX, currentY, false) > -1 then
+                    table.insert(validTargets, Hyperspace.Pointf(currentX, currentY))
+                end
+                currentX = originRoomShape.x + originRoomShape.w + 17
+                if targetShipGraph:GetSelectedRoom(currentX, currentY, false) > -1 then
+                    table.insert(validTargets, Hyperspace.Pointf(currentX, currentY))
+                end
+            end
+            
+            -- Pick from the list of targets until there are no more or until all refraction projectiles are created
+            local spaceManager = Hyperspace.Global.GetInstance():GetCApp().world.space
+            local validTargetCount = #validTargets
+            while #validTargets > 0 and #validTargets + refractions > validTargetCount do
+                local targetIndex = Hyperspace.random32()%#validTargets + 1
+                spaceManager:CreateBeam(
+                    mods.cnconquer.prismRefrectBlueprint,
+                    location,
+                    shipManager.iShipId,
+                    (shipManager.iShipId + 1)%2,
+                    validTargets[targetIndex], validTargets[targetIndex],
+                    shipManager.iShipId,
+                    1, 0 --(math.atan(location.y - target.y, location.x - target.x)*180)/math.pi - 90
+                )
+                table.remove(validTargets, targetIndex)
+            end
+        end
+    end
+    script.on_internal_event(Defines.InternalEvents.DAMAGE_BEAM, mods.cnconquer.BeamDamage)
+end
+
+-- Adepts stun themselves for 4 seconds when they use their power
+if not mods.cnconquer.ActivatePower then
+    function mods.cnconquer.ActivatePower(power, shipManager)
+        local crewmem = power.crew
+        if crewmem:GetSpecies() == "human_adept" then
+            crewmem.fStunTime = math.max(crewmem.fStunTime, 4)
+        end
+    end
+    script.on_internal_event(Defines.InternalEvents.ACTIVATE_POWER, mods.cnconquer.ActivatePower)
+end
+
 -- Make the ion cannon target a specific system
 if not mods.cnconquer.SetIonCannonTarget then
     function mods.cnconquer.SetIonCannonTarget()
@@ -106,37 +186,6 @@ if not mods.cnconquer.SetIonCannonTarget then
         end
     end
     script.on_game_event("LUA_SET_IONCANNON_TARGET", false, mods.cnconquer.SetIonCannonTarget)
-end
-
--- Make prism surge look like it came from the triggering projectile
-if not mods.cnconquer.MovePrismSurge then
-    function mods.cnconquer.MovePrismSurge()
-        -- The projectile which is closest to its target will likely
-        -- be the triggering projectile
-        local closestDist = 999999
-        local originPoint = nil
-        local removeIndex = -1
-        for i, projectile in ipairs(mods.cnconquer.prismProjectiles) do
-            local dist = math.sqrt((projectile.target.x - projectile.position.x)^2 + (projectile.target.y - projectile.position.y)^2)
-            if dist < closestDist then
-                closestDist = dist
-                originPoint = projectile.position
-                removeIndex = i
-            end
-        end
-        
-        -- Move all barrage projectiles to triggering projectile
-        if originPoint then
-            table.remove(mods.cnconquer.prismProjectiles, removeIndex)
-            table.remove(mods.cnconquer.prismProjLifetimes, removeIndex)
-            for proj in mods.chronoutil.vter(Hyperspace.ships.player.superBarrage) do
-                proj:EnterDestinationSpace()
-                proj.position = originPoint
-                proj:ComputeHeading()
-            end
-        end
-    end
-    script.on_game_event("LUA_MOVE_PRISM_SURGE", false, mods.cnconquer.MovePrismSurge)
 end
 
 -- Point out the iron curtain button when the game starts

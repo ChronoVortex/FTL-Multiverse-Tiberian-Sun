@@ -1,91 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mod:findName type="event" name="STORAGE_CHECK_CREW_LIST_HUMAN">
-    <mod-append:choice req="human_black_hand" blue="false" hidden="true">
-        <text>Look for your Black Hand operative.</text>
-        <event load="STORAGE_CHECK_CREW_BLACK_HAND"/>
-    </mod-append:choice>
-    <mod:findWithChildLike type="choice" child-type="text">
-        <mod:selector>Nevermind, do something else.</mod:selector>
-        <mod:removeTag />
-    </mod:findWithChildLike>
-    <mod-append:choice>
-        <text>Nevermind, do something else.</text>
-        <event load="STORAGE_CHECK_CREW"/>
-    </mod-append:choice>
-</mod:findName>
-
-<event name="STORAGE_CHECK_CREW_BLACK_HAND">
-    <text>What do you want to do with your Black Hand operative?</text>
-    <choice><text>Nevermind, do something else.</text><event load="STORAGE_CHECK"/></choice>
-    <choice hidden="true">
-        <text id="talk_to_crew"/>
-        <event load="STORAGE_CHECK_CREW_BLACK_HAND_TALK"/>
-    </choice>
-    <choice hidden="true">
-        <text id="scan_crew"/>
-        <event load="STORAGE_CHECK_CREW_BLACK_HAND_SCAN"/>
-    </choice>
-</event>
-
-<event name="STORAGE_CHECK_CREW_BLACK_HAND_TALK">
-    <text load="TEXT_CREW_TALK_BLACK_HAND"/>
-    <choice>
-        <text>Continue...</text>
-        <event load="STORAGE_CHECK"/>
-    </choice>
-</event>
-<textList name="TEXT_CREW_TALK_BLACK_HAND">
-    <text>Your Black Hand operative is praying to something named "Cain." You decide to leave them be.</text>
-    <text>Your Black Hand operative explains that "Black Hand" is a metaphor for crushing the black hearts of oppressors.</text>
-    <text>Your Black Hand operative is busy shining their handheld laser cannon. They're too concentrated on the task to talk.</text>
-    <text>Your Black Hand operative shares their ambition to spread peace throughout the Multiverse.</text>
-    <text>Your Black Hand operative spends a long time explaining various methods of torture they've used. You make an excuse and leave as soon as possible.</text>
-    <text>Your Black Hand operative wonders why nobody uses nukes anymore.</text>
-    <text>Your Black Hand operative thinks you should use more radiation weapons.</text>
-    <text>Your Black Hand operative wonders how the alien species they've encountered would be affected by Tiberium.</text>
-    <text>Your Black Hand operative describes in exacting detail the mutations caused by prolonged exposure to Tiberium. You barely manage not to throw up.</text>
-    <text>Your Black Hand operative criticizes this timeline's human race for not coming up with laser tech earlier.</text>
-    <text>Your Black Hand operative wonders what happened to an alien race called the Scrin in this timeline.</text>
-    <text>You find your Black Hand operative in the life support room, laughing manically. You decide to leave them be.</text>
-    <text>Your Black Hand operative asks if anyone has ever attempted to design a weapon that can create a black hole. When you tell them you've never heard of anything like that, they grin widely.</text>
-    <text>Your Black Hand operative says people smell much better here than where they came from.</text>
-</textList>
-
-<event name="STORAGE_CHECK_CREW_BLACK_HAND_SCAN">
-    <text>BLACK HAND OPERATIVE DETAILS
-SPECIES? [Human] SUBTYPE? [Yes]
-Subtype Details: Non-Genetic, Elite
-Stats: x1.3 combat damage, 0.7x combat damage taken. 60% damage from fire. Learns skills 30% faster. Resists mind control.
-Inherited Stats: 70% damage from suffocation.
-Ability (40s cooldown, 20s duration): Activates stealth generator. While in stealth mode: ignores doors, moves at x0.4 speed and is completely invulnerable to all damage from all sources. Cannot fight crew, but gains x3.0 sabotage speed. Lose 0.5x sabotage speed bonus for each enemy nearby.
-Ability cooldown type: Continues on jump.</text>
-    <choice>
-        <text>Continue...</text>
-        <event load="STORAGE_CHECK"/>
-    </choice>
-</event>
-
-
+<!--===============================
+         EQUIPMENT TOGGLES
+================================-->
 
 <mod:findName type="event" name="COMBAT_CHECK_TOGGLE" panic="true">
     <mod:findLike type="choice">
         <mod:selector req="MISSILES_V5_SINGLE" />
         <mod:removeTag />
     </mod:findLike>
-    <mod:findLike type="choice">
-        <mod:selector req="MISSILES_V5_MULTI" />
-        <mod:removeTag />
-    </mod:findLike>
     <mod-append:choice req="MISSILES_V5_SINGLE" blue="false">
         <text>(V5 Missiles) Set the state of the missiles. [Current mode: Precision]</text>
         <event load="COMBAT_CHECK_V5_MISSILES_SINGLE"/>
     </mod-append:choice>
+    
+    <mod:findLike type="choice">
+        <mod:selector req="MISSILES_V5_MULTI" />
+        <mod:removeTag />
+    </mod:findLike>
     <mod-append:choice req="MISSILES_V5_MULTI" blue="false">
         <text>(V5 Missiles) Set the state of the missiles. [Current mode: Multi-Warhead]</text>
         <event load="COMBAT_CHECK_V5_MISSILES_MULTI"/>
     </mod-append:choice>
+    
+    
+    <mod:findLike type="choice">
+        <mod:selector req="FOCUS_MC_COMBAT" />
+        <mod:removeTag />
+    </mod:findLike>
+    <mod-append:choice req="FOCUS_MC_COMBAT" blue="false">
+        <text>('Influencer' Pinpoint) Set the state of the beam. [Current mode: Combat]</text>
+        <event load="COMBAT_CHECK_FOCUS_MC_COMBAT"/>
+    </mod-append:choice>
+    
+    <mod:findLike type="choice">
+        <mod:selector req="FOCUS_MC_SABOTAGE" />
+        <mod:removeTag />
+    </mod:findLike>
+    <mod-append:choice req="FOCUS_MC_SABOTAGE" blue="false">
+        <text>('Influencer' Pinpoint) Set the state of the beam. [Current mode: Sabotage]</text>
+        <event load="COMBAT_CHECK_FOCUS_MC_SABOTAGE"/>
+    </mod-append:choice>
+    
+    
+    <mod:findLike type="choice">
+        <mod:selector req="BEAM_MC_COMBAT" />
+        <mod:removeTag />
+    </mod:findLike>
+    <mod-append:choice req="BEAM_MC_COMBAT" blue="false">
+        <text>('Dominator' Beam) Set the state of the beam. [Current mode: Combat]</text>
+        <event load="COMBAT_CHECK_BEAM_MC_COMBAT"/>
+    </mod-append:choice>
+    
+    <mod:findLike type="choice">
+        <mod:selector req="BEAM_MC_SABOTAGE" />
+        <mod:removeTag />
+    </mod:findLike>
+    <mod-append:choice req="BEAM_MC_SABOTAGE" blue="false">
+        <text>('Dominator' Beam) Set the state of the beam. [Current mode: Sabotage]</text>
+        <event load="COMBAT_CHECK_BEAM_MC_SABOTAGE"/>
+    </mod-append:choice>
 </mod:findName>
+
 <event name="COMBAT_CHECK_V5_MISSILES_SINGLE">
     <text>Are you sure you want to change the missiles' settings?</text>
     <choice hidden="true">
@@ -137,7 +113,113 @@ Ability cooldown type: Continues on jump.</text>
     </choice>
 </event>
 
+<event name="COMBAT_CHECK_FOCUS_MC_COMBAT">
+    <text>Are you sure you want to change the beam's settings?</text>
+    <choice hidden="true">
+        <text>Set the beam to Sabotage Mode.</text>
+        <event>
+            <text>You start calibrating the beam...</text>
+            <remove name="FOCUS_MC_COMBAT"/>
+            <choice hidden="true">
+                <text>Continue...</text>
+                <event>
+                    <text>You finish calibrating the beam successfully.</text>
+                    <weapon name="FOCUS_MC_SABOTAGE"/>
+                    <choice hidden="true">
+                        <text>Continue...</text>
+                        <event load="COMBAT_CHECK_TOGGLE_LOAD"/>
+                    </choice>
+                </event>
+            </choice>
+        </event>
+    </choice>
+    <choice hidden="true">
+        <text>Return to the toggle menu.</text>
+        <event load="COMBAT_CHECK_TOGGLE_LOAD"/>
+    </choice>
+</event>
+<event name="COMBAT_CHECK_FOCUS_MC_SABOTAGE">
+    <text>Are you sure you want to change the beam's settings?</text>
+    <choice hidden="true">
+        <text>Set the beam to Combat Mode.</text>
+        <event>
+            <text>You start calibrating the beam...</text>
+            <remove name="FOCUS_MC_SABOTAGE"/>
+            <choice hidden="true">
+                <text>Continue...</text>
+                <event>
+                    <text>You finish calibrating the beam successfully.</text>
+                    <weapon name="FOCUS_MC_COMBAT"/>
+                    <choice hidden="true">
+                        <text>Continue...</text>
+                        <event load="COMBAT_CHECK_TOGGLE_LOAD"/>
+                    </choice>
+                </event>
+            </choice>
+        </event>
+    </choice>
+    <choice hidden="true">
+        <text>Return to the toggle menu.</text>
+        <event load="COMBAT_CHECK_TOGGLE_LOAD"/>
+    </choice>
+</event>
 
+<event name="COMBAT_CHECK_BEAM_MC_COMBAT">
+    <text>Are you sure you want to change the beam's settings?</text>
+    <choice hidden="true">
+        <text>Set the beam to Sabotage Mode.</text>
+        <event>
+            <text>You start calibrating the beam...</text>
+            <remove name="BEAM_MC_COMBAT"/>
+            <choice hidden="true">
+                <text>Continue...</text>
+                <event>
+                    <text>You finish calibrating the beam successfully.</text>
+                    <weapon name="BEAM_MC_SABOTAGE"/>
+                    <choice hidden="true">
+                        <text>Continue...</text>
+                        <event load="COMBAT_CHECK_TOGGLE_LOAD"/>
+                    </choice>
+                </event>
+            </choice>
+        </event>
+    </choice>
+    <choice hidden="true">
+        <text>Return to the toggle menu.</text>
+        <event load="COMBAT_CHECK_TOGGLE_LOAD"/>
+    </choice>
+</event>
+<event name="COMBAT_CHECK_BEAM_MC_SABOTAGE">
+    <text>Are you sure you want to change the beam's settings?</text>
+    <choice hidden="true">
+        <text>Set the beam to Combat Mode.</text>
+        <event>
+            <text>You start calibrating the beam...</text>
+            <remove name="BEAM_MC_SABOTAGE"/>
+            <choice hidden="true">
+                <text>Continue...</text>
+                <event>
+                    <text>You finish calibrating the beam successfully.</text>
+                    <weapon name="BEAM_MC_COMBAT"/>
+                    <choice hidden="true">
+                        <text>Continue...</text>
+                        <event load="COMBAT_CHECK_TOGGLE_LOAD"/>
+                    </choice>
+                </event>
+            </choice>
+        </event>
+    </choice>
+    <choice hidden="true">
+        <text>Return to the toggle menu.</text>
+        <event load="COMBAT_CHECK_TOGGLE_LOAD"/>
+    </choice>
+</event>
+
+
+
+<!--===============================
+         PRE-COMBAT CHOICES
+================================-->
 
 <mod:findName type="event" name="COMBAT_CHECK_REAL" panic="true">
     <mod-append:choice req="COMBAT_DRONE_JAMMER" blue="false">
@@ -154,15 +236,15 @@ Ability cooldown type: Continues on jump.</text>
     </mod-append:choice>
     <mod-append:variable name="loc_iron_curtain_charged" op="set" val="0"/>
     
-    <mod:findWithChildLike type="choice" child-type="text">
+    <mod:findWithChildLike type="choice" child-type="text" panic="true">
         <mod:selector>Change your toggle or amp equipment.</mod:selector>
         <mod:removeTag />
     </mod:findWithChildLike>
-    <mod:findWithChildLike type="choice" child-type="text">
+    <mod:findWithChildLike type="choice" child-type="text" panic="true">
         <mod:selector>Do some last minute check-ups while we charge the weapons.</mod:selector>
         <mod:removeTag />
     </mod:findWithChildLike>
-    <mod:findWithChildLike type="choice" child-type="text">
+    <mod:findWithChildLike type="choice" child-type="text" panic="true">
         <mod:selector>Do nothing.</mod:selector>
         <mod:removeTag />
     </mod:findWithChildLike>
@@ -198,15 +280,15 @@ Ability cooldown type: Continues on jump.</text>
     </mod-append:choice>
     <mod-append:variable name="loc_iron_curtain_charged" op="set" val="0"/>
     
-    <mod:findWithChildLike type="choice" child-type="text">
+    <mod:findWithChildLike type="choice" child-type="text" panic="true">
         <mod:selector>Change your toggle or amp equipment.</mod:selector>
         <mod:removeTag />
     </mod:findWithChildLike>
-    <mod:findWithChildLike type="choice" child-type="text">
+    <mod:findWithChildLike type="choice" child-type="text" panic="true">
         <mod:selector>Do some last minute check-ups while we charge the weapons.</mod:selector>
         <mod:removeTag />
     </mod:findWithChildLike>
-    <mod:findWithChildLike type="choice" child-type="text">
+    <mod:findWithChildLike type="choice" child-type="text" panic="true">
         <mod:selector>Do nothing.</mod:selector>
         <mod:removeTag />
     </mod:findWithChildLike>
@@ -636,12 +718,16 @@ Ability cooldown type: Continues on jump.</text>
 
 
 
-<mod:findName type="event" name="STORAGE_CHECK_AUG">
+<!--===============================
+        EMPTY BEACON OPTIONS
+================================-->
+
+<mod:findName type="event" name="STORAGE_CHECK_AUG" panic="true">
     <mod-append:choice req="TIBERIUM_GARDEN">
         <text>(Tiberium Garden) Use the Tiberium garden.</text>
         <event load="STORAGE_CHECK_AUG_TIBERIUM_GARDEN"/>
     </mod-append:choice>
-    <mod:findWithChildLike type="choice" child-type="text">
+    <mod:findWithChildLike type="choice" child-type="text" panic="true">
         <mod:selector>Nevermind, do something else.</mod:selector>
         <mod:removeTag />
     </mod:findWithChildLike>
@@ -690,3 +776,153 @@ Ability cooldown type: Continues on jump.</text>
     <text>The creature you left in the Tiberium garden emerges, having completed its transformation.</text>
     <crewMember amount="1" class="tiberium_fiend"/>
 </event>
+
+
+
+<!--===============================
+      GENERAL STORAGE OPTIONS
+================================-->
+
+<mod:findName type="event" name="STORAGE_CHECK_BUTTON" panic="true">
+    <mod-append:choice req="MC_BEAM_UPGRADE_REQS" hidden="true">
+        <text>Convert the 'Influencer' Pinpoint into a 'Dominator' Beam.</text>
+        <event load="STORAGE_CHECK_UPGRADE_MC_BEAM"/>
+    </mod-append:choice>
+    <mod:findWithChildLike type="choice" child-type="text" panic="true">
+        <mod:selector>Do nothing.</mod:selector>
+        <mod:removeTag />
+    </mod:findWithChildLike>
+    <mod-append:choice req="pilot" lvl="1" max_group="16" hidden="true" blue="false">
+        <text>Do nothing.</text>
+        <event/>
+    </mod-append:choice>
+</mod:findName>
+
+<event name="STORAGE_CHECK_UPGRADE_MC_BEAM">
+    <loadEventList>
+        <event name="STORAGE_CHECK_UPGRADE_MC_BEAM_COMBAT" req="FOCUS_MC_COMBAT"/>
+        <event name="STORAGE_CHECK_UPGRADE_MC_BEAM_SABOTAGE" req="FOCUS_MC_SABOTAGE"/>
+    </loadEventList>
+</event>
+<event name="STORAGE_CHECK_UPGRADE_MC_BEAM_COMBAT">
+    <remove name="FOCUS_MC_COMBAT"/>
+    <loadEvent>STORAGE_CHECK_UPGRADE_MC_BEAM_COMBAT_2</loadEvent>
+</event>
+<event name="STORAGE_CHECK_UPGRADE_MC_BEAM_COMBAT_2">
+    <text>Are you sure you wish to combine the Enhanced Brain with the 'Influencer' Pinpoint?</text>
+    <choice>
+        <text>Proceed.</text>
+        <event>
+            <text>You upgrade the weapon successfully.</text>
+            <item_modify>
+                <item type="scrap" min="-15" max="-15"/>
+            </item_modify>
+            <remove name="YURI_BRAIN"/>
+            <weapon name="BEAM_MC_COMBAT"/>
+        </event>
+    </choice>
+    <choice hidden="true">
+        <text>Nevermind, do something else.</text>
+        <event>
+            <weapon name="FOCUS_MC_COMBAT"/>
+            <loadEvent>STORAGE_CHECK</loadEvent>
+        </event>
+    </choice>
+</event>
+<event name="STORAGE_CHECK_UPGRADE_MC_BEAM_SABOTAGE">
+    <remove name="FOCUS_MC_SABOTAGE"/>
+    <loadEvent>STORAGE_CHECK_UPGRADE_MC_BEAM_SABOTAGE_2</loadEvent>
+</event>
+<event name="STORAGE_CHECK_UPGRADE_MC_BEAM_SABOTAGE_2">
+    <text>Are you sure you wish to combine the Enhanced Brain with the 'Influencer' Pinpoint?</text>
+    <choice>
+        <text>Proceed.</text>
+        <event>
+            <text>You upgrade the weapon successfully.</text>
+            <item_modify>
+                <item type="scrap" min="-15" max="-15"/>
+            </item_modify>
+            <remove name="YURI_BRAIN"/>
+            <weapon name="BEAM_MC_SABOTAGE"/>
+        </event>
+    </choice>
+    <choice hidden="true">
+        <text>Nevermind, do something else.</text>
+        <event>
+            <weapon name="FOCUS_MC_SABOTAGE"/>
+            <loadEvent>STORAGE_CHECK</loadEvent>
+        </event>
+    </choice>
+</event>
+
+
+
+<!-- Can only socilize with unique crew since MV 5.3
+
+<mod:findName type="event" name="STORAGE_CHECK_CREW_LIST_HUMAN">
+    <mod-append:choice req="human_black_hand" blue="false" hidden="true">
+        <text>Look for your Black Hand operative.</text>
+        <event load="STORAGE_CHECK_CREW_BLACK_HAND"/>
+    </mod-append:choice>
+    <mod:findWithChildLike type="choice" child-type="text">
+        <mod:selector>Nevermind, do something else.</mod:selector>
+        <mod:removeTag />
+    </mod:findWithChildLike>
+    <mod-append:choice>
+        <text>Nevermind, do something else.</text>
+        <event load="STORAGE_CHECK_CREW"/>
+    </mod-append:choice>
+</mod:findName>
+
+<event name="STORAGE_CHECK_CREW_BLACK_HAND">
+    <text>What do you want to do with your Black Hand operative?</text>
+    <choice><text>Nevermind, do something else.</text><event load="STORAGE_CHECK"/></choice>
+    <choice hidden="true">
+        <text id="talk_to_crew"/>
+        <event load="STORAGE_CHECK_CREW_BLACK_HAND_TALK"/>
+    </choice>
+    <choice hidden="true">
+        <text id="scan_crew"/>
+        <event load="STORAGE_CHECK_CREW_BLACK_HAND_SCAN"/>
+    </choice>
+</event>
+
+<event name="STORAGE_CHECK_CREW_BLACK_HAND_TALK">
+    <text load="TEXT_CREW_TALK_BLACK_HAND"/>
+    <choice>
+        <text>Continue...</text>
+        <event load="STORAGE_CHECK"/>
+    </choice>
+</event>
+<textList name="TEXT_CREW_TALK_BLACK_HAND">
+    <text>Your Black Hand operative is praying to something named "Cain." You decide to leave them be.</text>
+    <text>Your Black Hand operative explains that "Black Hand" is a metaphor for crushing the black hearts of oppressors.</text>
+    <text>Your Black Hand operative is busy shining their handheld laser cannon. They're too concentrated on the task to talk.</text>
+    <text>Your Black Hand operative shares their ambition to spread peace throughout the Multiverse.</text>
+    <text>Your Black Hand operative spends a long time explaining various methods of torture they've used. You make an excuse and leave as soon as possible.</text>
+    <text>Your Black Hand operative wonders why nobody uses nukes anymore.</text>
+    <text>Your Black Hand operative thinks you should use more radiation weapons.</text>
+    <text>Your Black Hand operative wonders how the alien species they've encountered would be affected by Tiberium.</text>
+    <text>Your Black Hand operative describes in exacting detail the mutations caused by prolonged exposure to Tiberium. You barely manage not to throw up.</text>
+    <text>Your Black Hand operative criticizes this timeline's human race for not coming up with laser tech earlier.</text>
+    <text>Your Black Hand operative wonders what happened to an alien race called the Scrin in this timeline.</text>
+    <text>You find your Black Hand operative in the life support room, laughing manically. You decide to leave them be.</text>
+    <text>Your Black Hand operative asks if anyone has ever attempted to design a weapon that can create a black hole. When you tell them you've never heard of anything like that, they grin widely.</text>
+    <text>Your Black Hand operative says people smell much better here than where they came from.</text>
+</textList>
+
+<event name="STORAGE_CHECK_CREW_BLACK_HAND_SCAN">
+    <text>BLACK HAND OPERATIVE DETAILS
+SPECIES? [Human] SUBTYPE? [Yes]
+Subtype Details: Non-Genetic, Elite
+Stats: x1.3 combat damage, 0.7x combat damage taken. 60% damage from fire. Learns skills 30% faster. Resists mind control.
+Inherited Stats: 70% damage from suffocation.
+Ability (40s cooldown, 20s duration): Activates stealth generator. While in stealth mode: ignores doors, moves at x0.4 speed and is completely invulnerable to all damage from all sources. Cannot fight crew, but gains x3.0 sabotage speed. Lose 0.5x sabotage speed bonus for each enemy nearby.
+Ability cooldown type: Continues on jump.</text>
+    <choice>
+        <text>Continue...</text>
+        <event load="STORAGE_CHECK"/>
+    </choice>
+</event>
+
+-->

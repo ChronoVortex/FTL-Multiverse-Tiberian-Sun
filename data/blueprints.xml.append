@@ -460,7 +460,7 @@
     <weaponSlots>4</weaponSlots>
     <droneSlots>2</droneSlots>
     <weaponList missiles="5" count="4">
-        <weapon name="LASER_PRISM_1" />
+        <weapon name="BEAM_PRISM_1" />
         <weapon name="COMBAT_CHRONO_PLAYER" />
     </weaponList>
     <droneList drones="0" count="2" />
@@ -474,133 +474,68 @@
     <shieldImage>kodiak</shieldImage>
 </shipBlueprint>
 
-<crewBlueprint name="dummy_prism_surge_trigger">
-    <desc>█</desc>
-    <cost>0</cost>
-    <bp>2</bp>
-    <title>█</title>
-    <short>█</short>
-    <rarity>0</rarity>
-    <powerList>
-        <power>█</power>
-    </powerList>
-</crewBlueprint>
-
-<weaponBlueprint name="LASER_PRISM_1">
-    <type>LASER</type>
-    <drone_targetable>-1</drone_targetable>
+<weaponBlueprint name="BEAM_PRISM_1">
+    <type>BEAM</type>
     <flavorType>Prism</flavorType>
-    <tip>tip_laser</tip>
+    <tip>tip_focus</tip>
     <title>Prism Cannon</title>
     <short>Prism Cannon</short>
-    <desc>This chaotic weapon concentrates photons to deal damage. On impact with the enemy ship it refracts randomly, hitting up to 3 more rooms and dealing up to 5 total damage.</desc>
-    <tooltip>Refracting laser weapon.</tooltip>
-    <descriptionOverride>This chaotic weapon concentrates photons to deal damage. On impact with the enemy ship it refracts randomly, hitting up to 3 more rooms and dealing up to 5 total damage.
-
-Stats:
-Required Power: 2
-Charge Time: 13 seconds
-Accuracy Bonus: +50%
-
-Shots Per Charge: 1
-
-Base Hull Damage: 2
-Total System Damage: 2
-Total Crew Damage: 30
-
-Fire Chance: 20%
-
-Buy/Sell Price: 70~/35~
-</descriptionOverride>
-    <tooltipOverride>Required Power: 2
-Charge Time: 13 seconds
-Accuracy Bonus: +50%
-
-Shots Per Charge: 1
-
-Base Hull Damage: 2
-Total System Damage: 2
-Total Crew Damage: 30
-
-Fire Chance: 20%</tooltipOverride>
+    <desc>This chaotic weapon concentrates photons to deal damage. On impact with the enemy ship it refracts randomly, hitting up to 3 different adjacent rooms and dealing up to 5 total damage.</desc>
+    <tooltip>Refracting focus beam weapon.</tooltip>
     <damage>2</damage>
-    <accuracyMod>50</accuracyMod>
-    <shots>1</shots>
-    <speed>120</speed>
     <sp>0</sp>
-    <fireChance>2</fireChance>
+    <fireChance>3</fireChance>
     <breachChance>0</breachChance>
-    <spawnCrew>
-        <number>1</number>
-        <race>dummy_prism_surge_trigger</race>
-        <lifetime>0</lifetime>
-    </spawnCrew>
-    <cooldown>13</cooldown>
+    <cooldown>17</cooldown>
+    <color>
+        <r>170</r>
+        <g>255</g>
+        <b>250</b>
+    </color>
+    <speed>1</speed>
     <power>2</power>
-    <cost>65</cost>
+    <cost>85</cost>
     <bp>2</bp>
     <rarity>0</rarity>
-    <image>laser_prism_shot</image>
-    <explosion>explosion_prism</explosion>
+    <image>beam_contact</image>
+    <length>1</length>
     <launchSounds>
-        <sound>prismLaser</sound>
+        <sound>beamPrism</sound>
     </launchSounds>
-    <hitShipSounds>
-        <sound>hitHull2</sound>
-        <sound>hitHull3</sound>
-    </hitShipSounds>
-    <hitShipSounds>
-        <sound>prismHitHull1</sound>
-        <sound>prismHitHull2</sound>
-        <sound>prismHitHull3</sound>
-    </hitShipSounds>
-    <missSounds>
-        <sound>miss</sound>
-    </missSounds>
-    <weaponArt>laser_prism</weaponArt>
-    <iconImage>laser</iconImage>
+    <weaponArt>beam_prism</weaponArt>
+    <iconImage>beam</iconImage>
 </weaponBlueprint>
 
-<weaponBlueprint name="LASER_PRISM_SURGE_DUMMY">
-    <type>LASER</type>
-    <drone_targetable>-1</drone_targetable>
+<weaponBlueprint name="BEAM_PRISM_REFRACT">
+    <type>BEAM</type>
     <flavorType>Prism</flavorType>
-    <tip>tip_laser</tip>
-    <title>Prism Surge Dummy</title>
-    <short>Prism Surge Dummy</short>
-    <desc>Gay rainbow gun go brrrrrrrr</desc>
-    <tooltip>U ded</tooltip>
+    <tip>tip_focus</tip>
+    <title>Prism Refraction</title>
+    <short>Prism Refraction</short>
+    <desc>YOU SHOULD NEVER SEE THIS</desc>
+    <tooltip>Refracting focus beam weapon.</tooltip>
     <damage>1</damage>
-    <accuracyMod>50</accuracyMod>
-    <shots>1</shots>
-    <speed>60</speed>
     <sp>0</sp>
-    <fireChance>2</fireChance>
+    <fireChance>3</fireChance>
     <breachChance>0</breachChance>
-    <cooldown>9</cooldown>
-    <power>1</power>
+    <cooldown>1</cooldown>
+    <color>
+        <r>170</r>
+        <g>255</g>
+        <b>250</b>
+    </color>
+    <speed>1</speed>
+    <power>2</power>
     <cost>0</cost>
     <bp>2</bp>
     <rarity>0</rarity>
-    <image>laser_prism_shot</image>
-    <explosion>explosion_prism</explosion>
+    <image>beam_contact</image>
+    <length>1</length>
     <launchSounds>
         <sound>silence</sound>
     </launchSounds>
-    <hitShipSounds>
-        <sound>hitHull2</sound>
-        <sound>hitHull3</sound>
-    </hitShipSounds>
-    <hitShipSounds>
-        <sound>prismHitHull1</sound>
-        <sound>prismHitHull2</sound>
-        <sound>prismHitHull3</sound>
-    </hitShipSounds>
-    <missSounds>
-        <sound>miss</sound>
-    </missSounds>
-    <weaponArt>laser_prism</weaponArt>
-    <iconImage>laser</iconImage>
+    <weaponArt>beam_prism</weaponArt>
+    <iconImage>beam</iconImage>
 </weaponBlueprint>
 
 <augBlueprint name="COMBAT_CHRONO_COOLDOWN">
@@ -620,24 +555,6 @@ Fire Chance: 20%</tooltipOverride>
     <short>Chrono Sphere†</short>
     <desc>This device can manipulate time to your advantage. Pierces all shields, disables systems and causes crew to go out of phase, preventing them from interacting with their surroundings and protecting them from hazards and enemies. While powered, weapons charge 15% faster.</desc>
     <tooltip>Neutralizes crew, decreases weapon cooldown.</tooltip>
-    <descriptionOverride>This device can manipulate time to your advantage. Pierces all shields, disables systems and causes crew to go out of phase, preventing them from interacting with their surroundings and protecting them from hazards and enemies. While powered, weapons charge 15% faster.
-
-Stats:
-Required Power: 1
-Charge Time: 11 seconds
-
-Shots Per Charge: 1
-
-Ion Damage: 1
-
-Buy/Sell Price: 60~/30~
-</descriptionOverride>
-    <tooltipOverride>Required Power: 1
-Charge Time: 11 seconds
-
-Shots Per Charge: 1
-
-Ion Damage: 1</tooltipOverride>
     <damage>0</damage>
     <ion>1</ion>
     <statBoosts>
@@ -1613,4 +1530,392 @@ Inherited Human stat: minor suffocation resistance</desc>
     </hitShipSounds>
     <weaponArt>bomblauncher_tiberium</weaponArt>
     <iconImage>bomb</iconImage>
+</weaponBlueprint>
+
+
+
+<shipBlueprint name="PLAYER_SHIP_EPSILON" layout="epsilon_cruiser" img="epsilon_cruiser">
+    <class>Epsilon Cruiser</class>
+    <name>Zeitgeist</name>
+    <unlock>Beat the game with the 3A Kodiak Type B and the 3A Kodiak Type C to unlock this ship.</unlock>
+    <desc>This vessel was born from the dream of a madman who sought to dominate the minds of all humanity.</desc>
+    <systemList>
+        <battery max="2" power="1" room="6" start="false" img="room_battery_14" />
+        <cloaking power="1" room="19" start="false" img="room_cloaking_2" />
+        <clonebay power="1" room="8" start="true">
+            <slot>
+                <number>0</number>
+            </slot>
+        </clonebay>
+        <doors power="2" room="4" start="true" img="room_doors_2">
+            <slot>
+                <direction>down</direction>
+                <number>0</number>
+            </slot>
+        </doors>
+        <drones max="8" power="2" room="13" start="false" img="room_drones_2" />
+        <engines power="3" room="3" start="true" img="room_engines_2">
+            <slot>
+                <direction>down</direction>
+                <number>2</number>
+            </slot>
+        </engines>
+        <hacking power="1" room="14" start="false" img="room_hacking_epsilon" />
+        <medbay power="1" room="8" start="false" img="room_medbay_4">
+            <slot>
+                <number>0</number>
+            </slot>
+        </medbay>
+        <mind power="2" room="0" start="true" img="room_mind_4" />
+        <oxygen power="1" room="2" start="true" img="room_oxygen" />
+        <pilot power="1" room="1" start="true" img="room_pilot">
+            <slot>
+                <direction>right</direction>
+                <number>0</number>
+            </slot>
+        </pilot>
+        <sensors power="1" room="18" start="false" img="room_sensors_6">
+            <slot>
+                <direction>right</direction>
+                <number>1</number>
+            </slot>
+        </sensors>
+        <shields max="8" power="2" room="20" start="false" img="room_shields_2">
+            <slot>
+                <direction>left</direction>
+                <number>0</number>
+            </slot>
+        </shields>
+        <teleporter power="1" room="16" start="false" />
+        <weapons max="8" power="3" room="9" start="true" img="room_weapons_4">
+            <slot>
+                <direction>up</direction>
+                <number>0</number>
+            </slot>
+        </weapons>
+    </systemList>
+    <weaponSlots>4</weaponSlots>
+    <droneSlots>2</droneSlots>
+    <weaponList missiles="10" count="4">
+        <weapon name="FOCUS_MC_COMBAT" />
+        <weapon name="AC_LASHER" />
+    </weaponList>
+    <droneList drones="0" count="2" />
+    <health amount="30" />
+    <maxPower amount="9" />
+    <aug name="YURI_BRAIN" />
+    <aug name="COMBAT_DRONE_JAMMER" />
+</shipBlueprint>
+
+<augBlueprint name="YURI_BRAIN">
+    <title>Enhanced Brain</title>
+    <desc>This brain has grown to the size of a person after extended suspension in a preservative solution. Enemy crew aboard your ship deal 5% less damage. Can be combined with the 'Influencer' Pinpoint to create the 'Dominator' Beam through the storage menu.</desc>
+    <cost>0</cost>
+    <bp>8</bp>
+    <rarity>0</rarity>
+    <stackable>false</stackable>
+    <value>0.05</value>
+</augBlueprint>
+
+<crewBlueprint name="human_adept">
+    <desc>These humans have tapped into their species' psychic potential, gaining abilities even more impressive than those of other telepathic races.
+
+Inherited Human stats: minor hazardous damage resistance, learns non-combat skills faster</desc>
+    <cost>70</cost>
+    <title>Human Adept</title>
+    <short>Adept</short>
+    <rarity>0</rarity>
+    <powerList>
+        <power>Active Ability: Deploys a psychic blast which moderatly damages nearby enemies and stuns self.</power>
+        <power>Cannot fight crew or sabotage systems</power>
+        <power>Psychic powers reveal rooms and lifeforms even when sensors are down</power>
+        <power>Immune to mind control</power>
+        <power>Enemy crew in the same room lose mind control immunity</power>
+    </powerList>
+    <colorList>
+        <layer> <!-- Layer 1 - Coat -->
+            <color r="114" g="80" b="52" a="1" />
+            <color r="117" g="89" b="62" a="1" />
+            <color r="104" g="79" b="54" a="1" />
+            <color r="124" g="88" b="42" a="1" />
+        </layer>
+        <layer> <!-- Layer 2 - Stripes -->
+            <color r="160" g="28" b="188" a="1" />
+            <color r="188" g="28" b="156" a="1" />
+            <color r="188" g="28" b="125" a="1" />
+            <color r="188" g="28" b="60" a="1" />
+        </layer>
+    </colorList>
+</crewBlueprint>
+
+<weaponBlueprint name="AC_LASHER">
+    <type>LASER</type>
+    <title>'Lasher' Autocannon</title>
+    <short>'Lasher'</short>
+    <desc>This specialized ballistic weapon is designed to launch projectiles small and fast enough to bust enemy systems and penetrate the hull without compromising its integrity.</desc>
+    <tooltip>1 shot 1 system damage weapon, 85% chance to not use ammo, 80% chance to cause a breach</tooltip>
+    <missiles>1</missiles>
+    <freeMissileChance>85</freeMissileChance>
+    <damage>0</damage>
+    <sysDamage>1</sysDamage>
+    <persDamage>1</persDamage>
+    <shots>1</shots>
+    <speed>100</speed>
+    <sp>1</sp>
+    <breachChance>7</breachChance>
+    <cooldown>7</cooldown>
+    <power>1</power>
+    <bp>4</bp>
+    <rarity>0</rarity>
+    <cost>45</cost>
+    <image>GB_shot_light</image>
+    <launchSounds>
+        <sound>GB_cannonLight1</sound>
+        <sound>GB_cannonLight2</sound>
+        <sound>GB_cannonLight3</sound>
+    </launchSounds>
+    <hitShipSounds>
+        <sound>hitHull2</sound>
+        <sound>hitHull3</sound>
+    </hitShipSounds>
+    <hitShieldSounds>
+        <sound>hitShield1</sound>
+        <sound>hitShield2</sound>
+        <sound>hitShield3</sound>
+    </hitShieldSounds>
+    <missSounds>
+        <sound>miss</sound>
+    </missSounds>
+    <weaponArt>autocannon_lasher</weaponArt>
+    <iconImage>laser</iconImage>
+</weaponBlueprint>
+
+<weaponBlueprint name="FOCUS_MC_COMBAT">
+    <type>BEAM</type>
+    <tip>tip_focus</tip>
+    <title>'Influencer' Pinpoint [C]</title>
+    <short>'Influencer' [C]</short>
+    <desc>[Current Mode: Combat] This strange weapon does no damage, but mind controls and buffs enemy crew for a short period of time. Can be swapped between two modes to either mind control crew normally or force them to sabotage systems.</desc>
+    <tooltip>Mind control beam weapon</tooltip>
+    <damage>0</damage>
+    <statBoosts>
+        <statBoost name="sabotageSpeedMultiplier">
+            <boostType>MULT</boostType>
+            <amount>3.2</amount>
+            <shipTarget>ALL</shipTarget>
+            <crewTarget>ALL</crewTarget>
+            <droneTarget>CREW</droneTarget>
+            <affectsSelf>true</affectsSelf>
+            <maxStacks>1</maxStacks>
+            <duration>9</duration>
+        </statBoost>
+        <statBoost name="moveSpeedMultiplier">
+            <boostType>MULT</boostType>
+            <amount>2</amount>
+            <shipTarget>ALL</shipTarget>
+            <crewTarget>ALL</crewTarget>
+            <droneTarget>CREW</droneTarget>
+            <affectsSelf>true</affectsSelf>
+            <maxStacks>1</maxStacks>
+            <duration>9</duration>
+        </statBoost>
+    </statBoosts>
+    <sp>2</sp>
+    <fireChance>0</fireChance>
+    <breachChance>0</breachChance>
+    <cooldown>16</cooldown>
+    <color>
+        <r>255</r>
+        <g>219</g>
+        <b>255</b>
+    </color>
+    <speed>1</speed>
+    <power>2</power>
+    <cost>60</cost>
+    <bp>2</bp>
+    <rarity>0</rarity>
+    <image>beam_contact</image>
+    <length>1</length>
+    <launchSounds>
+        <sound>psiShotSmall</sound>
+    </launchSounds>
+    <weaponArt>focus_psi</weaponArt>
+    <iconImage>beam</iconImage>
+</weaponBlueprint>
+<weaponBlueprint name="FOCUS_MC_SABOTAGE">
+    <type>BEAM</type>
+    <tip>tip_focus</tip>
+    <title>'Influencer' Pinpoint [S]</title>
+    <short>'Influencer' [S]</short>
+    <desc>[Current Mode: Sabotage] This strange weapon does no damage, but mind controls and buffs enemy crew for a short period of time. Can be swapped between two modes to either mind control crew normally or force them to sabotage systems.</desc>
+    <tooltip>Mind control beam weapon</tooltip>
+    <damage>0</damage>
+    <statBoosts>
+        <statBoost name="sabotageSpeedMultiplier">
+            <boostType>MULT</boostType>
+            <amount>3.2</amount>
+            <shipTarget>ALL</shipTarget>
+            <crewTarget>ALL</crewTarget>
+            <droneTarget>CREW</droneTarget>
+            <affectsSelf>true</affectsSelf>
+            <maxStacks>1</maxStacks>
+            <duration>9</duration>
+        </statBoost>
+        <statBoost name="moveSpeedMultiplier">
+            <boostType>MULT</boostType>
+            <amount>2</amount>
+            <shipTarget>ALL</shipTarget>
+            <crewTarget>ALL</crewTarget>
+            <droneTarget>CREW</droneTarget>
+            <affectsSelf>true</affectsSelf>
+            <maxStacks>1</maxStacks>
+            <duration>9</duration>
+        </statBoost>
+        <statBoost name="canFight">
+            <boostType>SET</boostType>
+            <value>FALSE</value>
+            <shipTarget>ALL</shipTarget>
+            <crewTarget>ALL</crewTarget>
+            <droneTarget>CREW</droneTarget>
+            <affectsSelf>true</affectsSelf>
+            <maxStacks>1</maxStacks>
+            <duration>9</duration>
+        </statBoost>
+    </statBoosts>
+    <sp>2</sp>
+    <fireChance>0</fireChance>
+    <breachChance>0</breachChance>
+    <cooldown>16</cooldown>
+    <color>
+        <r>255</r>
+        <g>219</g>
+        <b>255</b>
+    </color>
+    <speed>1</speed>
+    <power>2</power>
+    <cost>60</cost>
+    <bp>2</bp>
+    <rarity>0</rarity>
+    <image>beam_contact</image>
+    <length>1</length>
+    <launchSounds>
+        <sound>psiShotSmall</sound>
+    </launchSounds>
+    <weaponArt>focus_psi</weaponArt>
+    <iconImage>beam</iconImage>
+</weaponBlueprint>
+
+<weaponBlueprint name="BEAM_MC_COMBAT">
+    <type>BEAM</type>
+    <tip>tip_beams</tip>
+    <title>'Dominator' Beam [C]</title>
+    <short>'Dominator' [C]</short>
+    <desc>[Current Mode: Combat] A more powerful version of the 'Influencer', this weapon can mind control several enemy crew simultaneously. Can be swapped between two modes to either mind control crew normally or force them to sabotage systems.</desc>
+    <tooltip>Mind control beam weapon</tooltip>
+    <damage>0</damage>
+    <statBoosts>
+        <statBoost name="sabotageSpeedMultiplier">
+            <boostType>MULT</boostType>
+            <amount>2.2</amount>
+            <shipTarget>ALL</shipTarget>
+            <crewTarget>ALL</crewTarget>
+            <droneTarget>CREW</droneTarget>
+            <affectsSelf>true</affectsSelf>
+            <maxStacks>1</maxStacks>
+            <duration>12</duration>
+        </statBoost>
+        <statBoost name="moveSpeedMultiplier">
+            <boostType>MULT</boostType>
+            <amount>2</amount>
+            <shipTarget>ALL</shipTarget>
+            <crewTarget>ALL</crewTarget>
+            <droneTarget>CREW</droneTarget>
+            <affectsSelf>true</affectsSelf>
+            <maxStacks>1</maxStacks>
+            <duration>12</duration>
+        </statBoost>
+    </statBoosts>
+    <sp>3</sp>
+    <fireChance>0</fireChance>
+    <breachChance>0</breachChance>
+    <cooldown>22</cooldown>
+    <color>
+        <r>255</r>
+        <g>219</g>
+        <b>255</b>
+    </color>
+    <speed>14</speed>
+    <power>4</power>
+    <cost>90</cost>
+    <bp>2</bp>
+    <rarity>0</rarity>
+    <image>beam_contact</image>
+    <length>170</length>
+    <launchSounds>
+        <sound>psiShotLarge</sound>
+    </launchSounds>
+    <weaponArt>beam_psi</weaponArt>
+    <iconImage>beam</iconImage>
+</weaponBlueprint>
+<weaponBlueprint name="BEAM_MC_SABOTAGE">
+    <type>BEAM</type>
+    <tip>tip_beams</tip>
+    <title>'Dominator' Beam [S]</title>
+    <short>'Dominator' [S]</short>
+    <desc>[Current Mode: Sabotage] A more powerful version of the 'Influencer', this weapon can mind control several enemy crew simultaneously. Can be swapped between two modes to either mind control crew normally or force them to sabotage systems.</desc>
+    <tooltip>Mind control beam weapon</tooltip>
+    <damage>0</damage>
+    <statBoosts>
+        <statBoost name="sabotageSpeedMultiplier">
+            <boostType>MULT</boostType>
+            <amount>2.2</amount>
+            <shipTarget>ALL</shipTarget>
+            <crewTarget>ALL</crewTarget>
+            <droneTarget>CREW</droneTarget>
+            <affectsSelf>true</affectsSelf>
+            <maxStacks>1</maxStacks>
+            <duration>12</duration>
+        </statBoost>
+        <statBoost name="moveSpeedMultiplier">
+            <boostType>MULT</boostType>
+            <amount>2</amount>
+            <shipTarget>ALL</shipTarget>
+            <crewTarget>ALL</crewTarget>
+            <droneTarget>CREW</droneTarget>
+            <affectsSelf>true</affectsSelf>
+            <maxStacks>1</maxStacks>
+            <duration>12</duration>
+        </statBoost>
+        <statBoost name="canFight">
+            <boostType>SET</boostType>
+            <value>FALSE</value>
+            <shipTarget>ALL</shipTarget>
+            <crewTarget>ALL</crewTarget>
+            <droneTarget>CREW</droneTarget>
+            <affectsSelf>true</affectsSelf>
+            <maxStacks>1</maxStacks>
+            <duration>12</duration>
+        </statBoost>
+    </statBoosts>
+    <sp>3</sp>
+    <fireChance>0</fireChance>
+    <breachChance>0</breachChance>
+    <cooldown>22</cooldown>
+    <color>
+        <r>255</r>
+        <g>219</g>
+        <b>255</b>
+    </color>
+    <speed>14</speed>
+    <power>4</power>
+    <cost>90</cost>
+    <bp>2</bp>
+    <rarity>0</rarity>
+    <image>beam_contact</image>
+    <length>170</length>
+    <launchSounds>
+        <sound>psiShotLarge</sound>
+    </launchSounds>
+    <weaponArt>beam_psi</weaponArt>
+    <iconImage>beam</iconImage>
 </weaponBlueprint>
