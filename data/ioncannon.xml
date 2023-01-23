@@ -1,0 +1,42 @@
+<img x="-337" y="-125" w="534" h="298" />
+<offsets>
+    <floor x="267" y="149" />
+    <cloak x="267" y="149" />
+</offsets>
+<weaponMounts>
+    <mount x="364" y="209" rotate="false" mirror="false" gib="-1" slide="up" />
+    <mount x="363" y="202" rotate="false" mirror="false" gib="-1" slide="up" />
+    <mount x="373" y="202" rotate="false" mirror="false" gib="-1" slide="up" />
+    <mount x="361" y="206" rotate="false" mirror="false" gib="-1" slide="up" />
+    <mount x="230" y="107" rotate="false" mirror="false" gib="-1" slide="no" />
+</weaponMounts>
+<explosion>
+    <gib1>
+        <velocity min="0.19" max="1.09" />
+        <direction min="-72" max="6" />
+        <angular min="-1.27" max="1.27" />
+        <x>254</x>
+        <y>30</y>
+    </gib1>
+    <gib2>
+        <velocity min="0.12" max="0.34" />
+        <direction min="-16" max="14" />
+        <angular min="-0.51" max="0.51" />
+        <x>0</x>
+        <y>0</y>
+    </gib2>
+    <gib3>
+        <velocity min="0.42" max="1.20" />
+        <direction min="114" max="170" />
+        <angular min="-2.03" max="2.03" />
+        <x>135</x>
+        <y>165</y>
+    </gib3>
+    <gib4>
+        <velocity min="0.17" max="1.01" />
+        <direction min="189" max="243" />
+        <angular min="-1.25" max="1.25" />
+        <x>288</x>
+        <y>97</y>
+    </gib4>
+</explosion>

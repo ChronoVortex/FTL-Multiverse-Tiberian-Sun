@@ -1,0 +1,692 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mod:findName type="event" name="STORAGE_CHECK_CREW_LIST_HUMAN">
+    <mod-append:choice req="human_black_hand" blue="false" hidden="true">
+        <text>Look for your Black Hand operative.</text>
+        <event load="STORAGE_CHECK_CREW_BLACK_HAND"/>
+    </mod-append:choice>
+    <mod:findWithChildLike type="choice" child-type="text">
+        <mod:selector>Nevermind, do something else.</mod:selector>
+        <mod:removeTag />
+    </mod:findWithChildLike>
+    <mod-append:choice>
+        <text>Nevermind, do something else.</text>
+        <event load="STORAGE_CHECK_CREW"/>
+    </mod-append:choice>
+</mod:findName>
+
+<event name="STORAGE_CHECK_CREW_BLACK_HAND">
+    <text>What do you want to do with your Black Hand operative?</text>
+    <choice><text>Nevermind, do something else.</text><event load="STORAGE_CHECK"/></choice>
+    <choice hidden="true">
+        <text id="talk_to_crew"/>
+        <event load="STORAGE_CHECK_CREW_BLACK_HAND_TALK"/>
+    </choice>
+    <choice hidden="true">
+        <text id="scan_crew"/>
+        <event load="STORAGE_CHECK_CREW_BLACK_HAND_SCAN"/>
+    </choice>
+</event>
+
+<event name="STORAGE_CHECK_CREW_BLACK_HAND_TALK">
+    <text load="TEXT_CREW_TALK_BLACK_HAND"/>
+    <choice>
+        <text>Continue...</text>
+        <event load="STORAGE_CHECK"/>
+    </choice>
+</event>
+<textList name="TEXT_CREW_TALK_BLACK_HAND">
+    <text>Your Black Hand operative is praying to something named "Cain." You decide to leave them be.</text>
+    <text>Your Black Hand operative explains that "Black Hand" is a metaphor for crushing the black hearts of oppressors.</text>
+    <text>Your Black Hand operative is busy shining their handheld laser cannon. They're too concentrated on the task to talk.</text>
+    <text>Your Black Hand operative shares their ambition to spread peace throughout the Multiverse.</text>
+    <text>Your Black Hand operative spends a long time explaining various methods of torture they've used. You make an excuse and leave as soon as possible.</text>
+    <text>Your Black Hand operative wonders why nobody uses nukes anymore.</text>
+    <text>Your Black Hand operative thinks you should use more radiation weapons.</text>
+    <text>Your Black Hand operative wonders how the alien species they've encountered would be affected by Tiberium.</text>
+    <text>Your Black Hand operative describes in exacting detail the mutations caused by prolonged exposure to Tiberium. You barely manage not to throw up.</text>
+    <text>Your Black Hand operative criticizes this timeline's human race for not coming up with laser tech earlier.</text>
+    <text>Your Black Hand operative wonders what happened to an alien race called the Scrin in this timeline.</text>
+    <text>You find your Black Hand operative in the life support room, laughing manically. You decide to leave them be.</text>
+    <text>Your Black Hand operative asks if anyone has ever attempted to design a weapon that can create a black hole. When you tell them you've never heard of anything like that, they grin widely.</text>
+    <text>Your Black Hand operative says people smell much better here than where they came from.</text>
+</textList>
+
+<event name="STORAGE_CHECK_CREW_BLACK_HAND_SCAN">
+    <text>BLACK HAND OPERATIVE DETAILS
+SPECIES? [Human] SUBTYPE? [Yes]
+Subtype Details: Non-Genetic, Elite
+Stats: x1.3 combat damage, 0.7x combat damage taken. 60% damage from fire. Learns skills 30% faster. Resists mind control.
+Inherited Stats: 70% damage from suffocation.
+Ability (40s cooldown, 20s duration): Activates stealth generator. While in stealth mode: ignores doors, moves at x0.4 speed and is completely invulnerable to all damage from all sources. Cannot fight crew, but gains x3.0 sabotage speed. Lose 0.5x sabotage speed bonus for each enemy nearby.
+Ability cooldown type: Continues on jump.</text>
+    <choice>
+        <text>Continue...</text>
+        <event load="STORAGE_CHECK"/>
+    </choice>
+</event>
+
+
+
+<mod:findName type="event" name="COMBAT_CHECK_TOGGLE" panic="true">
+    <mod:findLike type="choice">
+        <mod:selector req="MISSILES_V5_SINGLE" />
+        <mod:removeTag />
+    </mod:findLike>
+    <mod:findLike type="choice">
+        <mod:selector req="MISSILES_V5_MULTI" />
+        <mod:removeTag />
+    </mod:findLike>
+    <mod-append:choice req="MISSILES_V5_SINGLE" blue="false">
+        <text>(V5 Missiles) Set the state of the missiles. [Current mode: Precision]</text>
+        <event load="COMBAT_CHECK_V5_MISSILES_SINGLE"/>
+    </mod-append:choice>
+    <mod-append:choice req="MISSILES_V5_MULTI" blue="false">
+        <text>(V5 Missiles) Set the state of the missiles. [Current mode: Multi-Warhead]</text>
+        <event load="COMBAT_CHECK_V5_MISSILES_MULTI"/>
+    </mod-append:choice>
+</mod:findName>
+<event name="COMBAT_CHECK_V5_MISSILES_SINGLE">
+    <text>Are you sure you want to change the missiles' settings?</text>
+    <choice hidden="true">
+        <text>Set the missiles to Multi-Warhead Mode.</text>
+        <event>
+            <text>You start calibrating the missiles...</text>
+            <remove name="MISSILES_V5_SINGLE"/>
+            <choice hidden="true">
+                <text>Continue...</text>
+                <event>
+                    <text>You finish calibrating the missiles successfully.</text>
+                    <weapon name="MISSILES_V5_MULTI"/>
+                    <choice hidden="true">
+                        <text>Continue...</text>
+                        <event load="COMBAT_CHECK_TOGGLE_LOAD"/>
+                    </choice>
+                </event>
+            </choice>
+        </event>
+    </choice>
+    <choice hidden="true">
+        <text>Return to the toggle menu.</text>
+        <event load="COMBAT_CHECK_TOGGLE_LOAD"/>
+    </choice>
+</event>
+<event name="COMBAT_CHECK_V5_MISSILES_MULTI">
+    <text>Are you sure you want to change the missiles' settings?</text>
+    <choice hidden="true">
+        <text>Set the missiles to Precision Mode.</text>
+        <event>
+            <text>You start calibrating the missiles...</text>
+            <remove name="MISSILES_V5_MULTI"/>
+            <choice hidden="true">
+                <text>Continue...</text>
+                <event>
+                    <text>You finish calibrating the missiles successfully.</text>
+                    <weapon name="MISSILES_V5_SINGLE"/>
+                    <choice hidden="true">
+                        <text>Continue...</text>
+                        <event load="COMBAT_CHECK_TOGGLE_LOAD"/>
+                    </choice>
+                </event>
+            </choice>
+        </event>
+    </choice>
+    <choice hidden="true">
+        <text>Return to the toggle menu.</text>
+        <event load="COMBAT_CHECK_TOGGLE_LOAD"/>
+    </choice>
+</event>
+
+
+
+<mod:findName type="event" name="COMBAT_CHECK_REAL" panic="true">
+    <mod-append:choice req="COMBAT_DRONE_JAMMER" blue="false">
+        <text>(Drone Jammer) Jam the enemy drones!</text>
+        <event load="COMBAT_CHECK_JAM_DRONES"/>
+    </mod-append:choice>
+    <mod-append:choice req="CHRONOSPHERE_IONCANNON" blue="false">
+        <text>(Chronosphere) Deploy the Ion Cannon.</text>
+        <event load="COMBAT_CHECK_CHRONOSPHERE"/>
+    </mod-append:choice>
+    <mod-append:choice req="IRON_CURTAIN" blue="false">
+        <text>(Iron Curtain) Power the Iron Curtain.</text>
+        <event load="COMBAT_CHECK_IRON_CURTAIN"/>
+    </mod-append:choice>
+    <mod-append:variable name="loc_iron_curtain_charged" op="set" val="0"/>
+    
+    <mod:findWithChildLike type="choice" child-type="text">
+        <mod:selector>Change your toggle or amp equipment.</mod:selector>
+        <mod:removeTag />
+    </mod:findWithChildLike>
+    <mod:findWithChildLike type="choice" child-type="text">
+        <mod:selector>Do some last minute check-ups while we charge the weapons.</mod:selector>
+        <mod:removeTag />
+    </mod:findWithChildLike>
+    <mod:findWithChildLike type="choice" child-type="text">
+        <mod:selector>Do nothing.</mod:selector>
+        <mod:removeTag />
+    </mod:findWithChildLike>
+    
+    <mod-append:choice req="LIST_CHECK_TOGGLES_AND_AMPS" lvl="1" blue="false">
+        <text>Change your toggle or amp equipment.</text>
+        <event load="COMBAT_CHECK_TOGGLE_LOAD"/>
+    </mod-append:choice>
+    <mod-append:choice>
+        <text>Do some last minute check-ups while we charge the weapons.</text>
+        <event load="COMBAT_CHECK_GENERIC"/>
+    </mod-append:choice>
+    <mod-append:choice>
+        <text>Do nothing.</text>
+        <event>
+            <status type="clear" target="enemy" system="teleporter" amount="100"/>
+        </event>
+    </mod-append:choice>
+</mod:findName>
+
+<mod:findName type="event" name="COMBAT_CHECK_FLAGSHIP_REAL" panic="true">
+    <mod-append:choice req="COMBAT_DRONE_JAMMER" blue="false">
+        <text>(Drone Jammer) Jam the Flagship's drones!</text>
+        <event load="COMBAT_CHECK_JAM_DRONES"/>
+    </mod-append:choice>
+    <mod-append:choice req="CHRONOSPHERE_IONCANNON" blue="false">
+        <text>(Chronosphere) Deploy the Ion Cannon.</text>
+        <event load="COMBAT_CHECK_CHRONOSPHERE"/>
+    </mod-append:choice>
+    <mod-append:choice req="IRON_CURTAIN" blue="false">
+        <text>(Iron Curtain) Reroute power to the Iron Curtain.</text>
+        <event load="COMBAT_CHECK_IRON_CURTAIN"/>
+    </mod-append:choice>
+    <mod-append:variable name="loc_iron_curtain_charged" op="set" val="0"/>
+    
+    <mod:findWithChildLike type="choice" child-type="text">
+        <mod:selector>Change your toggle or amp equipment.</mod:selector>
+        <mod:removeTag />
+    </mod:findWithChildLike>
+    <mod:findWithChildLike type="choice" child-type="text">
+        <mod:selector>Do some last minute check-ups while we charge the weapons.</mod:selector>
+        <mod:removeTag />
+    </mod:findWithChildLike>
+    <mod:findWithChildLike type="choice" child-type="text">
+        <mod:selector>Do nothing.</mod:selector>
+        <mod:removeTag />
+    </mod:findWithChildLike>
+    
+    <mod-append:choice req="LIST_CHECK_TOGGLES_AND_AMPS" lvl="1" blue="false">
+        <text>Change your toggle or amp equipment.</text>
+        <event load="COMBAT_CHECK_TOGGLE_LOAD"/>
+    </mod-append:choice>
+    <mod-append:choice>
+        <text>Do some last minute check-ups while we charge the weapons.</text>
+        <event load="COMBAT_CHECK_GENERIC"/>
+    </mod-append:choice>
+    <mod-append:choice>
+        <text>Do nothing.</text>
+        <event>
+            <status type="clear" target="enemy" system="teleporter" amount="100"/>
+        </event>
+    </mod-append:choice>
+</mod:findName>
+
+<event name="COMBAT_CHECK_IRON_CURTAIN">
+    <text>How much power do you want to reroute?</text>
+    <choice req="UPG_BATTERY_GENERATOR" hidden="true">
+        <text>Use the Emergency Generator to power the Iron Curtain. [18s cooldown]</text>
+        <event>
+            <text>Power rerouted to Iron Curtain. Proceeding to combat.</text>
+            <triggeredEvent event="IRON_CURTAIN_CHARGE" thisFight="true" minTime="18.0" maxTime="18.0">
+                <triggeredEventBox load="DEFAULT_TIMER">
+                    <tooltip>The Iron Curtain will recharge after this countdown.</tooltip>
+                    <warning time="0.0" flash="false"/>
+                </triggeredEventBox>
+            </triggeredEvent>
+            <variable name="loc_iron_curtain_timer" op="set" val="18"/>
+            <choice>
+                <text>Continue to the fight!</text>
+                <event>
+                    <status type="clear" target="enemy" system="teleporter" amount="100"/>
+                </event>
+            </choice>
+        </event>
+    </choice>
+    <choice req="reactor" lvl="1" hidden="true" blue="false">
+        <text>1 Power. [20s cooldown]</text>
+        <event>
+            <text>Power rerouted to Iron Curtain. Proceeding to combat.</text>
+            <status type="loss" target="player" system="reactor" amount="1"/>
+            <triggeredEvent event="IRON_CURTAIN_CHARGE" thisFight="true" minTime="20.0" maxTime="20.0">
+                <triggeredEventBox load="DEFAULT_TIMER">
+                    <tooltip>The Iron Curtain will recharge after this countdown.</tooltip>
+                    <warning time="0.0" flash="false"/>
+                </triggeredEventBox>
+            </triggeredEvent>
+            <variable name="loc_iron_curtain_timer" op="set" val="20"/>
+            <choice>
+                <text>Continue to the fight!</text>
+                <event>
+                    <status type="clear" target="enemy" system="teleporter" amount="100"/>
+                </event>
+            </choice>
+        </event>
+    </choice>
+    <choice req="reactor" lvl="2" hidden="true" blue="false">
+        <text>2 Power. [16s cooldown]</text>
+        <event>
+            <text>Power rerouted to Iron Curtain. Proceeding to combat.</text>
+            <status type="loss" target="player" system="reactor" amount="2"/>
+            <triggeredEvent event="IRON_CURTAIN_CHARGE" thisFight="true" minTime="16.0" maxTime="16.0">
+                <triggeredEventBox load="DEFAULT_TIMER">
+                    <tooltip>The Iron Curtain will recharge after this countdown.</tooltip>
+                    <warning time="0.0" flash="false"/>
+                </triggeredEventBox>
+            </triggeredEvent>
+            <variable name="loc_iron_curtain_timer" op="set" val="16"/>
+            <choice>
+                <text>Continue to the fight!</text>
+                <event>
+                    <status type="clear" target="enemy" system="teleporter" amount="100"/>
+                </event>
+            </choice>
+        </event>
+    </choice>
+    <choice req="reactor" lvl="3" hidden="true" blue="false">
+        <text>3 Power. [12s cooldown]</text>
+        <event>
+            <text>Power rerouted to Iron Curtain. Proceeding to combat.</text>
+            <status type="loss" target="player" system="reactor" amount="3"/>
+            <triggeredEvent event="IRON_CURTAIN_CHARGE" thisFight="true" minTime="12.0" maxTime="12.0">
+                <triggeredEventBox load="DEFAULT_TIMER">
+                    <tooltip>The Iron Curtain will recharge after this countdown.</tooltip>
+                    <warning time="0.0" flash="false"/>
+                </triggeredEventBox>
+            </triggeredEvent>
+            <variable name="loc_iron_curtain_timer" op="set" val="12"/>
+            <choice>
+                <text>Continue to the fight!</text>
+                <event>
+                    <status type="clear" target="enemy" system="teleporter" amount="100"/>
+                </event>
+            </choice>
+        </event>
+    </choice>
+    <choice req="reactor" lvl="4" hidden="true" blue="false">
+        <text>4 Power. [8s cooldown]</text>
+        <event>
+            <text>Power rerouted to Iron Curtain. Proceeding to combat.</text>
+            <status type="loss" target="player" system="reactor" amount="4"/>
+            <triggeredEvent event="IRON_CURTAIN_CHARGE" thisFight="true" minTime="8.0" maxTime="8.0">
+                <triggeredEventBox load="DEFAULT_TIMER">
+                    <tooltip>The Iron Curtain will recharge after this countdown.</tooltip>
+                    <warning time="0.0" flash="false"/>
+                </triggeredEventBox>
+            </triggeredEvent>
+            <variable name="loc_iron_curtain_timer" op="set" val="8"/>
+            <choice>
+                <text>Continue to the fight!</text>
+                <event>
+                    <status type="clear" target="enemy" system="teleporter" amount="100"/>
+                </event>
+            </choice>
+        </event>
+    </choice>
+    <choice blue="false" req="loc_flagship" lvl="0" max_group="1"  >
+        <text>Do something else instead.</text>
+        <event load="COMBAT_CHECK"/>
+    </choice>
+    <choice blue="false" req="loc_flagship" lvl="1" max_group="1">
+        <text>Do something else instead.</text>
+        <event load="COMBAT_CHECK_FLAGSHIP"/>
+    </choice>
+    <choice>
+        <text>Nevermind, let's fight!</text>
+        <event>
+            <text>You decide not to do anything and prepare to fight.</text>
+            <status type="clear" target="enemy" system="teleporter" amount="100"/>
+        </event>
+    </choice>
+</event>
+
+<event name="IRON_CURTAIN_CHARGE">
+    <playSound>ironCurtainReady</playSound>
+    <variable name="loc_iron_curtain_charged" op="set" val="1"/>
+</event>
+
+<event name="LUA_IRON_CURTAIN">
+    <playSound>ironCurtainUse</playSound>
+    <variable name="loc_iron_curtain_charged" op="set" val="0"/>
+    <loadEventList default="STORAGE_CHECK_REAL">
+        <event name="IRON_CURTAIN_CHARGE_20" req="loc_iron_curtain_timer" lvl="20" max_lvl="20"/>
+        <event name="IRON_CURTAIN_CHARGE_18" req="loc_iron_curtain_timer" lvl="18" max_lvl="18"/>
+        <event name="IRON_CURTAIN_CHARGE_16" req="loc_iron_curtain_timer" lvl="16" max_lvl="16"/>
+        <event name="IRON_CURTAIN_CHARGE_12" req="loc_iron_curtain_timer" lvl="12" max_lvl="12"/>
+        <event name="IRON_CURTAIN_CHARGE_8" req="loc_iron_curtain_timer" lvl="8" max_lvl="8"/>
+    </loadEventList>
+</event>
+
+<event name="IRON_CURTAIN_CHARGE_20">
+    <triggeredEvent event="IRON_CURTAIN_CHARGE" thisFight="true" minTime="20.0" maxTime="20.0">
+        <triggeredEventBox load="DEFAULT_TIMER">
+            <tooltip>The Iron Curtain will recharge after this countdown.</tooltip>
+            <warning time="0.0" flash="false"/>
+        </triggeredEventBox>
+    </triggeredEvent>
+</event>
+<event name="IRON_CURTAIN_CHARGE_18">
+    <triggeredEvent event="IRON_CURTAIN_CHARGE" thisFight="true" minTime="18.0" maxTime="18.0">
+        <triggeredEventBox load="DEFAULT_TIMER">
+            <tooltip>The Iron Curtain will recharge after this countdown.</tooltip>
+            <warning time="0.0" flash="false"/>
+        </triggeredEventBox>
+    </triggeredEvent>
+</event>
+<event name="IRON_CURTAIN_CHARGE_16">
+    <triggeredEvent event="IRON_CURTAIN_CHARGE" thisFight="true" minTime="16.0" maxTime="16.0">
+        <triggeredEventBox load="DEFAULT_TIMER">
+            <tooltip>The Iron Curtain will recharge after this countdown.</tooltip>
+            <warning time="0.0" flash="false"/>
+        </triggeredEventBox>
+    </triggeredEvent>
+</event>
+<event name="IRON_CURTAIN_CHARGE_12">
+    <triggeredEvent event="IRON_CURTAIN_CHARGE" thisFight="true" minTime="12.0" maxTime="12.0">
+        <triggeredEventBox load="DEFAULT_TIMER">
+            <tooltip>The Iron Curtain will recharge after this countdown.</tooltip>
+            <warning time="0.0" flash="false"/>
+        </triggeredEventBox>
+    </triggeredEvent>
+</event>
+<event name="IRON_CURTAIN_CHARGE_8">
+    <triggeredEvent event="IRON_CURTAIN_CHARGE" thisFight="true" minTime="8.0" maxTime="8.0">
+        <triggeredEventBox load="DEFAULT_TIMER">
+            <tooltip>The Iron Curtain will recharge after this countdown.</tooltip>
+            <warning time="0.0" flash="false"/>
+        </triggeredEventBox>
+    </triggeredEvent>
+</event>
+
+<event name="COMBAT_CHECK_JAM_DRONES">
+    <text>Are you sure you want to do this?
+[Enemy drones power -3, Self reactor power -2, -1{, lasts 45 seconds.]</text>
+    <choice req="reactor" lvl="2" hidden="true" blue="false">
+        <text>Yes</text>
+        <event>
+            <text>You activate the combat augment...</text>
+            <status type="loss" target="player" system="reactor" amount="2"/>
+            <item_modify>
+                <item type="fuel" min="-1" max="-1"/>
+            </item_modify>
+            <choice>
+                <text>Continue...</text>
+                <event load="COMBAT_CHECK_JAM_DRONES_POWERUP" />
+            </choice>
+        </event>
+    </choice>
+    <choice req="UPG_BATTERY_GENERATOR">
+        <text>Power the augment with the Emergency Generator.</text>
+        <event load="COMBAT_CHECK_JAM_DRONES_POWERUP" />
+    </choice>
+    <choice blue="false" req="loc_flagship" lvl="0" max_group="1"  >
+        <text>Do something else instead.</text>
+        <event load="COMBAT_CHECK"/>
+    </choice>
+    <choice blue="false" req="loc_flagship" lvl="1" max_group="1">
+        <text>Do something else instead.</text>
+        <event load="COMBAT_CHECK_FLAGSHIP"/>
+    </choice>
+    <choice>
+        <text>Nevermind, let's fight!</text>
+        <event>
+            <text>You decide not to do anything and prepare to fight.</text>
+            <status type="clear" target="enemy" system="teleporter" amount="100"/>
+        </event>
+    </choice>
+</event>
+
+<event name="COMBAT_CHECK_JAM_DRONES_POWERUP">
+    <text>You activate the combat augment.</text>
+    <status type="loss" target="enemy" system="drones" amount="3"/>
+    
+    <triggeredEvent event="COMBAT_CHECK_JAM_DRONES_POWERDOWN" time="45" thisFight="true">
+        <triggeredEventBox load="DEFAULT_SMALL">
+            <tooltip>Your drone jammer will expire in this amount of time.</tooltip>
+        </triggeredEventBox>
+        <timerSounds load="DEFAULT_TIMER_SOUNDS"/>
+    </triggeredEvent>
+    
+    <choice>
+        <text>Continue to the fight!</text>
+        <event>
+            <status type="clear" target="enemy" system="teleporter" amount="100"/>
+        </event>
+    </choice>
+</event>
+
+<event name="COMBAT_CHECK_JAM_DRONES_POWERDOWN">
+    <text>Your combat augment has expired. The enemy drones and your reactor have returned to normal.</text>
+    <status type="clear" target="enemy" system="drones" amount="100"/>
+    <choice hidden="true">
+        <text>Continue with the fight...</text>
+        <event>
+            <status type="clear" target="player" system="reactor" amount="100"/>
+        </event>
+    </choice>
+</event>
+
+<event name="COMBAT_CHECK_CHRONOSPHERE">
+    <text>Choose a system to target with the Ion Cannon.
+[Self reactor power -4, 30s cooldown.]</text>
+    <choice req="reactor" lvl="4" hidden="true" blue="false">
+        <text>Shields.</text>
+        <event>
+            <variable name="loc_ioncannon_target_room" op="set" val="0"/>
+            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
+        </event>
+    </choice>
+    <choice req="reactor" lvl="4" hidden="true" blue="false">
+        <text>Engines.</text>
+        <event>
+            <variable name="loc_ioncannon_target_room" op="set" val="1"/>
+            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
+        </event>
+    </choice>
+    <choice req="reactor" lvl="4" hidden="true" blue="false">
+        <text>Oxygen.</text>
+        <event>
+            <variable name="loc_ioncannon_target_room" op="set" val="2"/>
+            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
+        </event>
+    </choice>
+    <choice req="reactor" lvl="4" hidden="true" blue="false">
+        <text>Weapons.</text>
+        <event>
+            <variable name="loc_ioncannon_target_room" op="set" val="3"/>
+            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
+        </event>
+    </choice>
+    <choice req="reactor" lvl="4" hidden="true" blue="false">
+        <text>Drones.</text>
+        <event>
+            <variable name="loc_ioncannon_target_room" op="set" val="4"/>
+            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
+        </event>
+    </choice>
+    <choice req="reactor" lvl="4" hidden="true" blue="false">
+        <text>Medbay.</text>
+        <event>
+            <variable name="loc_ioncannon_target_room" op="set" val="5"/>
+            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
+        </event>
+    </choice>
+    <choice req="reactor" lvl="4" hidden="true" blue="false">
+        <text>Teleporter.</text>
+        <event>
+            <variable name="loc_ioncannon_target_room" op="set" val="9"/>
+            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
+        </event>
+    </choice>
+    <choice req="reactor" lvl="4" hidden="true" blue="false">
+        <text>Cloaking.</text>
+        <event>
+            <variable name="loc_ioncannon_target_room" op="set" val="10"/>
+            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
+        </event>
+    </choice>
+    <choice req="reactor" lvl="4" hidden="true" blue="false">
+        <text>Artillery.</text>
+        <event>
+            <variable name="loc_ioncannon_target_room" op="set" val="11"/>
+            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
+        </event>
+    </choice>
+    <choice req="reactor" lvl="4" hidden="true" blue="false">
+        <text>Clonebay.</text>
+        <event>
+            <variable name="loc_ioncannon_target_room" op="set" val="13"/>
+            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
+        </event>
+    </choice>
+    <choice req="reactor" lvl="4" hidden="true" blue="false">
+        <text>Mind Control.</text>
+        <event>
+            <variable name="loc_ioncannon_target_room" op="set" val="14"/>
+            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
+        </event>
+    </choice>
+    <choice req="reactor" lvl="4" hidden="true" blue="false">
+        <text>Hacking.</text>
+        <event>
+            <variable name="loc_ioncannon_target_room" op="set" val="15"/>
+            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
+        </event>
+    </choice>
+    <choice req="reactor" lvl="4" hidden="true" blue="false">
+        <text>Temporal Manipulator.</text>
+        <event>
+            <variable name="loc_ioncannon_target_room" op="set" val="20"/>
+            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
+        </event>
+    </choice>
+    <choice req="reactor" lvl="4" hidden="true" blue="false">
+        <text>Piloting.</text>
+        <event>
+            <variable name="loc_ioncannon_target_room" op="set" val="6"/>
+            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
+        </event>
+    </choice>
+    <choice req="reactor" lvl="4" hidden="true" blue="false">
+        <text>Sensors.</text>
+        <event>
+            <variable name="loc_ioncannon_target_room" op="set" val="7"/>
+            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
+        </event>
+    </choice>
+    <choice req="reactor" lvl="4" hidden="true" blue="false">
+        <text>Doors.</text>
+        <event>
+            <variable name="loc_ioncannon_target_room" op="set" val="8"/>
+            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
+        </event>
+    </choice>
+    <choice req="reactor" lvl="4" hidden="true" blue="false">
+        <text>Backup Battery.</text>
+        <event>
+            <variable name="loc_ioncannon_target_room" op="set" val="12"/>
+            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
+        </event>
+    </choice>
+    <choice blue="false" req="loc_flagship" lvl="0" max_group="1"  >
+        <text>Do something else instead.</text>
+        <event load="COMBAT_CHECK"/>
+    </choice>
+    <choice blue="false" req="loc_flagship" lvl="1" max_group="1">
+        <text>Do something else instead.</text>
+        <event load="COMBAT_CHECK_FLAGSHIP"/>
+    </choice>
+    <choice>
+        <text>Nevermind, let's fight!</text>
+        <event>
+            <text>You decide not to do anything and prepare to fight.</text>
+            <status type="clear" target="enemy" system="teleporter" amount="100"/>
+        </event>
+    </choice>
+</event>
+
+<event name="COMBAT_CHECK_CHRONOSPHERE_ACTIVATED">
+    <text>You activate the Chronosphere. The Ion Cannon appears nearby and begins charging.</text>
+    <status type="loss" target="player" system="reactor" amount="4"/>
+    <triggeredEvent event="SURGESTART_IONCANNON" thisFight="true" minTime="30.0" maxTime="30.0">
+        <warningMessage id="warning_ion_cannon_player" x="444" y="46" time="5.0" r="120" g="255" b="255" centerText="true" flash="true" sound="surgeWarning" useWarningLine="true"/>
+        <triggeredEventBox load="DEFAULT_TIMER">
+            <warning time="5.0" flash="true"/>
+            <tooltip>The Ion Cannon will fire after this countdown.</tooltip>
+        </triggeredEventBox>
+    </triggeredEvent>
+    <choice>
+        <text>Continue to the fight!</text>
+        <event>
+            <status type="clear" target="enemy" system="teleporter" amount="100"/>
+        </event>
+    </choice>
+</event>
+
+<event name="SURGESTART_IONCANNON">
+    <superBarrage player="true" name="IONCANNON_SURGE"/>
+    <loadEvent>LUA_SET_IONCANNON_TARGET</loadEvent>
+</event>
+<event name="LUA_SET_IONCANNON_TARGET" />
+
+
+
+<mod:findName type="event" name="STORAGE_CHECK_AUG">
+    <mod-append:choice req="TIBERIUM_GARDEN">
+        <text>(Tiberium Garden) Use the Tiberium garden.</text>
+        <event load="STORAGE_CHECK_AUG_TIBERIUM_GARDEN"/>
+    </mod-append:choice>
+    <mod:findWithChildLike type="choice" child-type="text">
+        <mod:selector>Nevermind, do something else.</mod:selector>
+        <mod:removeTag />
+    </mod:findWithChildLike>
+    <mod-append:choice>
+        <text>Nevermind, do something else.</text>
+        <event load="STORAGE_CHECK"/>
+    </mod-append:choice>
+</mod:findName>
+
+<event name="STORAGE_CHECK_AUG_TIBERIUM_GARDEN">
+    <text>What do you want to do with the Tiberium garden?</text>
+    <choice hidden="true">
+        <text>Harvest some Tiberium.</text>
+        <event>
+            <text>You harvest some of the mineral-rich crystals, making sure to leave enough to sustain the garden.</text>
+            <autoReward level="LOW">scrap_only</autoReward>
+        </event>
+    </choice>
+    <choice hidden="true">
+        <text>Find lifeforms suitable for mutation into Tiberium fiends.</text>
+        <event>
+            <text>You query the beacon network for worlds in the sector inhabited by primative lifeforms and mark the nearest result on your map.</text>
+            <quest event="TIBERIUM_FIEND_BEACON"/>
+        </event>
+    </choice>
+    <choice>
+        <text>Nevermind, do something else.</text>
+        <event load="STORAGE_CHECK"/>
+    </choice>
+</event>
+
+<event name="TIBERIUM_FIEND_BEACON">
+    <preventQuest/>
+    <beaconType text="WILDLIFE" global="true" persist="true" hideVanillaLabel="true">
+        <color r="160" g="160" b="160" a="1.0"/>
+        <unvisitedTooltip>Lifeforms suitable for Tiberium mutation can be found here.</unvisitedTooltip>
+        <visitedTooltip>Explored location. Nothing left of interest.</visitedTooltip>
+    </beaconType>
+    <text>It doesn't take long to find the planet you're looking for. You send a team to retrieve one of the animals and once it's brought aboard, you leave it in the Tiberium garden. It will be a few jumps before it's finished mutating.</text>
+    <triggeredEvent name="TIBERIUM_FIEND_MUTATING" event="TIBERIUM_FIEND_READY">
+        <jumps amount="3" min="3" max="3" type="0"/>
+    </triggeredEvent>
+</event>
+
+<event name="TIBERIUM_FIEND_READY">
+    <text>The creature you left in the Tiberium garden emerges, having completed its transformation.</text>
+    <crewMember amount="1" class="tiberium_fiend"/>
+</event>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mod:findName type="event" name="TRUE_LAST_STAND_START" panic="true">
+    <mod:findLike type="choice">
+        <mod:findLike type="event">
+            <mod-append:choice hidden="true" max_group="1" req="SHIP_PAST" blue="false">
+                <text>Contact Federation command.</text>
+                <event>
+                    <text>On the vidscreen appears several Federation and Engi officers, as well as Admiral Tully in the center. "So, your ship really is from the past? I suppose I shouldn't be surprised, though all this Multiverse stuff is confusing enough without time travel. Let's hope that ancient thing is ready for the Flagship."</text>
+                    <choice hidden="true">
+                        <text>Continue...</text>
+                        <event load="LAST_STAND_START_2"/>
+                    </choice>
+                </event>
+            </mod-append:choice>
+        </mod:findLike>
+    </mod:findLike>
+</mod:findName>
+
+<!--
+<mod:findName type="event" name="BOSS_TEXT_1">
+    <mod-append:choice hidden="true" req="loc_ioncannonquest">
+        <text>(Chronosphere) Teleport the Ion Cannon in range of the flagship.</text>
+        <event name="ION_CANNON_SHOOT_FLAGSHIP_1">
+            <text>It's time to let the flagship taste some real firepower! You activate the chronological shift and the Ion Cannon appears on your port side. It fires at the flagship, but somehow it finds a way to reroute enough power to its shields to counter the attack! It looks like you burnt out a few relays though, because the flagship's shield power has dropped significantly. Not exactly what you were hoping for, but an edge is still an edge.</text>
+            <playSound>chronosphereUse</playSound>
+            <status type="loss" target="enemy" system="shields" amount="1"/>
+        </event>
+        <enemyDamage amount="5" system="shields" effect="breach" force="true"/>
+    </mod-append:choice>
+</mod:findName>
+
+<mod:findName type="event" name="BOSS_TEXT_2">
+    <mod-append:choice hidden="true" req="loc_ioncannonquest">
+        <text>(Chronosphere) Teleport the Ion Cannon in range of the flagship.</text>
+        <event name="ION_CANNON_SHOOT_FLAGSHIP_2">
+            <text>You activate the Chronosphere bringing the cannon into the fight. The flagship engages its advanced shielding stopping the beam, but taking a toll on its shields. Power is drained from the system, they haven't adapted yet.</text>
+            <playSound>chronosphereUse</playSound>
+            <status type="loss" target="enemy" system="shields" amount="1"/>
+        </event>
+    </mod-append:choice>
+</mod:findName>
+
+<mod:findName type="event" name="BOSS_TEXT_3">
+    <mod-append:choice hidden="true" req="loc_ioncannonquest">
+        <text>(Chronosphere) Teleport the Ion Cannon in range of the flagship.</text>
+        <event name="ION_CANNON_SHOOT_FLAGSHIP_3">
+            <text>The Chronosphere doesn't have much power left, you'll have to make this one count. After the cannon completes the transition it fires, putting its all into getting past the flagship's super shield. It barely manages, but the enemy shields are now partially disabled. You use the Chronosphere one last time to send the cannon back home, hopefully you won't need it again.</text>
+            <playSound>chronosphereUse</playSound>
+            <status type="loss" target="enemy" system="shields" amount="1"/>
+        </event>
+    </mod-append:choice>
+</mod:findName>
+-->
