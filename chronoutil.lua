@@ -55,7 +55,7 @@ local PrintHelper = {
         x = 154,           -- x coordinate of printed lines
         y = 100,           -- y coordinate of printed lines
         font = 10,         -- The font to use
-        line_length = 400, -- How long a line can be before it is broken
+        line_length = 250, -- How long a line can be before it is broken
         duration = 5,      -- The number of seconds before something is cleared from the console
         messages = 10,     -- How many messages can be on the console at once
     },
