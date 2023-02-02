@@ -95,9 +95,6 @@
         <crystalShard weapon="ABLATIVE_ARMOR_PROJ" value="0.15" stackable="independent"/>
         <locked/>
     </mod-append:aug>
-    <mod-append:aug name="COMBAT_CHRONO_COOLDOWN">
-        <function name="AUTO_COOLDOWN" value="0.15" useForReqs="false"/>
-    </mod-append:aug>
     <mod-append:aug name="IRON_CURTAIN">
         <superShield>
             <add>1</add>
@@ -398,11 +395,6 @@ Deploy a psychic blast damaging enemy crew in the room for 30 hitpoints. Stuns s
 </mod:findLike>
 
 <mod:findLike type="scripts">
-    <mod-append:script>chronoutil.lua</mod-append:script>
-    <mod:findLike type="script" start="1">
-        <mod:selector>chronoutil.lua</mod:selector>
-        <mod:removeTag />
-    </mod:findLike>
     <mod-append:script>cncships.lua</mod-append:script>
 </mod:findLike>
 

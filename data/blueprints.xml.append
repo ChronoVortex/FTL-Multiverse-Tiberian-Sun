@@ -538,15 +538,6 @@
     <iconImage>beam</iconImage>
 </weaponBlueprint>
 
-<augBlueprint name="COMBAT_CHRONO_COOLDOWN">
-    <title>You should never see this</title>
-    <desc>You should never see this</desc>
-    <cost>0</cost>
-    <rarity>0</rarity>
-    <stackable>true</stackable>
-    <bp>0</bp>
-</augBlueprint>
-
 <weaponBlueprint name="COMBAT_CHRONO_PLAYER">
     <type>BOMB</type>
     <flavorType>Temporal Discharge</flavorType>
@@ -557,6 +548,9 @@
     <tooltip>Neutralizes crew, decreases weapon cooldown.</tooltip>
     <damage>0</damage>
     <ion>1</ion>
+	<augEffects>
+		<augEffect effect="AUTO_COOLDOWN" amount="0.15" needsPower="true"/>
+	</augEffects>
     <statBoosts>
         <statBoost name="canFight">
             <boostType>SET</boostType>
@@ -1698,6 +1692,7 @@ Inherited Human stats: minor hazardous damage resistance, learns non-combat skil
     <desc>[Current Mode: Combat] This strange weapon does no damage, but mind controls and buffs enemy crew for a short period of time. Can be swapped between two modes to either mind control crew normally or force them to sabotage systems.</desc>
     <tooltip>Mind control beam weapon</tooltip>
     <damage>0</damage>
+    <mindControl endSound="psiRelease">9</mindControl>
     <statBoosts>
         <statBoost name="sabotageSpeedMultiplier">
             <boostType>MULT</boostType>
@@ -1750,6 +1745,7 @@ Inherited Human stats: minor hazardous damage resistance, learns non-combat skil
     <desc>[Current Mode: Sabotage] This strange weapon does no damage, but mind controls and buffs enemy crew for a short period of time. Can be swapped between two modes to either mind control crew normally or force them to sabotage systems.</desc>
     <tooltip>Mind control beam weapon</tooltip>
     <damage>0</damage>
+    <mindControl endSound="psiRelease">9</mindControl>
     <statBoosts>
         <statBoost name="sabotageSpeedMultiplier">
             <boostType>MULT</boostType>
@@ -1813,6 +1809,7 @@ Inherited Human stats: minor hazardous damage resistance, learns non-combat skil
     <desc>[Current Mode: Combat] A more powerful version of the 'Influencer', this weapon can mind control several enemy crew simultaneously. Can be swapped between two modes to either mind control crew normally or force them to sabotage systems.</desc>
     <tooltip>Mind control beam weapon</tooltip>
     <damage>0</damage>
+    <mindControl endSound="psiRelease">12</mindControl>
     <statBoosts>
         <statBoost name="sabotageSpeedMultiplier">
             <boostType>MULT</boostType>
@@ -1865,6 +1862,7 @@ Inherited Human stats: minor hazardous damage resistance, learns non-combat skil
     <desc>[Current Mode: Sabotage] A more powerful version of the 'Influencer', this weapon can mind control several enemy crew simultaneously. Can be swapped between two modes to either mind control crew normally or force them to sabotage systems.</desc>
     <tooltip>Mind control beam weapon</tooltip>
     <damage>0</damage>
+    <mindControl endSound="psiRelease">12</mindControl>
     <statBoosts>
         <statBoost name="sabotageSpeedMultiplier">
             <boostType>MULT</boostType>
