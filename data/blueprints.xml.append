@@ -548,9 +548,9 @@
     <tooltip>Neutralizes crew, decreases weapon cooldown.</tooltip>
     <damage>0</damage>
     <ion>1</ion>
-	<augEffects>
-		<augEffect effect="AUTO_COOLDOWN" amount="0.15" needsPower="true"/>
-	</augEffects>
+    <augEffects>
+        <augEffect effect="AUTO_COOLDOWN" amount="0.15" needsPower="true"/>
+    </augEffects>
     <statBoosts>
         <statBoost name="canFight">
             <boostType>SET</boostType>
