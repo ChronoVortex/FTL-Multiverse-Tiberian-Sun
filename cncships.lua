@@ -8,26 +8,27 @@ if not mods.cnconquer then mods.cnconquer = {} end
 -- Handle full specrum targeting
 if not mods.cnconquer.OnTick then
     function mods.cnconquer.OnTick()
-        -- We only need to do any of this if the game isn't paused
+        -- Make sure the game isn't paused
         if not Hyperspace.Global.GetInstance():GetCApp().world.space.gamePaused then
-            -- Check for weapons
+            -- Make sure weapons exist
             local weapons = nil
             pcall(function() weapons = Hyperspace.ships.player.weaponSystem.weapons end)
-            
-            -- Check for cloak charge
-            local cloakCharge = false
-            if Hyperspace.ships.player:HasAugmentation("TARGET_SCANNERS") > 0 then
-                pcall(function() cloakCharge = Hyperspace.ships.enemy.cloakSystem.bTurnedOn end)
-            end
-            
-            -- Manually manage weapon cooldown for cloak charge
-            if weapons and cloakCharge then
-                for weapon in vter(weapons) do
-                    local maxCharge = weapon.cooldown.second - Hyperspace.FPS.SpeedFactor/16
-                    weapon.cooldown.first = math.min(weapon.cooldown.first + Hyperspace.FPS.SpeedFactor/16, maxCharge)
-                    if math.abs(maxCharge - weapon.cooldown.first) < 0.001 and weapon.chargeLevel <weapon.weaponVisual.iChargeLevels - 1 then
-                        weapon.cooldown.first = 0
-                        weapon.chargeLevel = weapon.chargeLevel + 1
+            if weapons then
+                -- Check for cloak charge
+                local cloakCharge = false
+                if Hyperspace.ships.player:HasAugmentation("TARGET_SCANNERS") > 0 then
+                    pcall(function() cloakCharge = Hyperspace.ships.enemy.cloakSystem.bTurnedOn end)
+                end
+                
+                -- Manually manage weapon cooldown for cloak charge
+                if cloakCharge then
+                    for weapon in vter(weapons) do
+                        local maxCharge = weapon.cooldown.second - Hyperspace.FPS.SpeedFactor/16
+                        weapon.cooldown.first = math.min(weapon.cooldown.first + Hyperspace.FPS.SpeedFactor/16, maxCharge)
+                        if math.abs(maxCharge - weapon.cooldown.first) < 0.001 and weapon.chargeLevel <weapon.weaponVisual.iChargeLevels - 1 then
+                            weapon.cooldown.first = 0
+                            weapon.chargeLevel = weapon.chargeLevel + 1
+                        end
                     end
                 end
             end
