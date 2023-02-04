@@ -1500,6 +1500,7 @@ Inherited Human stat: minor suffocation resistance</desc>
                 <tiberium_fiend/>
             </blackList>
             <duration>8.75</duration>
+            <dangerRating>0.2</dangerRating>
             <roomAnim renderLayer="3">
                 <anim animType="center">hazard_tiberium_crystal</anim>
             </roomAnim>
