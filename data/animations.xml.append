@@ -550,6 +550,13 @@
 
 <!-- YURI SHIP -->
 
+<animSheet name="epsilon_active_1" w="2120" h="102" fw="106" fh="102">effects/epsilon_active_1.png</animSheet>
+<anim name="epsilon_active_1">
+    <sheet>epsilon_active_1</sheet>
+    <desc length="20" x="0" y="0" />
+    <time>1</time>
+</anim>
+
 <animSheet name="human_adept" w="315" h="350" fw="35" fh="35">people/human_adept_base.png</animSheet>
 
 <anim name="human_adept_clone">

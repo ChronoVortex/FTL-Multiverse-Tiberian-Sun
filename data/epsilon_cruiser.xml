@@ -12,5 +12,7 @@
     <mount x="293" y="57" rotate="true" mirror="true" gib="-1" slide="up" />
     <mount x="293" y="459" rotate="true" mirror="false" gib="-1" slide="down" />
 </weaponMounts>
+<thrusters sync="true">
+    <thruster x="235" y="207">epsilon_active_1</thruster>
+</thrusters>
 <explosion />
-
