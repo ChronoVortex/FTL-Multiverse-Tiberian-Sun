@@ -5,6 +5,14 @@
     <version><![CDATA[ 4.0 ]]></version>
     <description>
 <![CDATA[
+To use this mod, you must also have the Vertex Tags and Utility Functions mod installed. It must be patched before this mod, so the load order should look something like this:
+
+| Multiverse
+| ...
+| Vertex Tags and Utility Functions
+| Tiberian Sun Ship Pack
+V ...
+
 This mod adds two player ship classes for Multiverse: the 3A Kodiak and the Banshee Fighter. Each class has a type A, B and C layout, making for a total of six ships.
 
 The Kodiak starts with no shields, no cloak, and no weapon pre-igniter. What it does start with are some really big guns and a powerful protective augment. Dispatching the first ships you find will probably hurt, but once this thing has the essentials it's absolutely unstoppable.
