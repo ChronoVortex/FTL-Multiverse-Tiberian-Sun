@@ -4,7 +4,7 @@
 <img x="-76" y="-83" w="636" h="517" />
 <offsets>
     <floor x="70" y="77" />
-    <cloak x="318" y="258" />
+	<cloak x="8" y="19" />
 </offsets>
 <weaponMounts>
     <mount x="550" y="201" rotate="true" mirror="true" gib="-1" slide="right" />
@@ -12,7 +12,7 @@
     <mount x="293" y="57" rotate="true" mirror="true" gib="-1" slide="up" />
     <mount x="293" y="459" rotate="true" mirror="false" gib="-1" slide="down" />
 </weaponMounts>
-<thrusters sync="false">
+<thrusters sync="true">
     <thruster x="150" y="41">epsilon_thrusters_outer</thruster>
     <thruster x="155" y="57">epsilon_thrusters_outer</thruster>
     <thruster x="160" y="73">epsilon_thrusters_outer</thruster>
@@ -22,6 +22,9 @@
     <thruster x="155" y="447">epsilon_thrusters_outer</thruster>
     <thruster x="150" y="463">epsilon_thrusters_outer</thruster>
     
+    <thruster x="44" y="127">epsilon_thrusters_outer_small</thruster>
+    <thruster x="44" y="383">epsilon_thrusters_outer_small</thruster>
+    
     <thruster x="9" y="207">epsilon_thrusters_top</thruster>
     <thruster x="9" y="278">epsilon_thrusters_bottom</thruster>
     
@@ -30,5 +33,8 @@
     
     <thruster x="539" y="218">epsilon_active_cockpit</thruster>
     <thruster x="524" y="200">epsilon_active_cockpit_glow</thruster>
+    
+    <thruster x="351" y="51">epsilon_active_nacelle_top</thruster>
+    <thruster x="351" y="445">epsilon_active_nacelle_bottom</thruster>
 </thrusters>
 <explosion />

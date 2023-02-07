@@ -557,6 +557,13 @@
     <time>0.5</time>
 </anim>
 
+<animSheet name="epsilon_thrusters_outer_small" w="52" h="6" fw="13" fh="6">effects/epsilon_thrusters_outer_small.png</animSheet>
+<anim name="epsilon_thrusters_outer_small">
+    <sheet>epsilon_thrusters_outer_small</sheet>
+    <desc length="4" x="0" y="0" />
+    <time>0.5</time>
+</anim>
+
 <animSheet name="epsilon_thrusters_top" w="60" h="31" fw="15" fh="31">effects/epsilon_thrusters_top.png</animSheet>
 <anim name="epsilon_thrusters_top">
     <sheet>epsilon_thrusters_top</sheet>
@@ -597,6 +604,20 @@
     <sheet>epsilon_active_cockpit_glow</sheet>
     <desc length="8" x="0" y="0" />
     <time>1</time>
+</anim>
+
+<animSheet name="epsilon_active_nacelle_top" w="1095" h="20" fw="73" fh="20">effects/epsilon_active_nacelle_top.png</animSheet>
+<anim name="epsilon_active_nacelle_top">
+    <sheet>epsilon_active_nacelle_top</sheet>
+    <desc length="15" x="0" y="0" />
+    <time>1.7</time>
+</anim>
+
+<animSheet name="epsilon_active_nacelle_bottom" w="1095" h="20" fw="73" fh="20">effects/epsilon_active_nacelle_bottom.png</animSheet>
+<anim name="epsilon_active_nacelle_bottom">
+    <sheet>epsilon_active_nacelle_bottom</sheet>
+    <desc length="15" x="0" y="0" />
+    <time>1.7</time>
 </anim>
 
 <animSheet name="human_adept" w="315" h="350" fw="35" fh="35">people/human_adept_base.png</animSheet>
