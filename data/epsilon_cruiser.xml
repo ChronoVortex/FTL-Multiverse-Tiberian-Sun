@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Copyright (c) 2012 by Subset Games. All rights reserved.-->
+<img x="-76" y="-83" w="636" h="517" />
+<offsets>
+    <floor x="70" y="77" />
+    <cloak x="8" y="19" />
+</offsets>
+<weaponMounts>
+    <mount x="550" y="201" rotate="true" mirror="true" gib="1" slide="right" />
+    <mount x="550" y="315" rotate="true" mirror="false" gib="1" slide="right" />
+    <mount x="293" y="57" rotate="true" mirror="true" gib="4" slide="up" />
+    <mount x="293" y="459" rotate="true" mirror="false" gib="6" slide="down" />
+</weaponMounts>
+<thrusters sync="true">
+    <thruster x="150" y="41">epsilon_thrusters_outer</thruster>
+    <thruster x="155" y="57">epsilon_thrusters_outer</thruster>
+    <thruster x="160" y="73">epsilon_thrusters_outer</thruster>
+    <thruster x="165" y="89">epsilon_thrusters_outer</thruster>
+    <thruster x="165" y="415">epsilon_thrusters_outer</thruster>
+    <thruster x="160" y="431">epsilon_thrusters_outer</thruster>
+    <thruster x="155" y="447">epsilon_thrusters_outer</thruster>
+    <thruster x="150" y="463">epsilon_thrusters_outer</thruster>
+    
+    <thruster x="44" y="127">epsilon_thrusters_outer_small</thruster>
+    <thruster x="44" y="383">epsilon_thrusters_outer_small</thruster>
+    
+    <thruster x="9" y="207">epsilon_thrusters_top</thruster>
+    <thruster x="9" y="278">epsilon_thrusters_bottom</thruster>
+    
+    <thruster x="235" y="207">epsilon_active_center</thruster>
+    <thruster x="206" y="177">epsilon_active_center_glow</thruster>
+    
+    <thruster x="539" y="218">epsilon_active_cockpit</thruster>
+    <thruster x="524" y="200">epsilon_active_cockpit_glow</thruster>
+    
+    <thruster x="351" y="51">epsilon_active_nacelle_top</thruster>
+    <thruster x="351" y="445">epsilon_active_nacelle_bottom</thruster>
+</thrusters>
+<explosion>
+    <gib1>
+        <velocity min="0.54" max="1.15" />
+        <direction min="201" max="265" />
+        <angular min="-0.99" max="0.99" />
+        <x>307</x>
+        <y>164</y>
+    </gib1>
+    <gib2>
+        <velocity min="0.23" max="0.53" />
+        <direction min="-49" max="0" />
+        <angular min="-0.39" max="0.39" />
+        <x>16</x>
+        <y>82</y>
+    </gib2>
+    <gib3>
+        <velocity min="0.56" max="0.95" />
+        <direction min="111" max="160" />
+        <angular min="-1.06" max="1.06" />
+        <x>16</x>
+        <y>233</y>
+    </gib3>
+    <gib4>
+        <velocity min="0.48" max="0.82" />
+        <direction min="-41" max="32" />
+        <angular min="-1.58" max="1.58" />
+        <x>157</x>
+        <y>27</y>
+    </gib4>
+    <gib5>
+        <velocity min="0.64" max="1.08" />
+        <direction min="286" max="339" />
+        <angular min="-1.51" max="1.51" />
+        <x>379</x>
+        <y>56</y>
+    </gib5>
+    <gib6>
+        <velocity min="0.50" max="0.82" />
+        <direction min="154" max="232" />
+        <angular min="-0.82" max="0.82" />
+        <x>157</x>
+        <y>375</y>
+    </gib6>
+</explosion>

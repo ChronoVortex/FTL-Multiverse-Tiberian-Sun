@@ -309,29 +309,15 @@
 
 <!-- KODIAK B -->
 
-<animSheet name="laser_prism_shot" w="300" h="20" fw="50" fh="20">weapons/laser_prism_shot_strip6.png</animSheet>
-<anim name="laser_prism_shot">
-    <sheet>laser_prism_shot</sheet>
-    <desc length="6" x="0" y="0"/>
-    <time>0.1</time>
-</anim>
-
-<animSheet name="explosion_prism" w="448" h="64" fw="64" fh="64">effects/explosion_prism_strip7.png</animSheet>
-<anim name="explosion_prism">
-    <sheet>explosion_prism</sheet>
-    <desc length="7" x="0" y="0"/>
-    <time>0.35</time>
-</anim>
-
-<animSheet name="laser_prism" w="319" h="68" fw="29" fh="68">weapons/laser_prism_strip11.png</animSheet>
-<weaponAnim name="laser_prism">
-    <sheet>laser_prism</sheet>
+<animSheet name="beam_prism" w="319" h="68" fw="29" fh="68">weapons/beam_prism_strip11.png</animSheet>
+<weaponAnim name="beam_prism">
+    <sheet>beam_prism</sheet>
     <desc length="11" x="0" y="0"/>
     <chargedFrame>5</chargedFrame>
     <fireFrame>6</fireFrame>
     <firePoint x="18" y="10"/>
     <mountPoint x="7" y="46"/>
-    <chargeImage>weapons/laser_prism_glow.png</chargeImage>
+    <chargeImage>weapons/beam_prism_glow.png</chargeImage>
 </weaponAnim>
 
 <animSheet name="combat_chronosphere" w="520" h="57" fw="40" fh="57">weapons/combat_chrono_strip13.png</animSheet>
@@ -559,3 +545,224 @@
     <desc length="1" x="0" y="0"/>
     <time>1</time>
 </anim>
+
+
+
+<!-- YURI SHIP -->
+
+<animSheet name="epsilon_thrusters_outer" w="56" h="12" fw="14" fh="12">effects/epsilon_thrusters_outer.png</animSheet>
+<anim name="epsilon_thrusters_outer">
+    <sheet>epsilon_thrusters_outer</sheet>
+    <desc length="4" x="0" y="0" />
+    <time>0.5</time>
+</anim>
+
+<animSheet name="epsilon_thrusters_outer_small" w="52" h="6" fw="13" fh="6">effects/epsilon_thrusters_outer_small.png</animSheet>
+<anim name="epsilon_thrusters_outer_small">
+    <sheet>epsilon_thrusters_outer_small</sheet>
+    <desc length="4" x="0" y="0" />
+    <time>0.5</time>
+</anim>
+
+<animSheet name="epsilon_thrusters_top" w="60" h="31" fw="15" fh="31">effects/epsilon_thrusters_top.png</animSheet>
+<anim name="epsilon_thrusters_top">
+    <sheet>epsilon_thrusters_top</sheet>
+    <desc length="4" x="0" y="0" />
+    <time>0.5</time>
+</anim>
+
+<animSheet name="epsilon_thrusters_bottom" w="60" h="31" fw="15" fh="31">effects/epsilon_thrusters_bottom.png</animSheet>
+<anim name="epsilon_thrusters_bottom">
+    <sheet>epsilon_thrusters_bottom</sheet>
+    <desc length="4" x="0" y="0" />
+    <time>0.5</time>
+</anim>
+
+<animSheet name="epsilon_active_center" w="2120" h="102" fw="106" fh="102">effects/epsilon_active_center.png</animSheet>
+<anim name="epsilon_active_center">
+    <sheet>epsilon_active_center</sheet>
+    <desc length="20" x="0" y="0" />
+    <time>1</time>
+</anim>
+
+<animSheet name="epsilon_active_center_glow" w="1320" h="162" fw="165" fh="162">effects/epsilon_active_center_glow.png</animSheet>
+<anim name="epsilon_active_center_glow">
+    <sheet>epsilon_active_center_glow</sheet>
+    <desc length="8" x="0" y="0" />
+    <time>1</time>
+</anim>
+
+<animSheet name="epsilon_active_cockpit" w="1300" h="80" fw="65" fh="80">effects/epsilon_active_cockpit.png</animSheet>
+<anim name="epsilon_active_cockpit">
+    <sheet>epsilon_active_cockpit</sheet>
+    <desc length="20" x="0" y="0" />
+    <time>1</time>
+</anim>
+
+<animSheet name="epsilon_active_cockpit_glow" w="792" h="116" fw="99" fh="116">effects/epsilon_active_cockpit_glow.png</animSheet>
+<anim name="epsilon_active_cockpit_glow">
+    <sheet>epsilon_active_cockpit_glow</sheet>
+    <desc length="8" x="0" y="0" />
+    <time>1</time>
+</anim>
+
+<animSheet name="epsilon_active_nacelle_top" w="1095" h="20" fw="73" fh="20">effects/epsilon_active_nacelle_top.png</animSheet>
+<anim name="epsilon_active_nacelle_top">
+    <sheet>epsilon_active_nacelle_top</sheet>
+    <desc length="15" x="0" y="0" />
+    <time>1.7</time>
+</anim>
+
+<animSheet name="epsilon_active_nacelle_bottom" w="1095" h="20" fw="73" fh="20">effects/epsilon_active_nacelle_bottom.png</animSheet>
+<anim name="epsilon_active_nacelle_bottom">
+    <sheet>epsilon_active_nacelle_bottom</sheet>
+    <desc length="15" x="0" y="0" />
+    <time>1.7</time>
+</anim>
+
+<animSheet name="human_adept" w="315" h="350" fw="35" fh="35">people/human_adept_base.png</animSheet>
+
+<anim name="human_adept_clone">
+    <sheet>human_adept</sheet>
+    <desc length="6" x="0" y="1"/>
+    <time>0.75</time>
+</anim>
+
+<anim name="human_adept_death_right">
+    <sheet>human_adept</sheet>
+    <desc length="5" x="3" y="0"/>
+    <time>0.75</time>
+</anim>
+<anim name="human_adept_death_left">
+    <sheet>human_adept</sheet>
+    <desc length="5" x="0" y="1"/>
+    <time>0.75</time>
+</anim>
+
+<anim name="human_adept_walk_down">
+    <sheet>human_adept</sheet>
+    <desc length="4" x="0" y="9"/>
+    <time>1.0</time>
+</anim>
+<anim name="human_adept_walk_right">
+    <sheet>human_adept</sheet>
+    <desc length="4" x="4" y="9"/>
+    <time>1.0</time>
+</anim>
+<anim name="human_adept_walk_up">
+    <sheet>human_adept</sheet>
+    <desc length="4" x="0" y="8"/>
+    <time>1.0</time>
+</anim>
+<anim name="human_adept_walk_left">
+    <sheet>human_adept</sheet>
+    <desc length="4" x="4" y="8"/>
+    <time>1.0</time>
+</anim>
+
+<anim name="human_adept_fire_down">
+    <sheet>human_adept</sheet>
+    <desc length="4" x="0" y="7"/>
+    <time>1.0</time>
+</anim>
+<anim name="human_adept_fire_right">
+    <sheet>human_adept</sheet>
+    <desc length="4" x="4" y="7"/>
+    <time>1.0</time>
+</anim>
+<anim name="human_adept_fire_up">
+    <sheet>human_adept</sheet>
+    <desc length="4" x="0" y="6"/>
+    <time>1.0</time>
+</anim>
+<anim name="human_adept_fire_left">
+    <sheet>human_adept</sheet>
+    <desc length="4" x="4" y="6"/>
+    <time>1.0</time>
+</anim>
+
+<anim name="human_adept_repair">
+    <sheet>human_adept</sheet>
+    <desc length="9" x="0" y="5"/>
+    <time>1.0</time>
+</anim>
+
+<anim name="human_adept_teleport">
+    <sheet>human_adept</sheet>
+    <desc length="9" x="0" y="2"/>
+    <time>0.5</time>
+</anim>
+
+<anim name="human_adept_type_right">
+    <sheet>human_adept</sheet>
+    <desc length="4" x="0" y="4"/>
+    <time>0.75</time>
+</anim>
+<anim name="human_adept_type_left">
+    <sheet>human_adept</sheet>
+    <desc length="4" x="4" y="4"/>
+    <time>0.75</time>
+</anim>
+<anim name="human_adept_type_up">
+    <sheet>human_adept</sheet>
+    <desc length="4" x="0" y="3"/>
+    <time>0.75</time>
+</anim>
+<anim name="human_adept_type_down">
+    <sheet>human_adept</sheet>
+    <desc length="4" x="4" y="3"/>
+    <time>0.75</time>
+</anim>
+
+<anim name="human_adept_portrait">
+    <sheet>human_adept</sheet>
+    <desc length="1" x="0" y="0"/>
+    <time>1</time>
+</anim>
+
+<animSheet name="explosion_psi" w="640" h="64" fw="64" fh="64">effects/explosion_psi_strip10.png</animSheet>
+<anim name="explosion_psi">
+    <sheet>explosion_psi</sheet>
+    <desc length="10" x="0" y="0"/>
+    <time>0.75</time>
+</anim>
+
+<animSheet name="GB_shot_light" w="160" h="16" fw="40" fh="16">weapons/GB_shot_light_strip4.png</animSheet>
+<anim name="GB_shot_light">
+    <sheet>GB_shot_light</sheet>
+    <desc length="4" x="0" y="0" />
+    <time>0.5</time>
+</anim>
+<animSheet name="autocannon_lasher" w="203" h="94" fw="29" fh="94">weapons/autocannon_lasher_strip7.png</animSheet>
+<weaponAnim name="autocannon_lasher">
+    <sheet>autocannon_lasher</sheet>
+    <desc length="7" x="0" y="0" />
+    <chargedFrame>1</chargedFrame>
+    <fireFrame>4</fireFrame>
+    <firePoint x="16" y="24" />
+    <mountPoint x="5" y="71" />
+    <chargeImage>weapons/autocannon_lasher_glow.png</chargeImage>
+</weaponAnim>
+
+<animSheet name="focus_psi" w="198" h="77" fw="22" fh="77">weapons/focus_psi_strip9.png</animSheet>
+<weaponAnim name="focus_psi">
+    <sheet>focus_psi</sheet>
+    <desc length="9" x="0" y="0" />
+    <chargedFrame>1</chargedFrame>
+    <fireFrame>2</fireFrame>
+    <firePoint x="12" y="32" />
+    <mountPoint x="4" y="59" />
+    <chargeImage>weapons/focus_psi_glow.png</chargeImage>
+</weaponAnim>
+
+<animSheet name="beam_psi" w="270" h="89" fw="30" fh="89">weapons/beam_psi_strip9.png</animSheet>
+<weaponAnim name="beam_psi">
+    <sheet>beam_psi</sheet>
+    <desc length="9" x="0" y="0" />
+    <chargedFrame>1</chargedFrame>
+    <fireFrame>2</fireFrame>
+    <firePoint x="17" y="32" />
+    <mountPoint x="5" y="64" />
+    <chargeImage>weapons/beam_psi_glow.png</chargeImage>
+</weaponAnim>
+

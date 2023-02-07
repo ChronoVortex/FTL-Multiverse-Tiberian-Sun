@@ -51,6 +51,26 @@
         </crew>
     </mod-append:customShip>
     
+    <mod-append:ship name="PLAYER_SHIP_EPSILON" b="false" c="false" secret="true">
+        <unlock variant="a">
+            <type>5</type>
+            <victories>
+                <victory>PLAYER_SHIP_KODIAK_2</victory>
+                <victory>PLAYER_SHIP_KODIAK_3</victory>
+            </victories>
+        </unlock>
+    </mod-append:ship>
+    <mod-append:customShip name="PLAYER_SHIP_EPSILON">
+        <crewLimit>8</crewLimit>
+        <hiddenAug>FOR_MULTIVERSE</hiddenAug>
+        <hiddenAug>SHIP_PAST</hiddenAug>
+        <crew>
+            <human_adept room="1" name="Yuri" />
+            <human_adept room="9" name="Ivan" />
+            <human_adept room="3" name="Volkov" />
+        </crew>
+    </mod-append:customShip>
+    
     <mod:findLike type="shipOrder">
         <mod-append:ship>PLAYER_SHIP_KODIAK</mod-append:ship>
         <mod-append:ship>PLAYER_SHIP_BANSHEE</mod-append:ship>
@@ -62,7 +82,7 @@
         <mod-append:empty/>
         <mod-append:empty/>
         
-        <mod-append:empty/>
+        <mod-append:ship>PLAYER_SHIP_EPSILON</mod-append:ship>
         <mod-append:empty/>
     </mod:findLike>
 </mod:findLike>
@@ -74,9 +94,6 @@
         <function name="ION_ARMOR" value="0.06" useForReqs="false" warning="false"/>
         <crystalShard weapon="ABLATIVE_ARMOR_PROJ" value="0.15" stackable="independent"/>
         <locked/>
-    </mod-append:aug>
-    <mod-append:aug name="COMBAT_CHRONO_COOLDOWN">
-        <function name="AUTO_COOLDOWN" value="0.15" useForReqs="false"/>
     </mod-append:aug>
     <mod-append:aug name="IRON_CURTAIN">
         <superShield>
@@ -94,21 +111,35 @@
     <mod-append:aug name="TIBERIUM_GARDEN">
         <locked/>
     </mod-append:aug>
+    <mod-append:aug name="YURI_BRAIN">
+        <statBoosts>
+            <statBoost name="damageMultiplier">
+                <boostType>MULT</boostType>
+                <amount>0.95</amount>
+                <shipTarget>PLAYER_SHIP</shipTarget>
+                <crewTarget>CURRENT_ENEMIES</crewTarget>
+                <droneTarget>CREW</droneTarget>
+                <priority>0</priority>
+            </statBoost>
+        </statBoosts>
+    </mod-append:aug>
 </mod:findLike>
 
 <mod:findLike type="boss">
     <mod-append:surgeBarrage name="IONCANNON_SURGE">
         <weapon name="LASER_DUMMY_CHRONO_ION" count="1"/>
     </mod-append:surgeBarrage>
-    <mod-append:surgeBarrage name="LASER_PRISM_SURGE">
-        <weapon name="LASER_PRISM_SURGE_DUMMY" count="3"/>
-    </mod-append:surgeBarrage>
 </mod:findLike>
 
 <mod:findLike type="events">
+    <mod-append:variable name="loc_ioncannon_target_room" op="set" val="0"/>
+    <mod-append:variable name="loc_iron_curtain_charged" op="set" val="0"/>
+    <mod-append:variable name="loc_iron_curtain_timer" op="set" val="20"/>
+
     <mod:findName type="req" name="LIST_CHECK_AUGMENTS">
         <mod-append:name>TIBERIUM_GARDEN</mod-append:name>
     </mod:findName>
+    
     <!-- Add requirement list only if one doesn't
     already exist, then append new items to it -->
     <mod-append:req name="ALTERNATE_START" type="any" />
@@ -119,6 +150,14 @@
         <mod-append:name>ION_CANNON</mod-append:name>
         <mod-append:name>IRON_CURTAIN</mod-append:name>
     </mod:findName>
+    
+    <mod-append:req name="MC_BEAM_UPGRADE_REQS" type="all">
+        <name>YURI_BRAIN</name>
+        <req type="any">
+            <name>FOCUS_MC_COMBAT</name>
+            <name>FOCUS_MC_SABOTAGE</name>
+        </req>
+    </mod-append:req>
 </mod:findLike>
 
 <mod:findLike type="crew">
@@ -229,30 +268,6 @@ Cloak to become immune to damage and gain 3x sabotage damage. Lowers movement sp
             </temporaryEffect>
         </powerEffect>
     </mod-append:race>
-    <mod-append:race name="dummy_prism_surge_trigger">
-        <maxHealth>999</maxHealth>
-        <allDamageTakenMultiplier>0</allDamageTakenMultiplier>
-        <noSlot>true</noSlot>
-        <noClone>true</noClone>
-        <canFight>false</canFight>
-        <controllable>false</controllable>
-        <noAI>true</noAI>
-        <selectable>false</selectable>
-        <canRepair>false</canRepair>
-        <canSabotage>false</canSabotage>
-        <canMan>false</canMan>
-        <canTeleport>false</canTeleport>
-        <canSuffocate>false</canSuffocate>
-        <canBurn>false</canBurn>
-        <validTarget>false</validTarget>
-        <canMove>false</canMove>
-        <deathSounds>
-            <deathSound>silence</deathSound>
-        </deathSounds>
-        <deathEffect>
-            <playerEvent load="SURGESTART_LASER_PRISM"/>
-        </deathEffect>
-    </mod-append:race>
     <mod-append:race name="tiberium_fiend">
         <maxHealth>120</maxHealth>
         <canRepair>false</canRepair>
@@ -271,14 +286,115 @@ Cloak to become immune to damage and gain 3x sabotage damage. Lowers movement sp
         </shootingSounds>
         <animBase>mantis</animBase>
     </mod-append:race>
+    <mod-append:race name="human_adept">
+        <suffocationModifier>0.83</suffocationModifier>
+        <fireDamageMultiplier>0.83</fireDamageMultiplier>
+        <canFight>false</canFight>
+        <canSabotage>false</canSabotage>
+        <isTelepathic>true</isTelepathic>
+        <resistsMindControl>true</resistsMindControl>
+        <detectsLifeforms>true</detectsLifeforms>
+        <animBase>human</animBase>
+        <deathSounds>
+            <deathSound>death1</deathSound>
+            <deathSound>death2</deathSound>
+            <deathSound>death1</deathSound>
+            <deathSound>death2</deathSound>
+            <deathSound>death1</deathSound>
+            <deathSound>death2</deathSound>
+            <deathSound>death1</deathSound>
+            <deathSound>death2</deathSound>
+            <deathSound>death1</deathSound>
+            <deathSound>death2</deathSound>
+            <deathSound>death1</deathSound>
+            <deathSound>death2</deathSound>
+            <deathSound>death1</deathSound>
+            <deathSound>death2</deathSound>
+            <deathSound>death1</deathSound>
+            <deathSound>death2</deathSound>
+            <deathSound>death1</deathSound>
+            <deathSound>death2</deathSound>
+            <deathSound>death1</deathSound>
+            <deathSound>death2</deathSound>
+            <deathSound>death1</deathSound>
+            <deathSound>death2</deathSound>
+            <deathSound>death1</deathSound>
+            <deathSound>death2</deathSound>
+            <deathSound>death1</deathSound>
+            <deathSound>death2</deathSound>
+            <deathSound>death1</deathSound>
+            <deathSound>death2</deathSound>
+            <deathSound>death1</deathSound>
+            <deathSound>death2</deathSound>
+            <deathSound>death1</deathSound>
+            <deathSound>death2</deathSound>
+            <deathSound>death1</deathSound>
+            <deathSound>death2</deathSound>
+            <deathSound>death1</deathSound>
+            <deathSound>death2</deathSound>
+            <deathSound>death1</deathSound>
+            <deathSound>death2</deathSound>
+            <deathSound>death1</deathSound>
+            <deathSound>death2</deathSound>
+            <deathSound>death1</deathSound>
+            <deathSound>death2</deathSound>
+            <deathSound>death1</deathSound>
+            <deathSound>death2</deathSound>
+            <deathSound>death1</deathSound>
+            <deathSound>death2</deathSound>
+            <deathSound>humanDeathSpecial</deathSound>
+        </deathSounds>
+        <skills>
+            <piloting req="13"/>
+            <engines req="13"/>
+            <shields req="50"/>
+            <weapons req="58"/>
+            <repair req="16"/>
+            <combat req="7"/>
+        </skills>
+        <passiveStatBoosts>
+            <statBoost name="isTelepathic">
+                <boostType>SET</boostType>
+                <value>false</value>
+                <shipTarget>CURRENT_ROOM</shipTarget>
+                <crewTarget>ENEMIES</crewTarget>
+                <droneTarget>CREW</droneTarget>
+                <affectsSelf>false</affectsSelf>
+                <priority>0</priority>
+            </statBoost>
+            <statBoost name="resistsMindControl">
+                <boostType>SET</boostType>
+                <value>false</value>
+                <shipTarget>CURRENT_ROOM</shipTarget>
+                <crewTarget>ENEMIES</crewTarget>
+                <droneTarget>CREW</droneTarget>
+                <affectsSelf>false</affectsSelf>
+                <priority>0</priority>
+            </statBoost>
+        </passiveStatBoosts>
+        <powerEffect>
+            <cooldown>8</cooldown>
+            <jumpCooldown>full</jumpCooldown>
+            <powerSounds>
+                <powerSound>psiExplosion</powerSound>
+            </powerSounds>
+            <req type="enemy">
+                <enemyInRoom/>
+            </req>
+            <activateWhenReady enemiesOnly="true">true</activateWhenReady>
+            <friendlyFire>false</friendlyFire>
+            <shipFriendlyFire>true</shipFriendlyFire>
+            <buttonText>BLAST</buttonText>
+            <tooltip>[COOLDOWN:8s]
+Deploy a psychic blast damaging enemy crew in the room for 30 hitpoints. Stuns self for 4 seconds.</tooltip>
+            <cooldownColor r="200" g="90" b="240"/>
+            <effectAnim>explosion_psi</effectAnim>
+            <persDamage>2</persDamage>
+        </powerEffect>
+    </mod-append:race>
 </mod:findLike>
 
 <mod:findLike type="scripts">
-    <mod-append:script>chronoutil.lua</mod-append:script>
-    <mod:findLike type="script" start="1">
-        <mod:selector>chronoutil.lua</mod:selector>
-        <mod:removeTag />
-    </mod:findLike>
     <mod-append:script>cncships.lua</mod-append:script>
 </mod:findLike>
 
