@@ -26,6 +26,9 @@
     <thruster x="9" y="278">epsilon_thrusters_bottom</thruster>
     
     <thruster x="235" y="207">epsilon_active_center</thruster>
+    <thruster x="206" y="177">epsilon_active_center_glow</thruster>
+    
     <thruster x="539" y="218">epsilon_active_cockpit</thruster>
+    <thruster x="524" y="200">epsilon_active_cockpit_glow</thruster>
 </thrusters>
 <explosion />

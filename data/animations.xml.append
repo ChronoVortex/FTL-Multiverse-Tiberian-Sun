@@ -578,10 +578,24 @@
     <time>1</time>
 </anim>
 
+<animSheet name="epsilon_active_center_glow" w="1320" h="162" fw="165" fh="162">effects/epsilon_active_center_glow.png</animSheet>
+<anim name="epsilon_active_center_glow">
+    <sheet>epsilon_active_center_glow</sheet>
+    <desc length="8" x="0" y="0" />
+    <time>1</time>
+</anim>
+
 <animSheet name="epsilon_active_cockpit" w="1300" h="80" fw="65" fh="80">effects/epsilon_active_cockpit.png</animSheet>
 <anim name="epsilon_active_cockpit">
     <sheet>epsilon_active_cockpit</sheet>
     <desc length="20" x="0" y="0" />
+    <time>1</time>
+</anim>
+
+<animSheet name="epsilon_active_cockpit_glow" w="792" h="116" fw="99" fh="116">effects/epsilon_active_cockpit_glow.png</animSheet>
+<anim name="epsilon_active_cockpit_glow">
+    <sheet>epsilon_active_cockpit_glow</sheet>
+    <desc length="8" x="0" y="0" />
     <time>1</time>
 </anim>
 
