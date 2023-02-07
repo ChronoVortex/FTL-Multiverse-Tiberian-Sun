@@ -550,9 +550,37 @@
 
 <!-- YURI SHIP -->
 
-<animSheet name="epsilon_active_1" w="2120" h="102" fw="106" fh="102">effects/epsilon_active_1.png</animSheet>
-<anim name="epsilon_active_1">
-    <sheet>epsilon_active_1</sheet>
+<animSheet name="epsilon_thrusters_outer" w="56" h="12" fw="14" fh="12">effects/epsilon_thrusters_outer.png</animSheet>
+<anim name="epsilon_thrusters_outer">
+    <sheet>epsilon_thrusters_outer</sheet>
+    <desc length="4" x="0" y="0" />
+    <time>0.5</time>
+</anim>
+
+<animSheet name="epsilon_thrusters_top" w="60" h="31" fw="15" fh="31">effects/epsilon_thrusters_top.png</animSheet>
+<anim name="epsilon_thrusters_top">
+    <sheet>epsilon_thrusters_top</sheet>
+    <desc length="4" x="0" y="0" />
+    <time>0.5</time>
+</anim>
+
+<animSheet name="epsilon_thrusters_bottom" w="60" h="31" fw="15" fh="31">effects/epsilon_thrusters_bottom.png</animSheet>
+<anim name="epsilon_thrusters_bottom">
+    <sheet>epsilon_thrusters_bottom</sheet>
+    <desc length="4" x="0" y="0" />
+    <time>0.5</time>
+</anim>
+
+<animSheet name="epsilon_active_center" w="2120" h="102" fw="106" fh="102">effects/epsilon_active_center.png</animSheet>
+<anim name="epsilon_active_center">
+    <sheet>epsilon_active_center</sheet>
+    <desc length="20" x="0" y="0" />
+    <time>1</time>
+</anim>
+
+<animSheet name="epsilon_active_cockpit" w="1300" h="80" fw="65" fh="80">effects/epsilon_active_cockpit.png</animSheet>
+<anim name="epsilon_active_cockpit">
+    <sheet>epsilon_active_cockpit</sheet>
     <desc length="20" x="0" y="0" />
     <time>1</time>
 </anim>

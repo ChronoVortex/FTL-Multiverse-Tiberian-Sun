@@ -12,7 +12,20 @@
     <mount x="293" y="57" rotate="true" mirror="true" gib="-1" slide="up" />
     <mount x="293" y="459" rotate="true" mirror="false" gib="-1" slide="down" />
 </weaponMounts>
-<thrusters sync="true">
-    <thruster x="235" y="207">epsilon_active_1</thruster>
+<thrusters sync="false">
+    <thruster x="150" y="41">epsilon_thrusters_outer</thruster>
+    <thruster x="155" y="57">epsilon_thrusters_outer</thruster>
+    <thruster x="160" y="73">epsilon_thrusters_outer</thruster>
+    <thruster x="165" y="89">epsilon_thrusters_outer</thruster>
+    <thruster x="165" y="415">epsilon_thrusters_outer</thruster>
+    <thruster x="160" y="431">epsilon_thrusters_outer</thruster>
+    <thruster x="155" y="447">epsilon_thrusters_outer</thruster>
+    <thruster x="150" y="463">epsilon_thrusters_outer</thruster>
+    
+    <thruster x="9" y="207">epsilon_thrusters_top</thruster>
+    <thruster x="9" y="278">epsilon_thrusters_bottom</thruster>
+    
+    <thruster x="235" y="207">epsilon_active_center</thruster>
+    <thruster x="539" y="218">epsilon_active_cockpit</thruster>
 </thrusters>
 <explosion />
