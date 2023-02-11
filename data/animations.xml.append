@@ -620,7 +620,7 @@
     <time>1.7</time>
 </anim>
 
-<animSheet name="human_adept" w="315" h="350" fw="35" fh="35">people/human_adept_base.png</animSheet>
+<animSheet name="human_adept" w="315" h="385" fw="35" fh="35">people/human_adept_base.png</animSheet>
 
 <anim name="human_adept_clone">
     <sheet>human_adept</sheet>
@@ -641,22 +641,43 @@
 
 <anim name="human_adept_walk_down">
     <sheet>human_adept</sheet>
-    <desc length="4" x="0" y="9"/>
+    <desc length="4" x="0" y="10"/>
     <time>1.0</time>
 </anim>
 <anim name="human_adept_walk_right">
     <sheet>human_adept</sheet>
-    <desc length="4" x="4" y="9"/>
+    <desc length="4" x="4" y="10"/>
     <time>1.0</time>
 </anim>
 <anim name="human_adept_walk_up">
     <sheet>human_adept</sheet>
-    <desc length="4" x="0" y="8"/>
+    <desc length="4" x="0" y="9"/>
     <time>1.0</time>
 </anim>
 <anim name="human_adept_walk_left">
     <sheet>human_adept</sheet>
-    <desc length="4" x="4" y="8"/>
+    <desc length="4" x="4" y="9"/>
+    <time>1.0</time>
+</anim>
+
+<anim name="human_adept_shoot_down">
+    <sheet>human_adept</sheet>
+    <desc length="3" x="0" y="8"/>
+    <time>1.0</time>
+</anim>
+<anim name="human_adept_shoot_right">
+    <sheet>human_adept</sheet>
+    <desc length="3" x="3" y="8"/>
+    <time>1.0</time>
+</anim>
+<anim name="human_adept_shoot_up">
+    <sheet>human_adept</sheet>
+    <desc length="3" x="6" y="8"/>
+    <time>1.0</time>
+</anim>
+<anim name="human_adept_shoot_left">
+    <sheet>human_adept</sheet>
+    <desc length="3" x="6" y="1"/>
     <time>1.0</time>
 </anim>
 
