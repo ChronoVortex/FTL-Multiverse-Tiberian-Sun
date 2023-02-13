@@ -131,7 +131,7 @@
     </mod-append:surgeBarrage>
 </mod:findLike>
 
-<mod:findLike type="events">
+<mod:findLike type="events" limit="1">
     <mod-append:variable name="loc_ioncannon_target_room" op="set" val="0"/>
     <mod-append:variable name="loc_iron_curtain_charged" op="set" val="0"/>
     <mod-append:variable name="loc_iron_curtain_timer" op="set" val="20"/>
