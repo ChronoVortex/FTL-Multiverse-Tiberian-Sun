@@ -27,11 +27,22 @@ if not mods.cnconquer.OnTick then
                 -- Manually manage weapon cooldown for cloak charge
                 if cloakCharge then
                     for weapon in vter(weapons) do
-                        local maxCharge = weapon.cooldown.second - Hyperspace.FPS.SpeedFactor/16
-                        weapon.cooldown.first = math.min(weapon.cooldown.first + Hyperspace.FPS.SpeedFactor/16, maxCharge)
-                        if math.abs(maxCharge - weapon.cooldown.first) < 0.001 and weapon.chargeLevel <weapon.weaponVisual.iChargeLevels - 1 then
-                            weapon.cooldown.first = 0
-                            weapon.chargeLevel = weapon.chargeLevel + 1
+                        if weapon.powered and weapon.cooldown.first < weapon.cooldown.second then
+                            local currentCharge = weapon.cooldown.first + Hyperspace.FPS.SpeedFactor/16
+                            if currentCharge >= weapon.cooldown.second then
+                                if weapon.chargeLevel < weapon.weaponVisual.iChargeLevels then
+                                    weapon.chargeLevel = weapon.chargeLevel + 1
+                                    if weapon.chargeLevel == weapon.weaponVisual.iChargeLevels then
+                                        weapon.cooldown.first = weapon.cooldown.second
+                                    else
+                                        weapon.cooldown.first = 0
+                                    end
+                                else
+                                    weapon:ForceCoolup()
+                                end
+                            else
+                                weapon.cooldown.first = currentCharge
+                            end
                         end
                     end
                 end
