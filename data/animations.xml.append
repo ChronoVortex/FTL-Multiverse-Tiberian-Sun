@@ -407,7 +407,7 @@
     <desc length="6" x="0" y="0"/>
     <chargedFrame>4</chargedFrame>
     <fireFrame>5</fireFrame>
-    <firePoint x="15" y="28"/>
+    <firePoint x="17" y="28"/>
     <mountPoint x="7" y="43"/>
     <delayChargeAnim>0.98</delayChargeAnim>
 </weaponAnim>
