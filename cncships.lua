@@ -101,7 +101,7 @@ if not mods.cnconquer.BeamDamage then
                     location,
                     shipManager.iShipId,
                     (shipManager.iShipId + 1)%2,
-                    validTargets[targetIndex], validTargets[targetIndex],
+                    validTargets[targetIndex], Hyperspace.Pointf(validTargets[targetIndex].x, validTargets[targetIndex].y + 1),
                     shipManager.iShipId,
                     1, 0 --(math.atan(location.y - target.y, location.x - target.x)*180)/math.pi - 90
                 )
