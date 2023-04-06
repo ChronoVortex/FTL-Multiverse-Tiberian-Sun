@@ -2,7 +2,7 @@
 
 <FTL>
 
-<mod:findLike type="ships">
+<mod:findLike type="ships" limit="1">
     <mod-append:ship name="PLAYER_SHIP_KODIAK" b="true" c="true" />
     <mod-append:customShip name="PLAYER_SHIP_KODIAK">
         <crewLimit>10</crewLimit>
@@ -125,7 +125,7 @@
     </mod-append:aug>
 </mod:findLike>
 
-<mod:findLike type="boss">
+<mod:findLike type="boss" limit="1">
     <mod-append:surgeBarrage name="IONCANNON_SURGE">
         <weapon name="LASER_DUMMY_CHRONO_ION" count="1"/>
     </mod-append:surgeBarrage>
@@ -160,7 +160,7 @@
     </mod-append:req>
 </mod:findLike>
 
-<mod:findLike type="crew">
+<mod:findLike type="crew" limit="1">
     <mod-append:race name="human_black_hand">
         <damageMultiplier>1.3</damageMultiplier>
         <damageTakenMultiplier>0.7</damageTakenMultiplier>
@@ -394,7 +394,7 @@ Deploy a psychic blast damaging enemy crew in the room for 30 hitpoints. Stuns s
     </mod-append:race>
 </mod:findLike>
 
-<mod:findLike type="scripts">
+<mod:findLike type="scripts" limit="1">
     <mod-append:script>cncships.lua</mod-append:script>
 </mod:findLike>
 
