@@ -12,9 +12,6 @@
 <roomLayout name="pilot_kodiak">
     <computerGlow name="glow_pilot_kodiak" x="54" y="8" dir="RIGHT" />
 </roomLayout>
-<roomLayout name="pilot_kodiak_b">
-    <computerGlow name="glow_pilot" x="89" y="9" dir="RIGHT" />
-</roomLayout>
 
 <roomLayout name="engines_kodiak_b">
     <computerGlow x="53" y="77" dir="RIGHT" />

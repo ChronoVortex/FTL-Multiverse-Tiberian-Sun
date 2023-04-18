@@ -7,8 +7,8 @@
     <cloak x="18" y="19" />
 </offsets>
 <weaponMounts>
-    <mount x="732" y="129" rotate="true" mirror="true" gib="4" slide="up" />
-    <mount x="732" y="226" rotate="true" mirror="false" gib="4" slide="down" />
+	<mount x="614" y="126" rotate="true" mirror="true" gib="4" slide="up" />
+	<mount x="614" y="229" rotate="true" mirror="false" gib="4" slide="down" />
     <mount x="331" y="38" rotate="true" mirror="true" gib="6" slide="up" />
     <mount x="331" y="317" rotate="true" mirror="false" gib="5" slide="down" />
 </weaponMounts>

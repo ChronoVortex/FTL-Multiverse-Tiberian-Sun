@@ -181,6 +181,7 @@
         <sound>ionCannon</sound>
     </launchSounds>
     <weaponArt>ion_cannon</weaponArt> 
+    <iconReplace>ion_cannon_icon</iconReplace>
     <iconImage>beam</iconImage>
 </weaponBlueprint>
 
@@ -402,60 +403,60 @@
     <name>The Iris</name>
     <desc>This version of the Kodiak has been outfitted with chronological tech used during the second and third World Wars on a distant iteration of Earth.</desc>
     <systemList>
-        <temporal power="2" room="8" start="true" img="room_temporal_kodiak_b" />
-        <battery power="1" max="2" room="2" start="false" img="room_battery" />
-        <cloaking power="1" room="11" start="false" img="room_cloaking_10" />
-        <clonebay power="1" room="10" start="false">
-            <slot>
-                <number>3</number>
-            </slot>
-        </clonebay>
-        <doors power="1" room="7" start="true" img="room_doors_3">
-            <slot>
-                <direction>right</direction>
-                <number>1</number>
-            </slot>
-        </doors>
-        <drones power="2" max="8" room="13" start="false" img="room_drones_4" />
-        <engines power="2" room="15" start="true" img="room_engines_kodiak_b">
-            <slot>
-                <direction>right</direction>
-                <number>5</number>
-            </slot>
-        </engines>
-        <hacking power="1" room="12" start="false" img="room_hacking_kodiak_b" />
-        <medbay power="1" room="10" start="true" img="room_medbay_3">
-            <slot>
-                <number>3</number>
-            </slot>
-        </medbay>
-        <mind power="1" room="16" start="false" img="room_mind_kodiak_b" />
-        <oxygen power="1" room="19" start="true" img="room_oxygen_5" />
-        <pilot power="1" room="0" start="true" img="room_pilot_kodiak_b">
-            <slot>
-                <direction>right</direction>
-                <number>2</number>
-            </slot>
-        </pilot>
-        <sensors power="2" room="4" start="true" img="room_sensors_3">
-            <slot>
-                <direction>right</direction>
-                <number>1</number>
-            </slot>
-        </sensors>
-        <shields power="2" max="6" room="14" start="false" img="room_shields_5">
-            <slot>
-                <direction>up</direction>
-                <number>0</number>
-            </slot>
-        </shields>
-        <teleporter power="1" room="18" start="false" />
-        <weapons power="3" max="8" room="3" start="true" img="room_weapons_kodiak_b">
-            <slot>
-                <direction>right</direction>
-                <number>3</number>
-            </slot>
-        </weapons>
+		<battery power="1" max="2" room="20" start="false" img="room_battery_13" />
+		<cloaking power="1" room="14" start="false" img="room_cloaking_2" />
+		<clonebay power="1" room="10" start="false">
+			<slot>
+				<number>3</number>
+			</slot>
+		</clonebay>
+		<doors power="1" room="4" start="true" img="room_doors_3">
+			<slot>
+				<direction>right</direction>
+				<number>1</number>
+			</slot>
+		</doors>
+		<drones power="2" max="8" room="13" start="false" img="room_drones_4" />
+		<engines power="2" room="15" start="true" img="room_engines_kodiak_b">
+			<slot>
+				<direction>right</direction>
+				<number>5</number>
+			</slot>
+		</engines>
+		<hacking power="1" room="5" start="false" img="room_hacking_kodiak_b" />
+		<medbay power="1" room="10" start="true" img="room_medbay_3">
+			<slot>
+				<number>3</number>
+			</slot>
+		</medbay>
+		<mind power="1" room="6" start="false" img="room_mind_kodiak_b" />
+		<oxygen power="1" room="19" start="true" img="room_oxygen_5" />
+		<pilot power="1" room="0" start="true" img="room_pilot_2">
+			<slot>
+				<direction>right</direction>
+				<number>1</number>
+			</slot>
+		</pilot>
+		<sensors power="2" room="3" start="true" img="room_sensors_2">
+			<slot>
+				<direction>up</direction>
+				<number>0</number>
+			</slot>
+		</sensors>
+		<shields power="2" max="6" room="11" start="false" img="room_shields_4">
+			<slot>
+				<direction>left</direction>
+				<number>0</number>
+			</slot>
+		</shields>
+		<teleporter power="1" room="18" start="false" />
+		<temporal power="2" room="8" start="true" img="room_temporal_kodiak_b" />
+		<weapons power="3" max="8" room="12" start="true" img="room_weapons_6">
+			<slot>
+				<direction>up</direction>
+				<number>1</number>
+			</slot>
+		</weapons>
     </systemList>
     <weaponSlots>4</weaponSlots>
     <droneSlots>2</droneSlots>

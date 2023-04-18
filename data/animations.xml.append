@@ -54,16 +54,22 @@
     <chargeImage>weapons/disruptor_glow.png</chargeImage>
 </weaponAnim>
 
-<animSheet name="ion_cannon" w="493" h="67" fw="29" fh="67">weapons/ion_cannon_strip17.png</animSheet>
+<animSheet name="ion_cannon" w="11438" h="98" fw="38" fh="98">weapons/ion_cannon_strip301.png</animSheet>
 <weaponAnim name="ion_cannon">
     <sheet>ion_cannon</sheet>
-    <desc length="17" x="0" y="0"/>
-    <chargedFrame>6</chargedFrame>
-    <fireFrame>7</fireFrame>
-    <firePoint x="15" y="8" />
-    <mountPoint x="4" y="47"/>
+    <desc length="301" x="0" y="0"/>
+    <chargedFrame>294</chargedFrame>
+    <fireFrame>295</fireFrame>
+    <firePoint x="30" y="37" />
+    <mountPoint x="8" y="70"/>
     <chargeImage>weapons/ion_cannon_glow.png</chargeImage>
 </weaponAnim>
+<animSheet name="ion_cannon_icon" w="168" h="33" fw="84" fh="33">weapons/ion_cannon_icon.png</animSheet>
+<anim name="ion_cannon_icon">
+    <sheet>ion_cannon_icon</sheet>
+    <desc length="2" x="0" y="0"/>
+    <time>1</time>
+</anim>
 
 <animSheet name="railgun_shot" w="150" h="8" fw="150" fh="8">weapons/railgun_shot_strip1.png</animSheet>
 <anim name="railgun_shot">
