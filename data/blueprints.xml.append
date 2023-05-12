@@ -176,6 +176,32 @@
     <bp>12</bp>
     <rarity>0</rarity>
     <length>60</length>
+    <particleEmitters>
+        <particleEmitter>
+            <type>part_ion_cannon_ring_1</type>
+            <on>FIRE</on>
+            <x>30</x>
+            <y>-35</y>
+        </particleEmitter>
+        <particleEmitter>
+            <type>part_ion_cannon_ring_2</type>
+            <on>FIRE</on>
+            <x>30</x>
+            <y>-65</y>
+        </particleEmitter>
+        <particleEmitter>
+            <type>part_ion_cannon_ring_3</type>
+            <on>FIRE</on>
+            <x>30</x>
+            <y>-95</y>
+        </particleEmitter>
+        <particleEmitter>
+            <type>part_ion_cannon_ring_4</type>
+            <on>FIRE</on>
+            <x>30</x>
+            <y>-125</y>
+        </particleEmitter>
+    </particleEmitters>
     <image>beam_contact</image>
     <launchSounds>
         <sound>ionCannon</sound>

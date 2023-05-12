@@ -70,6 +70,56 @@
     <desc length="2" x="0" y="0"/>
     <time>1</time>
 </anim>
+<animSheet name="ion_cannon_ring" w="55" h="20" fw="55" fh="20">weapons/ion_cannon_ring.png</animSheet>
+<anim name="ion_cannon_ring">
+    <sheet>ion_cannon_ring</sheet>
+    <desc length="1" x="0" y="0" />
+    <time>1</time>
+</anim>
+<particleType name="part_ion_cannon_ring_1">
+    <anim>ion_cannon_ring</anim>
+    <colors>
+        <color r="255" g="255" b="255" a="1"/>
+        <color r="211" g="252" b="254" a="0"/>
+    </colors>
+    <lifetime min="0.18" max="0.18"/>
+    <speed min="80" max="80" increment="-60"/>
+    <direction min="90" max="90"/>
+    <scale min="1" max="1" increment="0.2"/>
+</particleType>
+<particleType name="part_ion_cannon_ring_2">
+    <anim>ion_cannon_ring</anim>
+    <colors>
+        <color r="255" g="255" b="255" a="1"/>
+        <color r="211" g="252" b="254" a="0"/>
+    </colors>
+    <lifetime min="0.18" max="0.18"/>
+    <speed min="160" max="160" increment="-60"/>
+    <direction min="90" max="90"/>
+    <scale min="0.875" max="0.875" increment="0.2"/>
+</particleType>
+<particleType name="part_ion_cannon_ring_3">
+    <anim>ion_cannon_ring</anim>
+    <colors>
+        <color r="255" g="255" b="255" a="1"/>
+        <color r="211" g="252" b="254" a="0"/>
+    </colors>
+    <lifetime min="0.18" max="0.18"/>
+    <speed min="240" max="240" increment="-60"/>
+    <direction min="90" max="90"/>
+    <scale min="0.75" max="0.75" increment="0.2"/>
+</particleType>
+<particleType name="part_ion_cannon_ring_4">
+    <anim>ion_cannon_ring</anim>
+    <colors>
+        <color r="255" g="255" b="255" a="1"/>
+        <color r="211" g="252" b="254" a="0"/>
+    </colors>
+    <lifetime min="0.18" max="0.18"/>
+    <speed min="320" max="320" increment="-60"/>
+    <direction min="90" max="90"/>
+    <scale min="0.625" max="0.625" increment="0.2"/>
+</particleType>
 
 <animSheet name="railgun_shot" w="150" h="8" fw="150" fh="8">weapons/railgun_shot_strip1.png</animSheet>
 <anim name="railgun_shot">
