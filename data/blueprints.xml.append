@@ -187,19 +187,19 @@
             <type>part_ion_cannon_ring_2</type>
             <on>FIRE</on>
             <x>30</x>
-            <y>-65</y>
+            <y>-70</y>
         </particleEmitter>
         <particleEmitter>
             <type>part_ion_cannon_ring_3</type>
             <on>FIRE</on>
             <x>30</x>
-            <y>-95</y>
+            <y>-105</y>
         </particleEmitter>
         <particleEmitter>
             <type>part_ion_cannon_ring_4</type>
             <on>FIRE</on>
             <x>30</x>
-            <y>-125</y>
+            <y>-140</y>
         </particleEmitter>
     </particleEmitters>
     <image>beam_contact</image>

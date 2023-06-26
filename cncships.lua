@@ -1,5 +1,5 @@
 if not mods or not mods.vertexutil then
-    error("Couldn't find Vertex Tags and Utility Functions! Make sure it's above mods which depend on it in the Slipstream load order", 2)
+    error("Couldn't find Vertex Tags and Utility Functions! Make sure it's above mods which depend on it in the Slipstream load order")
 end
 
 local vter = mods.vertexutil.vter
@@ -10,46 +10,46 @@ local HideTutorialArrow = mods.vertexutil.HideTutorialArrow
 if not mods.cnconquer then mods.cnconquer = {} end
 
 -- Handle full specrum targeting
-if not mods.cnconquer.OnTick then
-    function mods.cnconquer.OnTick()
-        -- Make sure the game isn't paused
-        if not Hyperspace.Global.GetInstance():GetCApp().world.space.gamePaused then
-            -- Make sure weapons exist
-            local weapons = nil
-            pcall(function() weapons = Hyperspace.ships.player.weaponSystem.weapons end)
-            if weapons then
-                -- Check for cloak charge
-                local cloakCharge = false
-                if Hyperspace.ships.player:HasAugmentation("TARGET_SCANNERS") > 0 then
-                    pcall(function() cloakCharge = Hyperspace.ships.enemy.cloakSystem.bTurnedOn end)
-                end
-                
-                -- Manually manage weapon cooldown for cloak charge
-                if cloakCharge then
-                    for weapon in vter(weapons) do
-                        if weapon.powered and weapon.cooldown.first < weapon.cooldown.second then
-                            local currentCharge = weapon.cooldown.first + Hyperspace.FPS.SpeedFactor/16
-                            if currentCharge >= weapon.cooldown.second then
-                                if weapon.chargeLevel < weapon.weaponVisual.iChargeLevels then
-                                    weapon.chargeLevel = weapon.chargeLevel + 1
-                                    if weapon.chargeLevel == weapon.weaponVisual.iChargeLevels then
-                                        weapon.cooldown.first = weapon.cooldown.second
-                                    else
-                                        weapon.cooldown.first = 0
-                                    end
+if not mods.cnconquer.ShipLoop then
+    function mods.cnconquer.ShipLoop(ship)
+        -- Make sure weapons exist
+        local weapons = nil
+        pcall(function() weapons = ship.weaponSystem.weapons end)
+        if weapons then
+            -- Check for cloak charge
+            local cloakCharge = false
+            if ship:HasAugmentation("TARGET_SCANNERS") > 0 then
+                pcall(function()
+                    local otherShip = Hyperspace.Global.GetInstance():GetShipManager((ship.iShipId + 1)%2)
+                    cloakCharge = Hyperspace.ships.enemy.cloakSystem.bTurnedOn
+                end)
+            end
+            
+            -- Manually manage weapon cooldown for cloak charge
+            if cloakCharge then
+                for weapon in vter(weapons) do
+                    if weapon.powered and weapon.cooldown.first < weapon.cooldown.second then
+                        local currentCharge = weapon.cooldown.first + Hyperspace.FPS.SpeedFactor/16
+                        if currentCharge >= weapon.cooldown.second then
+                            if weapon.chargeLevel < weapon.weaponVisual.iChargeLevels then
+                                weapon.chargeLevel = weapon.chargeLevel + 1
+                                if weapon.chargeLevel == weapon.weaponVisual.iChargeLevels then
+                                    weapon.cooldown.first = weapon.cooldown.second
                                 else
-                                    weapon:ForceCoolup()
+                                    weapon.cooldown.first = 0
                                 end
                             else
-                                weapon.cooldown.first = currentCharge
+                                weapon:ForceCoolup()
                             end
+                        else
+                            weapon.cooldown.first = currentCharge
                         end
                     end
                 end
             end
         end
     end
-    script.on_internal_event(Defines.InternalEvents.ON_TICK, mods.cnconquer.OnTick)
+    script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, mods.cnconquer.ShipLoop)
 end
 
 -- Prism beam list and refraction count
