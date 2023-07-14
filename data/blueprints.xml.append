@@ -1106,15 +1106,18 @@ Inherited Human stat: minor suffocation resistance</desc>
 
 <weaponBlueprint name="LASER_BANSHEE">
     <type>LASER</type>
-    <flavorType>Proton Blast</flavorType>
+    <flavorType>Concentrated Energy Blast</flavorType>
     <title>Banshee Torpedoes</title>
-    <short>Banshee T.</short>
-    <tip>tip_proton</tip>
+    <short>Banshee Torpedoes</short>
+    <tip>tip_energy</tip>
     <locked>1</locked>
-    <desc>Fires a small blast of protons that can damage and disable systems.</desc>
-    <tooltip>Fires a single blast that does 1 damage and 1 ion damage. Can hit and disable shields as well as systems.</tooltip>
-    <damage>1</damage>
-    <ion>1</ion>
+    <desc>This weapon functions similarly to energy weapons with the added benefit of maintaining stealth. Cloaking time will not be impacted when firing.</desc>
+    <tooltip>Fires a single blast that does 1 hull damage and 1 ion damage. Can hit and disable shields as well as systems.</tooltip>
+	<damage>1</damage>
+	<noSysDamage>true</noSysDamage>
+	<noPersDamage>true</noPersDamage>
+	<ion>1</ion>
+    <stealth/>
     <speed>40</speed>
     <shots>1</shots>
     <sp>0</sp>
@@ -1122,7 +1125,7 @@ Inherited Human stat: minor suffocation resistance</desc>
     <breachChance>0</breachChance>
     <cooldown>10</cooldown>
     <power>1</power>
-    <cost>50</cost>
+    <cost>45</cost>
     <bp>4</bp>
     <rarity>0</rarity>
     <image>banshee_shot</image>
@@ -1147,23 +1150,26 @@ Inherited Human stat: minor suffocation resistance</desc>
 
 <weaponBlueprint name="LASER_BANSHEE_2">
     <type>LASER</type>
-    <flavorType>Proton Blast</flavorType>
+    <flavorType>Concentrated Energy Blast</flavorType>
     <title>Advanced Banshee Torpedoes</title>
-    <short>Adv. Bnsh. T.</short>
-    <tip>tip_proton</tip>
+    <short>Advanced Banshee T.</short>
+    <tip>tip_energy</tip>
     <locked>1</locked>
-    <desc>Improved proton blaster that can damage and disable systems extremely quickly.</desc>
-    <tooltip>Fires a single blast that does 1 damage and 1 ion damage. Can hit and disable shields as well as systems.</tooltip>
-    <damage>1</damage>
-    <ion>1</ion>
+    <desc>An improved energy blaster which charges more quickly and maintains stealth. Cloaking time will not be impacted when firing.</desc>
+    <tooltip>Fires a single blast that does 1 hull damage and 1 ion damage. Can hit and disable shields as well as systems.</tooltip>
+	<damage>1</damage>
+	<noSysDamage>true</noSysDamage>
+	<noPersDamage>true</noPersDamage>
+	<ion>1</ion>
+    <stealth/>
     <speed>40</speed>
     <shots>1</shots>
     <sp>0</sp>
     <fireChance>0</fireChance>
     <breachChance>0</breachChance>
-    <cooldown>6</cooldown>
-    <power>3</power>
-    <cost>65</cost>
+    <cooldown>5.7</cooldown>
+    <power>2</power>
+    <cost>68</cost>
     <bp>4</bp>
     <rarity>0</rarity>
     <image>banshee_shot</image>
@@ -1305,17 +1311,18 @@ Inherited Human stat: minor suffocation resistance</desc>
     <title>Nod Laser</title>
     <short>Nod Laser</short>
     <tip>tip_laser</tip>
-    <desc>Rapid fire dual shot laser based on a basic defense turret.</desc>
+    <desc>The energy footprint of this weapon is significantly reduced compared to standard lasers, allowing it to fire while cloaked without incurring any penalty.</desc>
     <tooltip>Shoots 2 lasers that do 1 damage each.</tooltip>
     <damage>1</damage>
     <shots>2</shots>
+    <stealth/>
     <sp>0</sp>
-    <fireChance>3</fireChance>
+    <fireChance>2</fireChance>
     <breachChance>0</breachChance>
     <cooldown>12</cooldown>
     <power>1</power>
     <speed>120</speed>
-    <cost>65</cost>
+    <cost>70</cost>
     <bp>4</bp>
     <rarity>0</rarity>
     <image>laser_nod_shot</image>
