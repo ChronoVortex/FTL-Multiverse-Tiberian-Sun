@@ -1017,7 +1017,7 @@
             </slot>
         </shields>
         <teleporter power="1" room="11" start="false" />
-        <weapons power="4" max="8" room="7" start="true" img="room_weapons_nod">
+        <weapons power="3" max="8" room="7" start="true" img="room_weapons_nod">
             <slot>
                 <direction>right</direction>
                 <number>0</number>
@@ -1033,8 +1033,8 @@
     </weaponList>
     <droneList drones="4" count="2" />
     <health amount="30" />
-    <maxPower amount="9" />
-    <aug name="EX_CLOAK_FIRE" />
+    <maxPower amount="8" />
+    <aug name="COMBAT_CLOAKING_JAMMER" />
 </shipBlueprint>
 
 <crewBlueprint name="human_black_hand">
