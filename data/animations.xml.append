@@ -206,7 +206,7 @@
 	<desc length="7" x="0" y="0"/>
 	<chargedFrame>5</chargedFrame>
 	<fireFrame>6</fireFrame>
-	<firePoint  x="19" y="14"/>
+	<firePoint  x="20" y="28"/>
 	<mountPoint x="7" y="38"/>
 </weaponAnim>
 
