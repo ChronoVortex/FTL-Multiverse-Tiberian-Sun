@@ -1059,13 +1059,76 @@ Inherited Human stat: minor suffocation resistance</desc>
     <drone_targetable>1</drone_targetable>
     <flavorType>Cluster Missile</flavorType>
     <title>Chemical Cluster Missile</title>
-    <short>Chem. M.</short>
+    <short>Chemical M.</short>
     <tip>tip_missiles</tip>
-    <desc>Tiberium based warhead capable of causing corrosive damage and killing crew.</desc>
+    <desc>The Tiberium-infused warheads this weapon fires are capable of healing Tiberium-based lifeforms while wreaking havoc on all other crew.</desc>
+	<descriptionOverride>The Tiberium-infused warheads this weapon fires are capable of healing Tiberium-based lifeforms while wreaking havoc on all other crew.
+
+Stats:
+Required Power: 3
+Charge Time: 22 seconds
+Missile Consumption: 1
+
+Shot Radius: 35
+Shots Per Charge: 3
+
+Base Hull Damage: 1
+Total System Damage: 1
+Total Crew Damage: 55
+Tiberium Crew Healing: 30
+
+Fire Chance: 30%
+Stun Chance: 10% (3 seconds long)
+
+Default Price: 65~
+	</descriptionOverride>
     <tooltip>Fires 3 missiles; does 1 damage each; kills crew; pierces all shields.</tooltip>
+	<tooltipOverride>Required Power: 3
+Charge Time: 22 seconds
+Missile Consumption: 1
+
+Shot Radius: 35
+Shots Per Charge: 3
+
+Base Hull Damage: 1
+Total System Damage: 1
+Total Crew Damage: 55
+Tiberium Crew Healing: 30
+
+Fire Chance: 30%
+Stun Chance: 10% (3 seconds long)
+	</tooltipOverride>
     <radius>35</radius>
     <damage>1</damage>
-    <persDamage>3</persDamage>
+    <noPersDamage>true</noPersDamage>
+	<statBoosts>
+		<statBoost name="trueHealAmount"> <!-- Fiends gain 30 HP -->
+			<boostType>FLAT</boostType>
+			<amount>300</amount>
+			<shipTarget>ALL</shipTarget>
+			<crewTarget>ALL</crewTarget>
+			<droneTarget>CREW</droneTarget>
+            <whiteList>
+                <tiberium_fiend/>
+            </whiteList>
+			<affectsSelf>true</affectsSelf>
+			<priority>0</priority>
+			<duration>0.099</duration>
+		</statBoost>
+		<statBoost name="trueHealAmount"> <!-- Non-fiends lose 55 HP -->
+			<boostType>FLAT</boostType>
+			<amount>-550</amount>
+			<shipTarget>ALL</shipTarget>
+			<crewTarget>ALL</crewTarget>
+			<droneTarget>CREW</droneTarget>
+            <blackList>
+                <tiberium_fiend/>
+            </blackList>
+			<affectsSelf>true</affectsSelf>
+			<priority>0</priority>
+			<duration>0.099</duration>
+		</statBoost>
+	</statBoosts>
     <missiles>1</missiles>
     <shots>1</shots>
     <sp>10</sp>

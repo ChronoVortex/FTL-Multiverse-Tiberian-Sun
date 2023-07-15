@@ -200,15 +200,14 @@
     <time>0.3</time>
 </anim>
 
-<animSheet name="missiles_tib" w="81" h="58" fw="27" fh="58">weapons/missiles_tib_strip3.png</animSheet>
+<animSheet name="missiles_tib" w="224" h="59" fw="32" fh="59">weapons/missiles_tib_strip7.png</animSheet>
 <weaponAnim name="missiles_tib">
-    <sheet>missiles_tib</sheet>
-    <desc length="3" x="0" y="0"/>
-    <chargedFrame>1</chargedFrame>
-    <fireFrame>2</fireFrame>
-    <firePoint  x="16" y="15"/>
-    <mountPoint x="3" y="43"/>
-    <chargeImage>weapons/missiles_tib_glow.png</chargeImage>
+	<sheet>missiles_tib</sheet>
+	<desc length="7" x="0" y="0"/>
+	<chargedFrame>5</chargedFrame>
+	<fireFrame>6</fireFrame>
+	<firePoint  x="19" y="14"/>
+	<mountPoint x="7" y="38"/>
 </weaponAnim>
 
 <animSheet name="explosion_tib" w="2184" h="26" fw="56" fh="26">effects/explosion_tib_strip39.png</animSheet>
