@@ -2,6 +2,18 @@
 
 <FTL>
 
+<mod:findLike type="discord" limit="1">
+    <mod:findLike type="miniships">
+        <mod-append:miniship>miniship_kodiak</mod-append:miniship>
+        <mod-append:miniship>miniship_kodiak_b</mod-append:miniship>
+        <mod-append:miniship>miniship_kodiak_c</mod-append:miniship>
+        <mod-append:miniship>miniship_banshee</mod-append:miniship>
+        <mod-append:miniship>miniship_banshee_b</mod-append:miniship>
+        <mod-append:miniship>miniship_banshee_c</mod-append:miniship>
+        <mod-append:miniship>miniship_epsilon_cruiser</mod-append:miniship>
+    </mod:findLike>
+</mod:findLike>
+
 <mod:findLike type="ships" limit="1">
     <mod-append:ship name="PLAYER_SHIP_KODIAK" b="true" c="true" />
     <mod-append:customShip name="PLAYER_SHIP_KODIAK">
