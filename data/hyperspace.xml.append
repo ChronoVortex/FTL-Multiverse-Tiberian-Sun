@@ -407,7 +407,7 @@ Deploy a psychic blast damaging enemy crew in the room for 30 hitpoints. Stuns s
 </mod:findLike>
 
 <mod:findLike type="scripts" limit="1">
-    <mod-append:script>cncships.lua</mod-append:script>
+    <mod-append:script>data/cnc_scripts/ships.lua</mod-append:script>
 </mod:findLike>
 
 </FTL>
