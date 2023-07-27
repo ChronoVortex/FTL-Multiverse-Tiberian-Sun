@@ -5,6 +5,8 @@
 <!-- placeholder until MV 5.4 -->
 <showShipAchievements enabled="true" toggle="true" hideIfMissing="true" id="hangar_achievements_title_default"/>
 
+<version>^1.7.0</version>
+
 <mod:findLike type="discord" limit="1">
     <mod:findLike type="miniships">
         <mod-append:miniship>miniship_kodiak</mod-append:miniship>
@@ -77,20 +79,20 @@
             <type>4</type>
         </unlock>
         <achievement name="ACH_SHIP_BANSHEE_1" layout="all">
-            <name>PLACEHOLDER</name>
-            <description>PLACEHOLDER</description>
+            <name>Rain in the Night</name>
+            <description>Without using the Stealth Weapons augment or upgrade, fire your weapons 10 times within the duration of a single cloak using the Banshee Fighter.</description>
             <icon>banshee_ach_1</icon>
             <lockImage>banshee_ach_1_lock</lockImage>
         </achievement>
         <achievement name="ACH_SHIP_BANSHEE_2" layout="all">
-            <name>PLACEHOLDER</name>
-            <description>PLACEHOLDER</description>
+            <name>Peace Through Power</name>
+            <description>Gain general notoriety at least 4 times and reach sector 8 with a general notoriety score of 0 or lower in the same run with the Banshee Fighter.</description>
             <icon>banshee_ach_2</icon>
             <lockImage>banshee_ach_2_lock</lockImage>
         </achievement>
         <achievement name="ACH_SHIP_BANSHEE_3" layout="all">
-            <name>PLACEHOLDER</name>
-            <description>PLACEHOLDER</description>
+            <name>No Mercy</name>
+            <description>For 4 enemy ships, have every system on fire simultaniously during a run with the Banshee Fighter.</description>
             <icon>banshee_ach_3</icon>
             <lockImage>banshee_ach_3_lock</lockImage>
         </achievement>
@@ -204,6 +206,12 @@
     <mod-append:variable name="loc_ioncannon_target_room" op="set" val="0"/>
     <mod-append:variable name="loc_iron_curtain_charged" op="set" val="0"/>
     <mod-append:variable name="loc_iron_curtain_timer" op="set" val="20"/>
+    
+    <!-- banshee achievement tracking -->
+    <mod-append:variable name="loc_finalsector_last" op="set" val="0"/>
+    <mod-append:variable name="loc_rep_general_last" op="set" val="0"/>
+    <mod-append:variable name="loc_banshee_evil_score" op="set" val="0"/>
+    <mod-append:variable name="loc_banshee_fire_score" op="set" val="0"/>
 
     <mod:findName type="req" name="LIST_CHECK_AUGMENTS">
         <mod-append:name>TIBERIUM_GARDEN</mod-append:name>
