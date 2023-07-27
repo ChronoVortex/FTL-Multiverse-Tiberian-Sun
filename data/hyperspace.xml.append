@@ -2,6 +2,9 @@
 
 <FTL>
 
+<!-- placeholder until MV 5.4 -->
+<showShipAchievements enabled="true" toggle="true" hideIfMissing="true" id="hangar_achievements_title_default"/>
+
 <mod:findLike type="discord" limit="1">
     <mod:findLike type="miniships">
         <mod-append:miniship>miniship_kodiak</mod-append:miniship>
@@ -15,7 +18,34 @@
 </mod:findLike>
 
 <mod:findLike type="ships" limit="1">
-    <mod-append:ship name="PLAYER_SHIP_KODIAK" b="true" c="true" />
+    <mod-append:ship name="PLAYER_SHIP_KODIAK" b="true" c="true">
+		<unlock variant="b" silent="false">
+            <type>1</type>
+            <shipReq>PLAYER_SHIP_KODIAK</shipReq>
+            <value>8</value>
+        </unlock>
+        <unlock variant="c" silent="false">
+            <type>4</type>
+        </unlock>
+        <achievement name="ACH_SHIP_KODIAK_1" layout="all">
+            <name>Ion Cannon Ready</name>
+            <description>With the 3A Kodiak, destroy a ship using only the Ion Cannon while in an ion storm.</description>
+            <icon>kodiak_ach_1</icon>
+            <lockImage>kodiak_ach_1_lock</lockImage>
+        </achievement>
+        <achievement name="ACH_SHIP_KODIAK_2" layout="all">
+            <name>Reinforcements Have Arrived</name>
+            <description>Have 10 crew aboard the enemy ship while using the 3A Kodiak.</description>
+            <icon>kodiak_ach_2</icon>
+            <lockImage>kodiak_ach_2_lock</lockImage>
+        </achievement>
+        <achievement name="ACH_SHIP_KODIAK_3" layout="all">
+            <name>Keep 'Em Coming!</name>
+            <description>Reach sector 5 without installing Shields or Cloaking in the 3A Kodiak.</description>
+            <icon>kodiak_ach_3</icon>
+            <lockImage>kodiak_ach_3_lock</lockImage>
+        </achievement>
+    </mod-append:ship>
     <mod-append:customShip name="PLAYER_SHIP_KODIAK">
         <crewLimit>10</crewLimit>
         <hiddenAug>FOR_MULTIVERSE</hiddenAug>
@@ -37,7 +67,34 @@
         <hiddenAug>SHIP_PAST</hiddenAug>
     </mod-append:customShip>
     
-    <mod-append:ship name="PLAYER_SHIP_BANSHEE" b="true" c="true" />
+    <mod-append:ship name="PLAYER_SHIP_BANSHEE" b="true" c="true">
+		<unlock variant="b" silent="false">
+            <type>1</type>
+            <shipReq>PLAYER_SHIP_BANSHEE</shipReq>
+            <value>8</value>
+        </unlock>
+        <unlock variant="c" silent="false">
+            <type>4</type>
+        </unlock>
+        <achievement name="ACH_SHIP_BANSHEE_1" layout="all">
+            <name>PLACEHOLDER</name>
+            <description>PLACEHOLDER</description>
+            <icon>banshee_ach_1</icon>
+            <lockImage>banshee_ach_1_lock</lockImage>
+        </achievement>
+        <achievement name="ACH_SHIP_BANSHEE_2" layout="all">
+            <name>PLACEHOLDER</name>
+            <description>PLACEHOLDER</description>
+            <icon>banshee_ach_2</icon>
+            <lockImage>banshee_ach_2_lock</lockImage>
+        </achievement>
+        <achievement name="ACH_SHIP_BANSHEE_3" layout="all">
+            <name>PLACEHOLDER</name>
+            <description>PLACEHOLDER</description>
+            <icon>banshee_ach_3</icon>
+            <lockImage>banshee_ach_3_lock</lockImage>
+        </achievement>
+    </mod-append:ship>
     <mod-append:customShip name="PLAYER_SHIP_BANSHEE">
         <crewLimit>8</crewLimit>
         <hiddenAug>FOR_MULTIVERSE</hiddenAug>
@@ -408,6 +465,7 @@ Deploy a psychic blast damaging enemy crew in the room for 30 hitpoints. Stuns s
 
 <mod:findLike type="scripts" limit="1">
     <mod-append:script>data/cnc_scripts/ships.lua</mod-append:script>
+    <mod-append:script>data/cnc_scripts/ships-ach.lua</mod-append:script>
 </mod:findLike>
 
 </FTL>

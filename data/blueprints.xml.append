@@ -427,6 +427,7 @@
 <shipBlueprint name="PLAYER_SHIP_KODIAK_2" layout="kodiak_b" img="kodiak_b">
     <class>3A Kodiak</class>
     <name>The Iris</name>
+    <unlock>Get to Sector 8 with the 3A Kodiak Type A to unlock this ship.</unlock>
     <desc>This version of the Kodiak has been outfitted with chronological tech used during the second and third World Wars on a distant iteration of Earth.</desc>
     <systemList>
 		<battery power="1" max="2" room="20" start="false" img="room_battery_13" />
@@ -789,6 +790,7 @@
 <shipBlueprint name="PLAYER_SHIP_KODIAK_3" layout="kodiak_c" img="kodiak_c">
     <class>3A Kodiak</class>
     <name>The Red Menace</name>
+    <unlock>Complete 2/3 of the 3A Kodiak Achievements to unlock this ship.</unlock>
     <desc>Some of GDI's most infamous tech was derived from the Soviets'. This vessel gets back to its roots, favoring a brute-force approach to combat.</desc>
     <systemList>
         <battery power="1" max="2" room="19" start="true" img="room_battery_kodiak_c" />
@@ -1260,6 +1262,7 @@ Stun Chance: 10% (3 seconds long)
 <shipBlueprint name="PLAYER_SHIP_BANSHEE_2" layout="BANSHEE_B" img="banshee_b">
     <class>Banshee Fighter</class>
     <name>Providence</name>
+    <unlock>Get to Sector 8 with the Banshee Fighter Type A to unlock this ship.</unlock>
     <desc>The original model of the Banshee Fighter. This vessel was designed by a megalomaniacal AI in preparation for interstellar conquest.</desc>
     <systemList>
         <battery power="1" max="2" room="11" start="false" img="room_battery_17" />
@@ -1413,6 +1416,7 @@ Stun Chance: 10% (3 seconds long)
 <shipBlueprint name="PLAYER_SHIP_BANSHEE_3" layout="BANSHEE_C" img="banshee_c">
     <class>Banshee Fighter</class>
     <name>The Mnemosyne</name>
+    <unlock>Complete 2/3 of the Banshee Fighter Achievements to unlock this ship.</unlock>
     <desc>The humans who commandeered this ship have spent a portion of their lives exposed to Tiberium. Over time, they learned how to use the deadly substance to their advantage.</desc>
     <systemList>
         <battery power="1" max="2" room="7" start="false" img="room_battery_nod_c" />
