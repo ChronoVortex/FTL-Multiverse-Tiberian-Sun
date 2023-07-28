@@ -84,8 +84,8 @@ do
     local function check_no_cloak_shields_ach(ship)
         return ship.iShipId == 0 and
                Hyperspace.playerVariables.loc_sector_count > 3 and
-               not ship.cloakSystem and
-               (not ship.shieldSystem or ship.shieldSystem.shields.power.second <= 0) and
+               not ship:HasSystem(0) and
+               not ship:HasSystem(10) and
                should_track_achievement("ACH_SHIP_KODIAK_3", ship, "PLAYER_SHIP_KODIAK")
     end
     script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, function(ship)
