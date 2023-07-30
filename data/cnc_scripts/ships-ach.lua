@@ -11,8 +11,10 @@ local function string_starts(str, start)
 end
 
 local function should_track_achievement(achievement, ship, shipClassName)
-    return Hyperspace.CustomAchievementTracker.instance:GetAchievementStatus(achievement) < Hyperspace.Settings.difficulty and
-           ship and string_starts(ship.myBlueprint.blueprintName, shipClassName)
+    return ship and
+           Hyperspace.Global.GetInstance():GetCApp().world.bStartedGame and
+           Hyperspace.CustomAchievementTracker.instance:GetAchievementStatus(achievement) < Hyperspace.Settings.difficulty and
+           string_starts(ship.myBlueprint.blueprintName, shipClassName)
 end
 
 local function count_ship_achievements(achPrefix)
@@ -67,15 +69,8 @@ end
 
 -- Normal
 script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, function(ship)
-    if ship.iShipId == 1 and should_track_achievement("ACH_SHIP_KODIAK_2", Hyperspace.ships.player, "PLAYER_SHIP_KODIAK") then
-        local boarderCount = 0
-        for crew in vter(ship.vCrewList) do
-            if crew.iShipId == 0 then boarderCount = boarderCount + 1 end
-            if boarderCount >= 10 then
-                Hyperspace.CustomAchievementTracker.instance:SetAchievement("ACH_SHIP_KODIAK_2", false)
-                break
-            end
-        end
+    if ship.iShipId == 1 and ship:CountCrew(true) >= 10 and should_track_achievement("ACH_SHIP_KODIAK_2", Hyperspace.ships.player, "PLAYER_SHIP_KODIAK") then
+        Hyperspace.CustomAchievementTracker.instance:SetAchievement("ACH_SHIP_KODIAK_2", false)
     end
 end)
 
