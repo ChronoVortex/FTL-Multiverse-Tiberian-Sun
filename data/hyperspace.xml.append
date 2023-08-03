@@ -207,6 +207,10 @@
     <mod-append:variable name="loc_iron_curtain_charged" op="set" val="0"/>
     <mod-append:variable name="loc_iron_curtain_timer" op="set" val="20"/>
     
+    <!-- iron curtain settings -->
+    <mod-append:metaVariable name="prof_hotkey_iron_curtain" op="set" val="96"/> <!-- ~ by default -->
+    <mod-append:metaVariable name="prof_auto_iron_curtain" op="set" val="0"/>
+    
     <!-- banshee achievement tracking -->
     <mod-append:variable name="loc_finalsector_last" op="set" val="0"/>
     <mod-append:variable name="loc_rep_general_last" op="set" val="0"/>

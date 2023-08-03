@@ -44,16 +44,22 @@ You're about to arrive at the nearest Federation warpbay. These hangar-like stru
 </event>
 
 <event name="INITIAL_START_BEACON_IRON_CURTAIN">
-    <text>Name: Federation Multiverse Drop Point
+    <text>Your ship is equipped with an Iron Curtain. When charged, it can be used by pressing the UI button or the hotkey assigned to it (tilde by default). You can configure its hotkey and automation through the toggle menu.</text>
+    <choice hidden="true">
+        <text>Continue...</text>
+        <event name="LUA_HIDE_IRON_CURTAIN_TUTORIAL_ARROW">
+            <text>Name: Federation Multiverse Drop Point
 Type: Friendly
 Unique: True
 Dominant Faction: The Federation
 Rebel Threat Level: Medium (Neutral Fleet)
 
 You're about to arrive at the nearest Federation warpbay. These hangar-like structures act as beacons of sorts for traveling between universes. Let's hope you're given a nice warm welcome and not greeted by a fleet of angry Rebels or Pirates, right?</text>
-    <choice hidden="true" req="pilot" lvl="1" max_group="0" blue="false">
-        <text>Exit Hyperspeed.</text>
-        <event load="START_BEACON_PREP_LOAD"/>
+            <choice hidden="true" req="pilot" lvl="1" max_group="0" blue="false">
+                <text>Exit Hyperspeed.</text>
+                <event load="START_BEACON_PREP_LOAD"/>
+            </choice>
+        </event>
     </choice>
     <eventButton name="UI_IRON_CURTAIN">
         <event load="LUA_IRON_CURTAIN"/>

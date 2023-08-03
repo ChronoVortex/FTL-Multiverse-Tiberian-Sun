@@ -5,6 +5,11 @@
 ================================-->
 
 <mod:findName type="event" name="COMBAT_CHECK_TOGGLE" panic="true">
+	<mod-append:choice req="IRON_CURTAIN" blue="false">
+		<text>Configure Iron Curtain settings.</text>
+		<event load="COMBAT_CHECK_IRON_CURTAIN_SETTINGS"/>
+	</mod-append:choice>
+    
     <mod:findLike type="choice">
         <mod:selector req="MISSILES_V5_SINGLE" />
         <mod:removeTag />
@@ -61,6 +66,47 @@
         <event load="COMBAT_CHECK_BEAM_MC_SABOTAGE"/>
     </mod-append:choice>
 </mod:findName>
+
+<event name="COMBAT_CHECK_IRON_CURTAIN_SETTINGS">
+	<text>Which settings do you want to configure?</text>
+	<choice req="prof_auto_iron_curtain" blue="false" lvl="0" max_lvl="0">
+		<text>Toggle automatic usage. [Currently Disabled]</text>
+		<event>
+			<metaVariable name="prof_auto_iron_curtain" op="set" val="1"/>
+            <loadEvent>COMBAT_CHECK_IRON_CURTAIN_SETTINGS</loadEvent>
+		</event>
+	</choice>
+	<choice req="prof_auto_iron_curtain" blue="false" lvl="1">
+		<text>Toggle automatic usage. [Currently Enabled]</text>
+		<event>
+			<metaVariable name="prof_auto_iron_curtain" op="set" val="0"/>
+            <loadEvent>COMBAT_CHECK_IRON_CURTAIN_SETTINGS</loadEvent>
+		</event>
+	</choice>
+	<choice hidden="true">
+		<text>Set hotkey (default is the tilde key)</text>
+		<event name="COMBAT_CHECK_HOTKEYS_IRON_CURTAIN_START">
+            <text>Press any key and use the mouse to select "Continue" to set a new key, or select "Restore Default" to return this hotkey to its default setting.</text>
+            <choice hidden="true">
+                <text>Continue</text>
+                <event name="COMBAT_CHECK_HOTKEYS_IRON_CURTAIN_END_1">
+                    <loadEvent>COMBAT_CHECK_TOGGLE</loadEvent>
+                </event>
+            </choice>
+            <choice hidden="true">
+                <text>Restore Default</text>
+                <event name="COMBAT_CHECK_HOTKEYS_IRON_CURTAIN_END_2">
+                    <metaVariable name="prof_hotkey_iron_curtain" op="set" val="96"/>
+                    <loadEvent>COMBAT_CHECK_TOGGLE</loadEvent>
+                </event>
+            </choice>
+        </event>
+	</choice>
+	<choice hidden="true">
+		<text>Return to the toggle menu.</text>
+		<event load="COMBAT_CHECK_TOGGLE_LOAD"/>
+	</choice>
+</event>
 
 <event name="COMBAT_CHECK_V5_MISSILES_SINGLE">
     <text>Are you sure you want to change the missiles' settings?</text>
@@ -430,7 +476,9 @@
 <event name="IRON_CURTAIN_CHARGE">
     <playSound>ironCurtainReady</playSound>
     <variable name="loc_iron_curtain_charged" op="set" val="1"/>
+    <loadEvent>IRON_CURTAIN_CHARGE_POST</loadEvent>
 </event>
+<event name="IRON_CURTAIN_CHARGE_POST"/>
 
 <event name="LUA_IRON_CURTAIN">
     <playSound>ironCurtainUse</playSound>

@@ -134,7 +134,7 @@ end)
 
 -- Point out the iron curtain button when the game starts
 script.on_game_event("INITIAL_START_BEACON_IRON_CURTAIN", false, function() ShowTutorialArrow(2, 132, 79) end)
-script.on_game_event("START_BEACON_PREP_LOAD", false, HideTutorialArrow)
+script.on_game_event("LUA_HIDE_IRON_CURTAIN_TUTORIAL_ARROW", false, HideTutorialArrow)
 
 -- Regenerate a super shield bubble for iron curtain
 script.on_game_event("LUA_IRON_CURTAIN", false, function()
@@ -143,5 +143,32 @@ script.on_game_event("LUA_IRON_CURTAIN", false, function()
         shields = Hyperspace.ships.player.shieldSystem
     end) and shields then
         shields:AddSuperShield(shields.center)
+    end
+end)
+
+-- Iron curtain hotkey
+script.on_init(function()
+    if Hyperspace.metaVariables.prof_hotkey_iron_curtain == 0 then Hyperspace.metaVariables.prof_hotkey_iron_curtain = 96 end
+end)
+local settingIronCurtainKey = false
+script.on_game_event("COMBAT_CHECK_HOTKEYS_IRON_CURTAIN_START", false, function() settingIronCurtainKey = true end)
+script.on_game_event("COMBAT_CHECK_HOTKEYS_IRON_CURTAIN_END_1", false, function() settingIronCurtainKey = false end)
+script.on_game_event("COMBAT_CHECK_HOTKEYS_IRON_CURTAIN_END_2", false, function() settingIronCurtainKey = false end)
+script.on_internal_event(Defines.InternalEvents.ON_KEY_DOWN, function(key)
+    -- Allow player to reconfigure the hotkeys
+    if settingIronCurtainKey then Hyperspace.metaVariables.prof_hotkey_iron_curtain = key end
+
+    -- Do stuff if a hotkey is pressed
+    local cmdGui = Hyperspace.Global.GetInstance():GetCApp().gui
+    local playerShip = Hyperspace.ships.player
+    if playerShip and key == Hyperspace.metaVariables.prof_hotkey_iron_curtain and Hyperspace.playerVariables.loc_iron_curtain_charged > 0 and not (playerShip.bJumping or cmdGui.event_pause or cmdGui.menu_pause) then
+        Hyperspace.CustomEventsParser.GetInstance():LoadEvent(Hyperspace.Global.GetInstance():GetCApp().world, "LUA_IRON_CURTAIN", false, -1)
+    end
+end)
+
+-- Iron curtain automation
+script.on_game_event("IRON_CURTAIN_CHARGE_POST", false, function()
+    if Hyperspace.metaVariables.prof_auto_iron_curtain > 0 then
+        Hyperspace.CustomEventsParser.GetInstance():LoadEvent(Hyperspace.Global.GetInstance():GetCApp().world, "LUA_IRON_CURTAIN", false, -1)
     end
 end)
