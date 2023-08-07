@@ -5,7 +5,7 @@
 <!-- placeholder until MV 5.4 -->
 <showShipAchievements enabled="true" toggle="true" hideIfMissing="true" id="hangar_achievements_title_default"/>
 
-<version>^1.7.0</version>
+<version>^1.8.0</version>
 
 <mod:findLike type="discord" limit="1">
     <mod:findLike type="miniships">
@@ -212,7 +212,6 @@
     <mod-append:metaVariable name="prof_auto_iron_curtain" op="set" val="0"/>
     
     <!-- banshee achievement tracking -->
-    <mod-append:variable name="loc_finalsector_last" op="set" val="0"/>
     <mod-append:variable name="loc_rep_general_last" op="set" val="0"/>
     <mod-append:variable name="loc_banshee_evil_score" op="set" val="0"/>
     <mod-append:variable name="loc_banshee_fire_score" op="set" val="0"/>

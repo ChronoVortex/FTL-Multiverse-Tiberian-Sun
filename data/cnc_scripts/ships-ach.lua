@@ -17,6 +17,10 @@ local function should_track_achievement(achievement, ship, shipClassName)
            string_starts(ship.myBlueprint.blueprintName, shipClassName)
 end
 
+local function current_sector()
+    return Hyperspace.Global.GetInstance():GetCApp().world.starMap.worldLevel + 1
+end
+
 local function count_ship_achievements(achPrefix)
     local count = 0
     for i = 1, 3 do
@@ -78,7 +82,7 @@ end)
 do
     local function check_no_cloak_shields_ach(ship)
         return ship.iShipId == 0 and
-               Hyperspace.playerVariables.loc_sector_count > 3 and
+               current_sector() >= 5 and
                not ship:HasSystem(0) and
                not ship:HasSystem(10) and
                should_track_achievement("ACH_SHIP_KODIAK_3", ship, "PLAYER_SHIP_KODIAK")
@@ -129,12 +133,11 @@ script.on_internal_event(Defines.InternalEvents.ON_TICK, function()
         if generalRep > playerVars.loc_rep_general_last then
             playerVars.loc_banshee_evil_score = playerVars.loc_banshee_evil_score + generalRep - playerVars.loc_rep_general_last
         end
-        if metaVars.prof_finalsector > playerVars.loc_finalsector_last then
+        if current_sector() >= 8 then
             if playerVars.loc_banshee_evil_score >= 4 and generalRep <= 0 then
                 Hyperspace.CustomAchievementTracker.instance:SetAchievement("ACH_SHIP_BANSHEE_2", false)
             end
         end
-        playerVars.loc_finalsector_last = metaVars.prof_finalsector
         playerVars.loc_rep_general_last = generalRep
     end
 end)
