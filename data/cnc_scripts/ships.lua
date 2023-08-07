@@ -6,7 +6,45 @@ local vter = mods.vertexutil.vter
 local ShowTutorialArrow = mods.vertexutil.ShowTutorialArrow
 local HideTutorialArrow = mods.vertexutil.HideTutorialArrow
 
+local function string_starts(str, start)
+    return string.sub(str, 1, string.len(start)) == start
+end
+local function map_ship_primitive(dir, xPos, yPos)
+    local tex = Hyperspace.Resources:GetImageId(dir)
+    return Hyperspace.Resources:CreateImagePrimitive(tex, xPos or -10, yPos or -tex.height/2, 0, Graphics.GL_Color(1, 1, 1, 1), 1, false)
+end
+
 mods.cnconquer = {}
+
+-- Set ship map icons
+local mapIcons = {}
+mapIcons.PLAYER_SHIP_KODIAK = {
+    fuel = map_ship_primitive("map/map_icon_kodiak.png"),
+    noFuel = map_ship_primitive("map/map_icon_kodiak_fuel.png")
+}
+mapIcons.PLAYER_SHIP_BANSHEE = {
+    fuel = map_ship_primitive("map/map_icon_banshee.png"),
+    noFuel = map_ship_primitive("map/map_icon_banshee_fuel.png")
+}
+mapIcons.PLAYER_SHIP_EPSILON = {
+    fuel = map_ship_primitive("map/map_icon_epsilon.png"),
+    noFuel = map_ship_primitive("map/map_icon_epsilon_fuel.png")
+}
+local mapIconBase = map_ship_primitive("map/map_icon_ship.png")
+local mapIconBaseFuel = map_ship_primitive("map/map_icon_ship_fuel.png")
+script.on_init(function()
+    local starMap = Hyperspace.Global.GetInstance():GetCApp().world.starMap
+    local playerShipName = Hyperspace.ships.player.myBlueprint.blueprintName
+    for shipClass, icon in pairs(mapIcons) do
+        if string_starts(playerShipName, shipClass) then
+            starMap.ship = icon.fuel
+            starMap.shipNoFuel = icon.noFuel
+            return
+        end
+    end
+    starMap.ship = mapIconBase
+    starMap.shipNoFuel = mapIconBaseFuel
+end)
 
 -- Handle full specrum targeting
 script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, function(ship)
