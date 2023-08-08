@@ -85,6 +85,7 @@
     <crewCount amount="2" class="human_soldier" />
     <aug name="ABLATIVE_ARMOR" />
     <aug name="COMBAT_DRONE_JAMMER" />
+    <mapImage>map_icon_kodiak</mapImage>
 </shipBlueprint>
 
 <augBlueprint name="ABLATIVE_ARMOR">
@@ -500,6 +501,7 @@
     <aug name="ABLATIVE_ARMOR" />
     <aug name="COMBAT_DRONE_JAMMER" />
     <shieldImage>kodiak</shieldImage>
+    <mapImage>map_icon_kodiak</mapImage>
 </shipBlueprint>
 
 <weaponBlueprint name="BEAM_PRISM_1">
@@ -862,6 +864,7 @@
     <aug name="IRON_CURTAIN" />
     <aug name="COMBAT_DRONE_JAMMER" />
     <shieldImage>kodiak</shieldImage>
+    <mapImage>map_icon_kodiak</mapImage>
 </shipBlueprint>
 
 <augBlueprint name="IRON_CURTAIN">
@@ -1037,6 +1040,7 @@
     <health amount="30" />
     <maxPower amount="8" />
     <aug name="COMBAT_CLOAKING_JAMMER" />
+    <mapImage>map_icon_banshee</mapImage>
 </shipBlueprint>
 
 <crewBlueprint name="human_black_hand">
@@ -1331,6 +1335,7 @@ Stun Chance: 10% (3 seconds long)
     <crewCount amount="3" class="human_engineer" />
     <aug name="TARGET_SCANNERS" />
     <shieldImage>banshee</shieldImage>
+    <mapImage>map_icon_banshee</mapImage>
 </shipBlueprint>
 
 <augBlueprint name="TARGET_SCANNERS">
@@ -1485,6 +1490,7 @@ Stun Chance: 10% (3 seconds long)
     <crewCount amount="2" class="human" />
     <aug name="TIBERIUM_GARDEN" />
     <shieldImage>banshee</shieldImage>
+    <mapImage>map_icon_banshee</mapImage>
 </shipBlueprint>
 
 <augBlueprint name="TIBERIUM_GARDEN">
@@ -1701,6 +1707,7 @@ Stun Chance: 10% (3 seconds long)
     <maxPower amount="9" />
     <aug name="YURI_BRAIN" />
     <aug name="COMBAT_DRONE_JAMMER" />
+    <mapImage>map_icon_epsilon</mapImage>
 </shipBlueprint>
 
 <augBlueprint name="YURI_BRAIN">
