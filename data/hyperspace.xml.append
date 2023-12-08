@@ -52,11 +52,6 @@
         <crewLimit>10</crewLimit>
         <hiddenAug>FOR_MULTIVERSE</hiddenAug>
         <hiddenAug>SHIP_PAST</hiddenAug>
-        <rooms>
-            <room id="8">
-                <roomAnim renderLayer="2">tele_ico</roomAnim>
-            </room>
-        </rooms>
     </mod-append:customShip>
     <mod-append:customShip name="PLAYER_SHIP_KODIAK_2">
         <crewLimit>10</crewLimit>
