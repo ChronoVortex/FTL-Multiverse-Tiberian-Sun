@@ -287,7 +287,7 @@
         <mod:removeTag />
     </mod:findWithChildLike>
     <mod:findWithChildLike type="choice" child-type="text" panic="true">
-        <mod:selector>Do some last minute check-ups while we charge the weapons.</mod:selector>
+        <mod:selector>Do some last minute check-ups.</mod:selector>
         <mod:removeTag />
     </mod:findWithChildLike>
     <mod:findWithChildLike type="choice" child-type="text" panic="true">
@@ -295,20 +295,18 @@
         <mod:removeTag />
     </mod:findWithChildLike>
     
-    <mod-append:choice req="LIST_CHECK_TOGGLES_AND_AMPS" lvl="1" blue="false">
-        <text>Change your toggle or amp equipment.</text>
-        <event load="COMBAT_CHECK_TOGGLE_LOAD"/>
-    </mod-append:choice>
-    <mod-append:choice>
-        <text>Do some last minute check-ups while we charge the weapons.</text>
-        <event load="COMBAT_CHECK_GENERIC"/>
-    </mod-append:choice>
-    <mod-append:choice>
-        <text>Do nothing.</text>
-        <event>
-            <status type="clear" target="enemy" system="teleporter" amount="100"/>
-        </event>
-    </mod-append:choice>
+	<mod-append:choice req="LIST_CHECK_TOGGLES_AND_AMPS" lvl="1" blue="false">
+		<text>Change your toggle or amp equipment.</text>
+		<event load="COMBAT_CHECK_TOGGLE_LOAD"/>
+	</mod-append:choice>
+	<mod-append:choice>
+		<text>Do some last minute check-ups.</text>
+		<event load="COMBAT_CHECK_GENERIC"/>
+	</mod-append:choice>
+	<mod-append:choice>
+		<text>Do nothing.</text>
+		<event/>
+	</mod-append:choice>
 </mod:findName>
 
 <mod:findName type="event" name="COMBAT_CHECK_FLAGSHIP_REAL" panic="true">
@@ -331,7 +329,7 @@
         <mod:removeTag />
     </mod:findWithChildLike>
     <mod:findWithChildLike type="choice" child-type="text" panic="true">
-        <mod:selector>Do some last minute check-ups while we charge the weapons.</mod:selector>
+        <mod:selector>Do some last minute check-ups.</mod:selector>
         <mod:removeTag />
     </mod:findWithChildLike>
     <mod:findWithChildLike type="choice" child-type="text" panic="true">
@@ -339,20 +337,18 @@
         <mod:removeTag />
     </mod:findWithChildLike>
     
-    <mod-append:choice req="LIST_CHECK_TOGGLES_AND_AMPS" lvl="1" blue="false">
-        <text>Change your toggle or amp equipment.</text>
-        <event load="COMBAT_CHECK_TOGGLE_LOAD"/>
-    </mod-append:choice>
-    <mod-append:choice>
-        <text>Do some last minute check-ups while we charge the weapons.</text>
-        <event load="COMBAT_CHECK_GENERIC"/>
-    </mod-append:choice>
-    <mod-append:choice>
-        <text>Do nothing.</text>
-        <event>
-            <status type="clear" target="enemy" system="teleporter" amount="100"/>
-        </event>
-    </mod-append:choice>
+	<mod-append:choice req="LIST_CHECK_TOGGLES_AND_AMPS" lvl="1" blue="false">
+		<text>Change your toggle or amp equipment.</text>
+		<event load="COMBAT_CHECK_TOGGLE_LOAD"/>
+	</mod-append:choice>
+	<mod-append:choice>
+		<text>Do some last minute check-ups.</text>
+		<event load="COMBAT_CHECK_GENERIC"/>
+	</mod-append:choice>
+	<mod-append:choice>
+		<text>Do nothing.</text>
+		<event/>
+	</mod-append:choice>
 </mod:findName>
 
 <event name="COMBAT_CHECK_IRON_CURTAIN">
