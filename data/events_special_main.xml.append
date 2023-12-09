@@ -1,41 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <mod:findName type="event" name="START_BEACON_PRESELECT" panic="true">
+    <!-- Jank way to make sure "Proceed with your mission" is always on top -->
+    <mod:findLike type="choice" start="1" limit="1">
+        <mod:setAttributes max_group="1" />
+    </mod:findLike>
+    <mod:findLike type="choice" start="2" limit="1">
+        <mod:setAttributes max_group="2" />
+    </mod:findLike>
+    <mod:findLike type="choice" start="3" limit="1">
+        <mod:setAttributes max_group="3" />
+    </mod:findLike>
+    <mod:findLike type="choice" start="4" limit="1">
+        <mod:setAttributes max_group="4" />
+    </mod:findLike>
+    <mod:findLike type="choice" start="5" limit="1">
+        <mod:setAttributes max_group="5" />
+    </mod:findLike>
+    <mod:findLike type="choice" start="6" limit="1">
+        <mod:setAttributes max_group="6" />
+    </mod:findLike>
+    <mod:findLike type="choice" start="7" limit="1">
+        <mod:setAttributes max_group="7" />
+    </mod:findLike>
+    <mod:findLike type="choice" start="8" limit="1">
+        <mod:setAttributes max_group="8" />
+    </mod:findLike>
+    <mod:findLike type="choice" start="9" limit="1">
+        <mod:setAttributes max_group="9" />
+    </mod:findLike>
+    <mod:findLike type="choice" start="10" limit="1">
+        <mod:setAttributes max_group="10" />
+    </mod:findLike>
+    <mod:findLike type="choice" start="11" limit="1">
+        <mod:setAttributes max_group="11" />
+    </mod:findLike>
+    <mod:findLike type="choice" start="12" limit="1">
+        <mod:setAttributes max_group="12" />
+    </mod:findLike>
     
+    <!-- Custom start for kodiaks -->
     <mod:findWithChildLike type="choice" child-type="text" limit="1" panic="true">
         <mod:selector>Proceed with your mission.</mod:selector>
         <mod:setAttributes req="ALTERNATE_START" lvl="0" max_lvl="0" blue="false" />
     </mod:findWithChildLike>
-    
     <mod-append:choice hidden="true" req="ION_CANNON" blue="false">
         <text>Scan the sector for the Ion Cannon.</text>
             <event load="INITIAL_START_BEACON_KODIAKCHOICES"/>
     </mod-append:choice>
-    
     <mod-append:choice hidden="true" req="IRON_CURTAIN" blue="false">
         <text>Proceed with your mission.</text>
             <event load="INITIAL_START_BEACON_IRON_CURTAIN"/>
     </mod-append:choice>
-    
 </mod:findName>
 
 <event name="INITIAL_START_BEACON_KODIAKCHOICES">
     <text>The Brotherhood's acquisition of an old Allied Chronosphere has complicated the war. Your chrono shift to this universe was successful, thanks to GDI's own Chronosphere, and now it's your job to repair the damage Nod has done to the time-space continuum by assisting the Federation and stopping the Rebellion. Apparently the Ion Cannon was transported somewhere near these coordinates as well, and after a quick scan you find its powerful signature in the next sector. Hopefully you'll find a way to get it back to where it belongs.</text>
     <choice hidden="true">
-        <text>Proceed with your mission.</text>
-        <event>
-            <text>Name: Federation Multiverse Drop Point
-Type: Friendly
-Unique: True
-Dominant Faction: The Federation
-Rebel Threat Level: Medium (Neutral Fleet)
-
-You're about to arrive at the nearest Federation warpbay. These hangar-like structures act as beacons of sorts for traveling between universes. Let's hope you're given a nice warm welcome and not greeted by a fleet of angry Rebels or Pirates, right?</text>
-            <choice hidden="true" req="pilot" lvl="1" max_group="0" blue="false">
-                <text>Exit Hyperspeed.</text>
-                <event load="START_BEACON_PREP_LOAD"/>
-            </choice>
-        </event>
+        <text>Continue...</text>
+        <event load="LIGHTSPEED_DROPPOINT"/>
     </choice>
     <quest event="ION_CANNON_ENCOUNTER">
         <currentSector>false</currentSector>
@@ -47,19 +70,7 @@ You're about to arrive at the nearest Federation warpbay. These hangar-like stru
     <text>Your ship is equipped with an Iron Curtain. When charged, it can be used by pressing the UI button or the hotkey assigned to it (tilde by default). You can configure its hotkey and automation through the toggle menu.</text>
     <choice hidden="true">
         <text>Continue...</text>
-        <event name="LUA_HIDE_IRON_CURTAIN_TUTORIAL_ARROW">
-            <text>Name: Federation Multiverse Drop Point
-Type: Friendly
-Unique: True
-Dominant Faction: The Federation
-Rebel Threat Level: Medium (Neutral Fleet)
-
-You're about to arrive at the nearest Federation warpbay. These hangar-like structures act as beacons of sorts for traveling between universes. Let's hope you're given a nice warm welcome and not greeted by a fleet of angry Rebels or Pirates, right?</text>
-            <choice hidden="true" req="pilot" lvl="1" max_group="0" blue="false">
-                <text>Exit Hyperspeed.</text>
-                <event load="START_BEACON_PREP_LOAD"/>
-            </choice>
-        </event>
+        <event load="LIGHTSPEED_DROPPOINT"/>
     </choice>
     <eventButton name="UI_IRON_CURTAIN">
         <event load="LUA_IRON_CURTAIN"/>

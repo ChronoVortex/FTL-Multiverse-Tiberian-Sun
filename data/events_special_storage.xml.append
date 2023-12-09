@@ -832,14 +832,6 @@
         <text>Convert the 'Influencer' Pinpoint into a 'Dominator' Beam.</text>
         <event load="STORAGE_CHECK_UPGRADE_MC_BEAM"/>
     </mod-append:choice>
-    <mod:findWithChildLike type="choice" child-type="text" panic="true">
-        <mod:selector>Do nothing.</mod:selector>
-        <mod:removeTag />
-    </mod:findWithChildLike>
-    <mod-append:choice req="pilot" lvl="1" max_group="16" hidden="true" blue="false">
-        <text>Do nothing.</text>
-        <event/>
-    </mod-append:choice>
 </mod:findName>
 
 <event name="STORAGE_CHECK_UPGRADE_MC_BEAM">
