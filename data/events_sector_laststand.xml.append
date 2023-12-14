@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <mod:findName type="event" name="TRUE_LAST_STAND_START" panic="true">
-    <mod:findLike type="choice">
+    <mod:findLike type="choice" limit="1">
         <mod:findLike type="event">
             <mod-append:choice hidden="true" max_group="1" req="SHIP_PAST" blue="false">
                 <text>Contact Federation command.</text>
