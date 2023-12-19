@@ -230,6 +230,13 @@
             <name>FOCUS_MC_SABOTAGE</name>
         </req>
     </mod-append:req>
+    
+    <mod-append:req name="CHRONOSPHERE_IONCANNON_REQS" type="all">
+        <name>CHRONOSPHERE_IONCANNON</name>
+        <req lvl="4">
+            <name>reactor</name>
+        </req>
+    </mod-append:req>
 </mod:findLike>
 
 <mod:findLike type="crew" limit="1">

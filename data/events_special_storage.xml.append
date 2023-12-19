@@ -272,7 +272,7 @@
         <text>(Drone Jammer) Jam the enemy drones!</text>
         <event load="COMBAT_CHECK_JAM_DRONES"/>
     </mod-append:choice>
-    <mod-append:choice req="CHRONOSPHERE_IONCANNON" blue="false">
+    <mod-append:choice req="CHRONOSPHERE_IONCANNON_REQS" blue="false">
         <text>(Chronosphere) Deploy the Ion Cannon.</text>
         <event load="COMBAT_CHECK_CHRONOSPHERE"/>
     </mod-append:choice>
@@ -314,7 +314,7 @@
         <text>(Drone Jammer) Jam the Flagship's drones!</text>
         <event load="COMBAT_CHECK_JAM_DRONES"/>
     </mod-append:choice>
-    <mod-append:choice req="CHRONOSPHERE_IONCANNON" blue="false">
+    <mod-append:choice req="CHRONOSPHERE_IONCANNON_REQS" blue="false">
         <text>(Chronosphere) Deploy the Ion Cannon.</text>
         <event load="COMBAT_CHECK_CHRONOSPHERE"/>
     </mod-append:choice>
@@ -600,122 +600,122 @@
 <event name="COMBAT_CHECK_CHRONOSPHERE">
     <text>Choose a system to target with the Ion Cannon.
 [Self reactor power -4, 30s cooldown.]</text>
-    <choice req="reactor" lvl="4" hidden="true" blue="false">
-        <text>Shields.</text>
-        <event>
-            <variable name="loc_ioncannon_target_room" op="set" val="0"/>
-            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
-        </event>
-    </choice>
-    <choice req="reactor" lvl="4" hidden="true" blue="false">
-        <text>Engines.</text>
-        <event>
-            <variable name="loc_ioncannon_target_room" op="set" val="1"/>
-            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
-        </event>
-    </choice>
-    <choice req="reactor" lvl="4" hidden="true" blue="false">
-        <text>Oxygen.</text>
-        <event>
-            <variable name="loc_ioncannon_target_room" op="set" val="2"/>
-            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
-        </event>
-    </choice>
-    <choice req="reactor" lvl="4" hidden="true" blue="false">
+    <choice req="weapons_enemy" hidden="true" blue="false">
         <text>Weapons.</text>
         <event>
             <variable name="loc_ioncannon_target_room" op="set" val="3"/>
             <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
         </event>
     </choice>
-    <choice req="reactor" lvl="4" hidden="true" blue="false">
-        <text>Drones.</text>
+    <choice req="shields_enemy" hidden="true" blue="false">
+        <text>Shields.</text>
         <event>
-            <variable name="loc_ioncannon_target_room" op="set" val="4"/>
+            <variable name="loc_ioncannon_target_room" op="set" val="0"/>
             <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
         </event>
     </choice>
-    <choice req="reactor" lvl="4" hidden="true" blue="false">
-        <text>Medbay.</text>
+    <choice req="engines_enemy" hidden="true" blue="false">
+        <text>Engines.</text>
         <event>
-            <variable name="loc_ioncannon_target_room" op="set" val="5"/>
+            <variable name="loc_ioncannon_target_room" op="set" val="1"/>
             <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
         </event>
     </choice>
-    <choice req="reactor" lvl="4" hidden="true" blue="false">
-        <text>Teleporter.</text>
-        <event>
-            <variable name="loc_ioncannon_target_room" op="set" val="9"/>
-            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
-        </event>
-    </choice>
-    <choice req="reactor" lvl="4" hidden="true" blue="false">
-        <text>Cloaking.</text>
-        <event>
-            <variable name="loc_ioncannon_target_room" op="set" val="10"/>
-            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
-        </event>
-    </choice>
-    <choice req="reactor" lvl="4" hidden="true" blue="false">
-        <text>Artillery.</text>
-        <event>
-            <variable name="loc_ioncannon_target_room" op="set" val="11"/>
-            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
-        </event>
-    </choice>
-    <choice req="reactor" lvl="4" hidden="true" blue="false">
-        <text>Clonebay.</text>
-        <event>
-            <variable name="loc_ioncannon_target_room" op="set" val="13"/>
-            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
-        </event>
-    </choice>
-    <choice req="reactor" lvl="4" hidden="true" blue="false">
-        <text>Mind Control.</text>
-        <event>
-            <variable name="loc_ioncannon_target_room" op="set" val="14"/>
-            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
-        </event>
-    </choice>
-    <choice req="reactor" lvl="4" hidden="true" blue="false">
-        <text>Hacking.</text>
-        <event>
-            <variable name="loc_ioncannon_target_room" op="set" val="15"/>
-            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
-        </event>
-    </choice>
-    <choice req="reactor" lvl="4" hidden="true" blue="false">
-        <text>Temporal Manipulator.</text>
-        <event>
-            <variable name="loc_ioncannon_target_room" op="set" val="20"/>
-            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
-        </event>
-    </choice>
-    <choice req="reactor" lvl="4" hidden="true" blue="false">
+    <choice req="piloting_enemy" hidden="true" blue="false">
         <text>Piloting.</text>
         <event>
             <variable name="loc_ioncannon_target_room" op="set" val="6"/>
             <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
         </event>
     </choice>
-    <choice req="reactor" lvl="4" hidden="true" blue="false">
-        <text>Sensors.</text>
+    <choice req="medbay_enemy" hidden="true" blue="false">
+        <text>Medbay.</text>
         <event>
-            <variable name="loc_ioncannon_target_room" op="set" val="7"/>
+            <variable name="loc_ioncannon_target_room" op="set" val="5"/>
             <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
         </event>
     </choice>
-    <choice req="reactor" lvl="4" hidden="true" blue="false">
+    <choice req="clonebay_enemy" hidden="true" blue="false">
+        <text>Clonebay.</text>
+        <event>
+            <variable name="loc_ioncannon_target_room" op="set" val="13"/>
+            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
+        </event>
+    </choice>
+    <choice req="oxygen_enemy" hidden="true" blue="false">
+        <text>Oxygen.</text>
+        <event>
+            <variable name="loc_ioncannon_target_room" op="set" val="2"/>
+            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
+        </event>
+    </choice>
+    <choice req="drones_enemy" hidden="true" blue="false">
+        <text>Drones.</text>
+        <event>
+            <variable name="loc_ioncannon_target_room" op="set" val="4"/>
+            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
+        </event>
+    </choice>
+    <choice req="cloaking_enemy" hidden="true" blue="false">
+        <text>Cloaking.</text>
+        <event>
+            <variable name="loc_ioncannon_target_room" op="set" val="10"/>
+            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
+        </event>
+    </choice>
+    <choice req="teleporter_enemy" hidden="true" blue="false">
+        <text>Teleporter.</text>
+        <event>
+            <variable name="loc_ioncannon_target_room" op="set" val="9"/>
+            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
+        </event>
+    </choice>
+    <choice req="mind_enemy" hidden="true" blue="false">
+        <text>Mind Control.</text>
+        <event>
+            <variable name="loc_ioncannon_target_room" op="set" val="14"/>
+            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
+        </event>
+    </choice>
+    <choice req="hacking_enemy" hidden="true" blue="false">
+        <text>Hacking.</text>
+        <event>
+            <variable name="loc_ioncannon_target_room" op="set" val="15"/>
+            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
+        </event>
+    </choice>
+    <choice req="temporal_enemy" hidden="true" blue="false">
+        <text>Temporal Manipulator.</text>
+        <event>
+            <variable name="loc_ioncannon_target_room" op="set" val="20"/>
+            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
+        </event>
+    </choice>
+    <choice req="doors_enemy" hidden="true" blue="false">
         <text>Doors.</text>
         <event>
             <variable name="loc_ioncannon_target_room" op="set" val="8"/>
             <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
         </event>
     </choice>
-    <choice req="reactor" lvl="4" hidden="true" blue="false">
+    <choice req="sensors_enemy" hidden="true" blue="false">
+        <text>Sensors.</text>
+        <event>
+            <variable name="loc_ioncannon_target_room" op="set" val="7"/>
+            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
+        </event>
+    </choice>
+    <choice req="battery_enemy" hidden="true" blue="false">
         <text>Backup Battery.</text>
         <event>
             <variable name="loc_ioncannon_target_room" op="set" val="12"/>
+            <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
+        </event>
+    </choice>
+    <choice req="artillery_enemy" hidden="true" blue="false">
+        <text>Artillery.</text>
+        <event>
+            <variable name="loc_ioncannon_target_room" op="set" val="11"/>
             <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
         </event>
     </choice>
