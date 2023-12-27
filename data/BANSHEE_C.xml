@@ -13,7 +13,7 @@
 </weaponMounts>
 <thrusters sync="true">
     <thruster x="21" y="87">banshee_thrusters_top</thruster>
-    <thruster x="21" y="226">banshee_thrusters_bottom</thruster>
+    <thruster x="21" y="227">banshee_thrusters_bottom</thruster>
 </thrusters>
 <explosion>
     <gib1>
