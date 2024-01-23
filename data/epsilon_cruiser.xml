@@ -28,15 +28,16 @@
     <thruster x="9" y="207">epsilon_thrusters_top</thruster>
     <thruster x="9" y="278">epsilon_thrusters_bottom</thruster>
     
-    <thruster x="235" y="207">epsilon_active_center</thruster>
-    <thruster x="206" y="177">epsilon_active_center_glow</thruster>
-    
-    <thruster x="539" y="218">epsilon_active_cockpit</thruster>
-    <thruster x="524" y="200">epsilon_active_cockpit_glow</thruster>
-    
     <thruster x="351" y="51">epsilon_active_nacelle_top</thruster>
     <thruster x="351" y="445">epsilon_active_nacelle_bottom</thruster>
 </thrusters>
+<mv-hullAnims>
+    <hullAnim x="235" y="207">epsilon_active_center</hullAnim>
+    <hullAnim x="206" y="177">epsilon_active_center_glow</hullAnim>
+    
+    <hullAnim x="539" y="218">epsilon_active_cockpit</hullAnim>
+    <hullAnim x="524" y="200">epsilon_active_cockpit_glow</hullAnim>
+</mv-hullAnims>
 <explosion>
     <gib1>
         <velocity min="0.54" max="1.15" />
