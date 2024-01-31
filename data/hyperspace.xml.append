@@ -231,6 +231,11 @@
         </req>
     </mod-append:req>
     
+    <mod-append:req name="COMBAT_DRONE_JAMMER_REQS" type="all">
+        <name>COMBAT_DRONE_JAMMER</name>
+        <name>drones_enemy</name>
+    </mod-append:req>
+    
     <mod-append:req name="CHRONOSPHERE_IONCANNON_REQS" type="all">
         <name>CHRONOSPHERE_IONCANNON</name>
         <req lvl="4">

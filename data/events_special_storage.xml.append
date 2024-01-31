@@ -268,7 +268,7 @@
 ================================-->
 
 <mod:findName type="event" name="COMBAT_CHECK_REAL" panic="true">
-    <mod-append:choice req="COMBAT_DRONE_JAMMER" blue="false">
+    <mod-append:choice req="COMBAT_DRONE_JAMMER_REQS" blue="false">
         <text>(Drone Jammer) Jam the enemy drones!</text>
         <event load="COMBAT_CHECK_JAM_DRONES"/>
     </mod-append:choice>
@@ -310,7 +310,7 @@
 </mod:findName>
 
 <mod:findName type="event" name="COMBAT_CHECK_FLAGSHIP_REAL" panic="true">
-    <mod-append:choice req="COMBAT_DRONE_JAMMER" blue="false">
+    <mod-append:choice req="COMBAT_DRONE_JAMMER_REQS" blue="false">
         <text>(Drone Jammer) Jam the Flagship's drones!</text>
         <event load="COMBAT_CHECK_JAM_DRONES"/>
     </mod-append:choice>
