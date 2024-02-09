@@ -293,11 +293,11 @@
     <desc>Shame on you.</desc>
     <tooltip>Just shame on you.</tooltip>
     <ion>2</ion>
-    <damage>5</damage>
+    <damage>4</damage>
     <sp>0</sp>
     <fireChance>0</fireChance>
     <breachChance>0</breachChance>
-    <cooldown>28</cooldown>
+    <cooldown>40</cooldown>
     <power>1</power>
     <color>
         <r>211</r>

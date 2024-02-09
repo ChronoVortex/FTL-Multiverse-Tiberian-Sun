@@ -134,6 +134,23 @@
         </crew>
     </mod-append:customShip>
     
+	<mod-append:customShip name="ION_CANNON_SATELLITE">
+		<shipIcons>
+			<shipIcon>icon_threat</shipIcon>
+			<shipIcon>icon_specialwep</shipIcon>
+            <shipIcon>icon_resist</shipIcon>
+            <shipIcon>icon_auto</shipIcon>
+			<shipIcon>icon_no2</shipIcon>
+        </shipIcons>
+        <rooms>
+            <room id="1">
+                <roomAnim renderLayer="0">resist_1x1</roomAnim>
+                <roomAnim renderLayer="3">resist_icon</roomAnim>
+                <sysDamageResistChance>100</sysDamageResistChance>
+            </room>
+        </rooms>
+	</mod-append:customShip>
+    
     <mod:findLike type="shipOrder">
         <mod-append:ship>PLAYER_SHIP_KODIAK</mod-append:ship>
         <mod-append:ship>PLAYER_SHIP_BANSHEE</mod-append:ship>
@@ -211,6 +228,9 @@
     <mod:findName type="req" name="LIST_CHECK_AUGMENTS">
         <mod-append:name>TIBERIUM_GARDEN</mod-append:name>
     </mod:findName>
+    
+    <!-- ion cannon boss -->
+    <mod-append:bossShip yOffset="280">ION_CANNON_SATELLITE</mod-append:bossShip>
     
     <!-- Add requirement list only if one doesn't
     already exist, then append new items to it -->

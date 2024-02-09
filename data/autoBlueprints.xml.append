@@ -1,22 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<blueprintList name="LIST_DRONES_ION_CANNON_SATELLITE">
+	<name>REPAIR</name>
+	<name>DEFENSE_1_ENEMY</name>
+	<name>DEFENSE_2_ENEMY</name>
+	<name>GUARDIAN_1_DRONE</name>
+	<name>AMPHI_COMBAT</name>
+	<name>ION_1_AMP2_ENEMY</name>
+	<name>ION_1_AMP3_ENEMY</name>
+	<name>ION_1_AMP4</name>
+	<name>SHIP_REPAIR_ENEMY</name>
+</blueprintList>
+
 <shipBlueprint name="ION_CANNON_SATELLITE" layout="ioncannon" img="ioncannon">
-    <class>Ion Cannon</class>
-    <minSector>1</minSector>
-    <maxSector>1</maxSector>
-    <systemList>
-        <artillery power="2" max="2" room="0" start="true" weapon="ION_CANNON_ARTILLERY" />
-        <engines power="4" max="4" room="1" start="true" />
-        <pilot power="3" max="3" room="3" start="true" />
-        <shields power="4" max="4" room="2" start="true" />
-    </systemList>
-    <weaponSlots>0</weaponSlots>
-    <droneSlots>0</droneSlots>
-    <weaponList missiles="0" count="0" />
-    <droneList drones="0" count="0" />
-    <health amount="15" />
-    <maxPower amount="10" />
-    <boardingAI>sabotage</boardingAI>
+	<class>Ion Cannon Satellite</class>
+	<minSector>1</minSector>
+	<maxSector>8</maxSector>
+	<systemList>
+		<artillery power="4" max="4" room="2" start="true" weapon="ION_CANNON_ARTILLERY" />
+		<drones power="2" max="8" room="0" start="true" />
+		<engines power="2" max="8" room="3" start="true" />
+		<pilot power="1" max="3" room="4" start="true" />
+		<shields power="2" max="10" room="1" start="true" />
+	</systemList>
+	<weaponSlots>0</weaponSlots>
+	<droneSlots>6</droneSlots>
+	<weaponList missiles="0" count="0" />
+	<droneList drones="20" count="6" load="LIST_DRONES_ION_CANNON_SATELLITE" />
+	<health amount="17" />
+	<maxPower amount="30" />
+	<boardingAI>sabotage</boardingAI>
+	<aug name="UPG_TECH_SEALANT" />
 </shipBlueprint>
 
 

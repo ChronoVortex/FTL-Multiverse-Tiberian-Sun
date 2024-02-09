@@ -172,3 +172,18 @@ script.on_game_event("IRON_CURTAIN_CHARGE_POST", false, function()
         Hyperspace.CustomEventsParser.GetInstance():LoadEvent(Hyperspace.Global.GetInstance():GetCApp().world, "LUA_IRON_CURTAIN", false, -1)
     end
 end)
+
+-- Hacky way to set a horizontal offset for the ship
+script.on_internal_event(Defines.InternalEvents.CONSTRUCT_SHIP_MANAGER, function(ship)
+    if ship.iShipId == 1 then
+        ship.table["mods.cnc.checkForIonCannonOffset"] = true
+    end
+end)
+script.on_internal_event(Defines.InternalEvents.ON_TICK, function()
+    local enemy = Hyperspace.ships.enemy
+    if enemy and enemy.table["mods.cnc.checkForIonCannonOffset"] and enemy.myBlueprint.blueprintName == "ION_CANNON_SATELLITE" then
+        enemy.table["mods.cnc.checkForIonCannonOffset"] = nil
+        local pos = Hyperspace.Global.GetInstance():GetCApp().gui.combatControl.targetPosition
+        pos.x = pos.x + 15
+    end
+end)
