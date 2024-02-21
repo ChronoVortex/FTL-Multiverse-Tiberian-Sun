@@ -70,8 +70,7 @@
     </systemList>
     <weaponSlots>4</weaponSlots>
     <droneSlots>2</droneSlots>
-    <weaponList missiles="20" count="4">
-        <weapon name="ION_CANNON" />
+    <weaponList missiles="15" count="4">
         <weapon name="RAILGUN" />
         <weapon name="DISRUPTOR" />
     </weaponList>
@@ -157,8 +156,8 @@
     <tip>tip_beams</tip>
     <title>Ion Cannon</title>
     <short>Ion Cannon</short>
-    <desc>This super weapon was adapted to function aboard the Kodiak. Can heavily damage and ionize ships.</desc>
-    <tooltip>Large beam that does 2 damage and 2 ion damage per room.</tooltip>
+    <desc>This super weapon was adapted to function aboard your vessel. Can heavily damage and ionize ships.</desc>
+    <tooltip>Large beam that does 3 damage and 3 ion damage per room.</tooltip>
     <ion>3</ion>
     <ionBeamFix>true</ionBeamFix>
     <damage>3</damage>

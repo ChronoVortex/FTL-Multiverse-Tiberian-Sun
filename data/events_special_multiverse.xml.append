@@ -1,0 +1,81 @@
+<mod:findName type="event" name="SYLVAN_STANDARD">
+	<mod-append:choice hidden="true" req="SYLVAN_IONCANNON_STORY_CHECK" lvl="1" max_group="3" blue="true">
+		<text>Sylvan has a story he wants to tell.</text>
+		<event load="SYLVAN_IONCANNON_STORY"/>
+	</mod-append:choice>
+</mod:findName>
+
+<event name="SYLVAN_IONCANNON_STORY">
+	<text>"Alright ssstranger! Have you ever heard the tale... of the invincible man? There are many talesss of invincible beingsss to be sssure, but thisss particular one wasss a human from old Earth hissstory, before humanity took to the ssstarsss."
+
+Sylvan chuckles. "Now, I know what you're thinking. No human isss invincible, certainly none from that long ago. And you'd be right! At leassst, in thisss universsse. But it'sss a true ssstory, in a universsse far dissstant from Rebelsss and Federation. A universsse that hasss been leaking into oursss recently. I'm sssure you've ssseen thisss 'Tiberium' ssstuff popping up, maybe I've even sssold you sssome of it. It'sss certainly not from here.
+
+"The ssstory goesss that the invincible man tried to take over the world usssing Tiberium asss a power sssource. He ssstarted a war that lasssted decadesss, one which led to the creation of many ssstrange and powerful weaponsss. One of them wasss an orbital beam sssatellite, which vaporisssed hisss entire command center while he wasss ssstill inssside.
+
+"A weapon like that would have a massssive power sssignature. And guesss what my sssenssors picked up in the next sssector? It'sss called an ion cannon, and while it may have failed to dessstroy that man, it'sss ssstill formidable. If you think you'd be able to take it on, it could make a fine addition to your arsssenal."</text>
+	<choice hidden="true">
+		<text>Sure.</text>
+		<event>
+			<text>"Excellent! I'll give you the coordinatessss. Jussst remember, you're certainly not invincible, ssso be careful ssstranger."</text>
+			<achievement>ACH_SYLVAN_STORY</achievement>
+            <quest event="SYLVAN_IONCANNON">
+                <currentSector>false</currentSector>
+                <nextSector>true</nextSector>
+            </quest>
+			<variable name="loc_ioncannon_encounter" op="set" val="1"/>
+			<choice>
+				<text>Continue...</text>
+				<event>
+					<loadEvent>SYLVAN_STANDARD</loadEvent>
+				</event>
+			</choice>
+		</event>
+	</choice>
+	<choice hidden="true">
+		<text>Decline.</text>
+		<event>
+			<text>"That'ssss alright, ssstranger. No hard feelingssss."</text>
+			<choice>
+				<text>Continue...</text>
+				<event>
+					<loadEvent>SYLVAN_STANDARD</loadEvent>
+				</event>
+			</choice>
+		</event>
+	</choice>
+</event>
+
+<event name="SYLVAN_IONCANNON">
+    <preventQuest/>
+    <beaconType id="map_icon_quest" global="true">
+        <color r="155" g="90" b="205" a="1.0"/>
+        <unvisitedTooltip>This is the location of a quest from the Traveling Merchant.</unvisitedTooltip>
+        <visitedTooltip>Explored location. Nothing left of interest.</visitedTooltip>
+    </beaconType>
+    <ship load="ION_CANNON_SHIP" hostile="false"/>
+    <text>You detect the immense power output of the ion cannon the moment you arrive at the beacon. It seems it hasn't locked onto you yet.</text>
+    <choice hidden="true"><text>Engage!</text>
+        <event>
+            <text>You power weapons and the beam powers on in kind. Hopefully you'll be able to disable it before it gets too many volleys off.</text>
+            <ship hostile="true"/>
+            <choice hidden="true">
+                <text>Continue...</text>
+                <event load="COMBAT_CHECK"/>
+            </choice>
+            <ship hostile="true"/>
+        </event>
+    </choice>
+    <choice hidden="true"><text>It's too dangerous.</text>
+        <event>
+            <text>Seeing the satellite up-close, your confidence wavers. You decide that your lust for powerful weapons will have to be satiated later, and begin charging the FTL drive.</text>
+        </event>
+    </choice>
+</event>
+
+<ship name="ION_CANNON_SHIP" auto_blueprint="ION_CANNON_SATELLITE">
+    <destroyed>
+        <text>With the satellite destroyed, you move in to salvage its remains. Among the debris is what appears to be its power core. It only takes a few modifications to adapt it to mount to your hull.</text>
+        <autoReward level="MED">standard</autoReward>
+        <weapon name="ION_CANNON"/>
+    </destroyed>
+</ship>

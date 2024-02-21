@@ -2,7 +2,7 @@
 
 <FTL>
 
-<version>^1.8.0</version>
+<version>^1.10.0</version>
 
 <mod:findLike type="discord" limit="1">
     <mod:findLike type="miniships">
@@ -216,6 +216,9 @@
     <mod-append:variable name="loc_iron_curtain_charged" op="set" val="0"/>
     <mod-append:variable name="loc_iron_curtain_timer" op="set" val="20"/>
     
+    <!-- ion cannon encounter tracker -->
+    <mod-append:variable name="loc_ioncannon_encounter" op="set" val="0"/>
+    
     <!-- iron curtain settings -->
     <mod-append:metaVariable name="prof_hotkey_iron_curtain" op="set" val="96"/> <!-- ~ by default -->
     <mod-append:metaVariable name="prof_auto_iron_curtain" op="set" val="0"/>
@@ -239,9 +242,17 @@
         <mod:removeTag />
     </mod:findName>
     <mod:findName type="req" name="ALTERNATE_START">
-        <mod-append:name>ION_CANNON</mod-append:name>
         <mod-append:name>IRON_CURTAIN</mod-append:name>
     </mod:findName>
+    
+    <mod-append:req name="SYLVAN_IONCANNON_STORY_CHECK" type="any">
+        <req type="all">
+            <name>SHIP PLAYER_SHIP_KODIAK</name>
+            <req max_lvl="0">
+                <name>loc_ioncannon_encounter</name>
+            </req>
+        </req>
+    </mod-append:req>
     
     <mod-append:req name="MC_BEAM_UPGRADE_REQS" type="all">
         <name>YURI_BRAIN</name>

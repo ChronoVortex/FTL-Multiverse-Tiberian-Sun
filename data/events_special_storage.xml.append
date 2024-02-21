@@ -309,48 +309,6 @@
 	</mod-append:choice>
 </mod:findName>
 
-<mod:findName type="event" name="COMBAT_CHECK_FLAGSHIP_REAL" panic="true">
-    <mod-append:choice req="COMBAT_DRONE_JAMMER_REQS" blue="false">
-        <text>(Drone Jammer) Jam the Flagship's drones!</text>
-        <event load="COMBAT_CHECK_JAM_DRONES"/>
-    </mod-append:choice>
-    <mod-append:choice req="CHRONOSPHERE_IONCANNON_REQS" blue="false">
-        <text>(Chronosphere) Deploy the Ion Cannon.</text>
-        <event load="COMBAT_CHECK_CHRONOSPHERE"/>
-    </mod-append:choice>
-    <mod-append:choice req="IRON_CURTAIN" blue="false">
-        <text>(Iron Curtain) Reroute power to the Iron Curtain.</text>
-        <event load="COMBAT_CHECK_IRON_CURTAIN"/>
-    </mod-append:choice>
-    <mod-append:variable name="loc_iron_curtain_charged" op="set" val="0"/>
-    
-    <mod:findWithChildLike type="choice" child-type="text" panic="true">
-        <mod:selector>Change your toggle or amp equipment.</mod:selector>
-        <mod:removeTag />
-    </mod:findWithChildLike>
-    <mod:findWithChildLike type="choice" child-type="text" panic="true">
-        <mod:selector>Do some last minute check-ups.</mod:selector>
-        <mod:removeTag />
-    </mod:findWithChildLike>
-    <mod:findWithChildLike type="choice" child-type="text" panic="true">
-        <mod:selector>Do nothing.</mod:selector>
-        <mod:removeTag />
-    </mod:findWithChildLike>
-    
-	<mod-append:choice req="LIST_CHECK_TOGGLES_AND_AMPS" lvl="1" blue="false">
-		<text>Change your toggle or amp equipment.</text>
-		<event load="COMBAT_CHECK_TOGGLE_LOAD"/>
-	</mod-append:choice>
-	<mod-append:choice>
-		<text>Do some last minute check-ups.</text>
-		<event load="COMBAT_CHECK_GENERIC"/>
-	</mod-append:choice>
-	<mod-append:choice>
-		<text>Do nothing.</text>
-		<event/>
-	</mod-append:choice>
-</mod:findName>
-
 <event name="COMBAT_CHECK_IRON_CURTAIN">
     <text>How much power do you want to reroute?</text>
     <choice req="UPG_BATTERY_GENERATOR" hidden="true">

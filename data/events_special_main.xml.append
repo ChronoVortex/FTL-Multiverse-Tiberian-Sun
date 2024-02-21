@@ -44,27 +44,11 @@
         <mod:selector>Proceed with your mission.</mod:selector>
         <mod:setAttributes req="ALTERNATE_START" lvl="0" max_lvl="0" blue="false" />
     </mod:findWithChildLike>
-    <mod-append:choice hidden="true" req="ION_CANNON" blue="false">
-        <text>Scan the sector for the Ion Cannon.</text>
-            <event load="INITIAL_START_BEACON_KODIAKCHOICES"/>
-    </mod-append:choice>
     <mod-append:choice hidden="true" req="IRON_CURTAIN" blue="false">
         <text>Proceed with your mission.</text>
             <event load="INITIAL_START_BEACON_IRON_CURTAIN"/>
     </mod-append:choice>
 </mod:findName>
-
-<event name="INITIAL_START_BEACON_KODIAKCHOICES">
-    <text>The Brotherhood's acquisition of an old Allied Chronosphere has complicated the war. Your chrono shift to this universe was successful, thanks to GDI's own Chronosphere, and now it's your job to repair the damage Nod has done to the time-space continuum by assisting the Federation and stopping the Rebellion. Apparently the Ion Cannon was transported somewhere near these coordinates as well, and after a quick scan you find its powerful signature in the next sector. Hopefully you'll find a way to get it back to where it belongs.</text>
-    <choice hidden="true">
-        <text>Continue...</text>
-        <event load="LIGHTSPEED_DROPPOINT"/>
-    </choice>
-    <quest event="ION_CANNON_ENCOUNTER">
-        <currentSector>false</currentSector>
-        <nextSector>true</nextSector>
-    </quest>
-</event>
 
 <event name="INITIAL_START_BEACON_IRON_CURTAIN">
     <text>Your ship is equipped with an Iron Curtain. When charged, it can be used by pressing the UI button or the hotkey assigned to it (tilde by default). You can configure its hotkey and automation through the toggle menu.</text>
@@ -82,43 +66,3 @@
         <jumpClear>false</jumpClear>
     </eventButton>
 </event>
-
-
-
-<event name="ION_CANNON_ENCOUNTER">
-    <preventQuest/>
-    <beaconType text="ION CANNON" global="true" persist="true" hideVanillaLabel="true">
-        <color r="156" g="234" b="239" a="1.0"/>
-        <unvisitedTooltip>This is the location of the Ion Cannon.</unvisitedTooltip>
-        <visitedTooltip>Explored location. Nothing left of interest.</visitedTooltip>
-    </beaconType>
-    <text>It's not difficult to find the Ion Cannon considering its immense energy output. As you approach, it starts targeting your ship. Apparently it was reprogramed by Nod - it may even be what they used to instigate the war. Your systems are unable to restore the cannon to its original programming.</text>
-    <choice hidden="true"><text>Try to disable it manually.</text>
-        <event><text>You power the weapons, hopefully you can disable the beam without destroying the cannon.</text>
-        <ship hostile="true"/>
-        </event>
-    </choice>
-    <choice hidden="true"><text>It's too dangerous, power the FTL drive and jump away before it charges.</text>
-        <event><text>The Kodiak is no match for the Ion Cannon by itself, instead you decide fill your superiors in on its status once the Rebellion is taken care of.</text>
-        </event>
-    </choice>
-    <ship load="ION_CANNON_SHIP" hostile="false"/>
-</event>
-
-<ship name="ION_CANNON_SHIP" auto_blueprint="ION_CANNON_SATELLITE">
-    <destroyed>
-        <text>Looks like you overestimated the beating it could take. You salvage what you can from the debris, but it'll take forever to rebuild. No doubt you'll get an earful from command about this once you deliver what's left.</text>
-                <ship hostile="false"/>
-                <autoReward level="HIGH">scrap_only</autoReward>
-    </destroyed>
-    <surrender chance="0" min="2" max="2" >
-        <text>You've inflicted enough damage to stop the cannon from targeting you. A team is sent aboard to properly reprogram the satellite.</text>
-                <choice hidden="true"><text>Have the team examine the satellite.</text>
-                <event>
-                    <text>Upon closer inspection you discover a small Chronosphere inside the cannon. You'll use it to send the cannon back to its proper time and place before you jump. For now it's needed elsewhere, but you decide to keep the Chronosphere in case you're ever in need of some serious fire support.</text>
-                    <augment name="CHRONOSPHERE_IONCANNON"/>
-                </event>
-                </choice>
-        <ship hostile="false"/>
-    </surrender>
-</ship>
