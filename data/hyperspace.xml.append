@@ -275,6 +275,17 @@
     </mod-append:req>
 </mod:findLike>
 
+<mod:findLike type="events">
+    <mod:findName name="LIST_CHECK_TOGGLES_AND_AMPS" type="req">
+        <mod-append:name>MISSILES_V5_SINGLE</mod-append:name>
+        <mod-append:name>MISSILES_V5_MULTI</mod-append:name>
+        <mod-append:name>FOCUS_MC_COMBAT</mod-append:name>
+        <mod-append:name>FOCUS_MC_SABOTAGE</mod-append:name>
+        <mod-append:name>BEAM_MC_COMBAT</mod-append:name>
+        <mod-append:name>BEAM_MC_SABOTAGE</mod-append:name>
+    </mod:findName>
+</mod:findLike>
+
 <mod:findLike type="crew" limit="1">
     <mod-append:race name="human_black_hand">
         <damageMultiplier>1.3</damageMultiplier>

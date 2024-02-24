@@ -1576,7 +1576,7 @@ Stun Chance: 10% (3 seconds long)
             <crewTarget>ALL</crewTarget>
             <droneTarget>CREW</droneTarget>
             <!-- Loading a blueprintList here is broken for some reason
-            <blackList load="LIST_CREW_METALLOID">
+            <blackList load="LIST_CREW_METAL">
                 <tiberium_fiend/>
             </blackList>
             -->
@@ -1602,7 +1602,9 @@ Stun Chance: 10% (3 seconds long)
                 <drone_battle/>
                 <atom/>
                 <pony_engi/>
+                <pony_engi_nano/>
                 <pony_engi_chaos/>
+                <pony_engi_nano_chaos/>
                 <tiberium_fiend/>
             </blackList>
             <duration>8.75</duration>
