@@ -414,10 +414,6 @@
         <text>Do something else instead.</text>
         <event load="COMBAT_CHECK"/>
     </choice>
-    <choice blue="false" req="loc_flagship" lvl="1" max_group="1">
-        <text>Do something else instead.</text>
-        <event load="COMBAT_CHECK_FLAGSHIP"/>
-    </choice>
     <choice>
         <text>Nevermind, let's fight!</text>
         <event>
@@ -511,10 +507,6 @@
     <choice blue="false" req="loc_flagship" lvl="0" max_group="1"  >
         <text>Do something else instead.</text>
         <event load="COMBAT_CHECK"/>
-    </choice>
-    <choice blue="false" req="loc_flagship" lvl="1" max_group="1">
-        <text>Do something else instead.</text>
-        <event load="COMBAT_CHECK_FLAGSHIP"/>
     </choice>
     <choice>
         <text>Nevermind, let's fight!</text>
@@ -680,10 +672,6 @@
     <choice blue="false" req="loc_flagship" lvl="0" max_group="1"  >
         <text>Do something else instead.</text>
         <event load="COMBAT_CHECK"/>
-    </choice>
-    <choice blue="false" req="loc_flagship" lvl="1" max_group="1">
-        <text>Do something else instead.</text>
-        <event load="COMBAT_CHECK_FLAGSHIP"/>
     </choice>
     <choice>
         <text>Nevermind, let's fight!</text>
