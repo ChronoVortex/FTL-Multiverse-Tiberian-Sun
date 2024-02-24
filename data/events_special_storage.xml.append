@@ -410,7 +410,7 @@
             </choice>
         </event>
     </choice>
-    <choice blue="false" req="loc_flagship" lvl="0" max_group="1"  >
+    <choice>
         <text>Do something else instead.</text>
         <event load="COMBAT_CHECK"/>
     </choice>
@@ -504,7 +504,7 @@
         <text>Power the augment with the Emergency Generator.</text>
         <event load="COMBAT_CHECK_JAM_DRONES_POWERUP" />
     </choice>
-    <choice blue="false" req="loc_flagship" lvl="0" max_group="1"  >
+    <choice>
         <text>Do something else instead.</text>
         <event load="COMBAT_CHECK"/>
     </choice>
@@ -669,7 +669,7 @@
             <loadEvent>COMBAT_CHECK_CHRONOSPHERE_ACTIVATED</loadEvent>
         </event>
     </choice>
-    <choice blue="false" req="loc_flagship" lvl="0" max_group="1"  >
+    <choice>
         <text>Do something else instead.</text>
         <event load="COMBAT_CHECK"/>
     </choice>
