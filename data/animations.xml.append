@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<dependencyChecker name="If you see this you patched CnC Weapons incorrectly! Please read the dependency list and load order on the forum page"/>
+
 <animSheet name="invisible" w="1" h="1" fw="1" fh="1">misc/invisible.png</animSheet>
 <anim name="invisible">
     <sheet>invisible</sheet>
