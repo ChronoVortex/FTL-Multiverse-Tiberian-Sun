@@ -17,10 +17,7 @@ script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, function(ship)
         -- Check for cloak charge
         local cloakCharge = false
         if ship:HasAugmentation("TARGET_SCANNERS") > 0 then
-            pcall(function()
-                local otherShip = Hyperspace.Global.GetInstance():GetShipManager((ship.iShipId + 1)%2)
-                cloakCharge = Hyperspace.ships.enemy.cloakSystem.bTurnedOn
-            end)
+            pcall(function() cloakCharge = Hyperspace.ships(1 - ship.iShipId).cloakSystem.bTurnedOn end)
         end
         
         -- Manually manage weapon cooldown for cloak charge
@@ -54,7 +51,7 @@ local prismBeams = mods.cnconquer.prismBeams
 prismBeams["BEAM_PRISM_1"] = {
     refractions = 3,
     blueprints = {
-        Hyperspace.Global.GetInstance():GetBlueprints():GetWeaponBlueprint("BEAM_PRISM_REFRACT")
+        Hyperspace.Blueprints:GetWeaponBlueprint("BEAM_PRISM_REFRACT")
     }
 }
 script.on_internal_event(Defines.InternalEvents.DAMAGE_BEAM, function(shipManager, projectile, location, damage, realNewTile, beamHitType)
