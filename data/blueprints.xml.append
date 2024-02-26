@@ -1085,7 +1085,7 @@ Tiberium Crew Healing: 30
 Fire Chance: 30%
 Stun Chance: 10% (3 seconds long)
 
-Default Price: 65~
+Default Price: 65~   -   Selling Price: 32~
 	</descriptionOverride>
     <tooltip>Fires 3 missiles; does 1 damage each; kills crew; pierces all shields.</tooltip>
 	<tooltipOverride>Required Power: 3
