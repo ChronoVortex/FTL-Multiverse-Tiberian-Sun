@@ -1669,7 +1669,7 @@ Stun Chance: 10% (3 seconds long)
                 <number>0</number>
             </slot>
         </medbay>
-        <mind power="2" room="0" start="true" img="room_mind_4" />
+        <mind max="4" power="2" room="0" start="true" img="room_mind_4" />
         <oxygen power="1" room="2" start="true" img="room_oxygen" />
         <pilot power="1" room="1" start="true" img="room_pilot">
             <slot>
