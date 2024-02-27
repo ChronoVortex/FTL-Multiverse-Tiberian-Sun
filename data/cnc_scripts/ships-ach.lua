@@ -5,7 +5,10 @@
 local vter = mods.vertexutil.vter
 local is_first_shot = mods.vertexutil.is_first_shot
 local userdata_table = mods.vertexutil.userdata_table
-local string_starts = mods.multiverse.string_starts
+
+local function string_starts(str, start)
+    return string.sub(str, 1, string.len(start)) == start
+end
 
 local function should_track_achievement(achievement, ship, shipClassName)
     return ship and
