@@ -118,7 +118,7 @@ script.on_internal_event(Defines.InternalEvents.PROJECTILE_FIRE, function(projec
                            should_track_achievement("ACH_SHIP_BANSHEE_1", playerShip, "PLAYER_SHIP_BANSHEE")
     if checkCloakShot then
         cloakShotCount = cloakShotCount + 1
-        if cloakShotCount >= 10 then
+        if cloakShotCount >= 7 then
             Hyperspace.CustomAchievementTracker.instance:SetAchievement("ACH_SHIP_BANSHEE_1", false)
         end
     end

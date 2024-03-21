@@ -72,7 +72,7 @@
         </unlock>
         <achievement name="ACH_SHIP_BANSHEE_1" layout="all">
             <name>Rain in the Night</name>
-            <description>Without using the Stealth Weapons augment or upgrade, fire your weapons 10 times within the duration of a single cloak using the Banshee Fighter.</description>
+            <description>Without using the Stealth Weapons augment or upgrade, fire your weapons 7 times within the duration of a single cloak using the Banshee Fighter.</description>
             <icon>banshee_ach_1</icon>
             <lockImage>banshee_ach_1_lock</lockImage>
         </achievement>
