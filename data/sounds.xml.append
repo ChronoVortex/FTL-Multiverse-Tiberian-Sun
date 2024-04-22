@@ -42,4 +42,4 @@
 <GB_cannonLight3 volume="4">weapons/GB_cannonLight3.ogg</GB_cannonLight3>
 <psiShotSmall volume="4">weapons/bp_psiShotSmall.ogg</psiShotSmall>
 <psiShotLarge volume="4">weapons/bp_psiShotLarge.ogg</psiShotLarge>
-<psiRelease volume="1">weapons/bp_psiRelease.ogg</psiRelease>
+<psiRelease volume="12">weapons/bp_psiRelease.ogg</psiRelease>
