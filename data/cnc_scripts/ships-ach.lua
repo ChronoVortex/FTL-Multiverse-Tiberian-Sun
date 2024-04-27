@@ -12,13 +12,13 @@ end
 
 local function should_track_achievement(achievement, ship, shipClassName)
     return ship and
-           Hyperspace.CApp.world.bStartedGame and
+           Hyperspace.App.world.bStartedGame and
            Hyperspace.CustomAchievementTracker.instance:GetAchievementStatus(achievement) < Hyperspace.Settings.difficulty and
            string_starts(ship.myBlueprint.blueprintName, shipClassName)
 end
 
 local function current_sector()
-    return Hyperspace.CApp.world.starMap.worldLevel + 1
+    return Hyperspace.App.world.starMap.worldLevel + 1
 end
 
 local function count_ship_achievements(achPrefix)
@@ -56,7 +56,7 @@ do
     local function check_ion_cannon_ach(playerShip, enemyShip)
         return enemyShip and
                enemyShip.bDestroyed and
-               Hyperspace.CApp.world.space.bStorm and
+               Hyperspace.App.world.space.bStorm and
                onlyUsedIonCannon and
                should_track_achievement("ACH_SHIP_KODIAK_1", playerShip, "PLAYER_SHIP_KODIAK")
     end

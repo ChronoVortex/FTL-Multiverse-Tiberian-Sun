@@ -87,7 +87,7 @@ script.on_internal_event(Defines.InternalEvents.DAMAGE_BEAM, function(shipManage
         end
         
         -- Pick from the list of targets until there are no more or until all refraction projectiles are created
-        local spaceManager = Hyperspace.CApp.world.space
+        local spaceManager = Hyperspace.App.world.space
         local validTargetCount = #validTargets
         while #validTargets > 0 and #validTargets + prismData.refractions > validTargetCount do
             local targetIndex = Hyperspace.random32()%#validTargets + 1
@@ -156,17 +156,17 @@ script.on_internal_event(Defines.InternalEvents.ON_KEY_DOWN, function(key)
     if settingIronCurtainKey then Hyperspace.metaVariables.prof_hotkey_iron_curtain = key end
 
     -- Do stuff if a hotkey is pressed
-    local cmdGui = Hyperspace.CApp.gui
+    local cmdGui = Hyperspace.App.gui
     local playerShip = Hyperspace.ships.player
     if playerShip and key == Hyperspace.metaVariables.prof_hotkey_iron_curtain and Hyperspace.playerVariables.loc_iron_curtain_charged > 0 and not (playerShip.bJumping or cmdGui.event_pause or cmdGui.menu_pause) then
-        Hyperspace.CustomEventsParser.GetInstance():LoadEvent(Hyperspace.CApp.world, "LUA_IRON_CURTAIN", false, -1)
+        Hyperspace.CustomEventsParser.GetInstance():LoadEvent(Hyperspace.App.world, "LUA_IRON_CURTAIN", false, -1)
     end
 end)
 
 -- Iron curtain automation
 script.on_game_event("IRON_CURTAIN_CHARGE_POST", false, function()
     if Hyperspace.metaVariables.prof_auto_iron_curtain > 0 then
-        Hyperspace.CustomEventsParser.GetInstance():LoadEvent(Hyperspace.CApp.world, "LUA_IRON_CURTAIN", false, -1)
+        Hyperspace.CustomEventsParser.GetInstance():LoadEvent(Hyperspace.App.world, "LUA_IRON_CURTAIN", false, -1)
     end
 end)
 
@@ -180,7 +180,7 @@ script.on_internal_event(Defines.InternalEvents.ON_TICK, function()
     local enemy = Hyperspace.ships.enemy
     if enemy and enemy.table["mods.cnc.checkForIonCannonOffset"] and enemy.myBlueprint.blueprintName == "ION_CANNON_SATELLITE" then
         enemy.table["mods.cnc.checkForIonCannonOffset"] = nil
-        local pos = Hyperspace.CApp.gui.combatControl.targetPosition
+        local pos = Hyperspace.App.gui.combatControl.targetPosition
         pos.x = pos.x + 15
     end
 end)
