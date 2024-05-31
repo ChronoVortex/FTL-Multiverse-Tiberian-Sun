@@ -151,7 +151,6 @@ script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, function(ship)
         end
         shipAchData.systemFiresCounted = true
         Hyperspace.playerVariables.loc_banshee_fire_score = Hyperspace.playerVariables.loc_banshee_fire_score + 1
-        print(Hyperspace.playerVariables.loc_banshee_fire_score)
         if Hyperspace.playerVariables.loc_banshee_fire_score >= 4 then
             Hyperspace.CustomAchievementTracker.instance:SetAchievement("ACH_SHIP_BANSHEE_3", false)
         end
