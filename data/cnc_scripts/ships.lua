@@ -2,7 +2,8 @@ if not mods or not mods.vertexutil then
     error("Couldn't find Vertex Tags and Utility Functions! Make sure it's above mods which depend on it in the Slipstream load order")
 end
 
-local vter = mods.vertexutil.vter
+local vter = mods.multiverse.vter
+local userdata_table = mods.multiverse.userdata_table
 local ShowTutorialArrow = mods.vertexutil.ShowTutorialArrow
 local HideTutorialArrow = mods.vertexutil.HideTutorialArrow
 
@@ -93,16 +94,22 @@ script.on_internal_event(Defines.InternalEvents.DAMAGE_BEAM, function(shipManage
             local targetIndex = Hyperspace.random32()%#validTargets + 1
             local refractIndex = 1
             if #(prismData.blueprints) > 1 then refractIndex = Hyperspace.random32()%#(prismData.blueprints) + 1 end
-            spaceManager:CreateBeam(
+            local refractedBeam = spaceManager:CreateBeam(
                 prismData.blueprints[refractIndex],
                 location,
                 shipManager.iShipId,
                 (shipManager.iShipId + 1)%2,
                 validTargets[targetIndex], Hyperspace.Pointf(validTargets[targetIndex].x, validTargets[targetIndex].y + 1),
                 shipManager.iShipId,
-                1, 0 --(math.atan(location.y - target.y, location.x - target.x)*180)/math.pi - 90
+                1, 0
             )
             table.remove(validTargets, targetIndex)
+
+            -- For compatibility with Reflective Plating in R4's AI mod,
+            -- make refractions that are spawned by a reflected beam unable to reflect
+            if userdata_table(projectile, "mods.ai.reflectivePlating").reflectionSpawn then
+                userdata_table(refractedBeam, "mods.ai.reflectivePlating").reflect = false
+            end
         end
     end
     return Defines.Chain.CONTINUE, beamHitType
