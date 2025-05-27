@@ -1,0 +1,14 @@
+<event name="ADDON_CNC_DISABLED">
+	<hover-text>C&C WEAPONS
+Currently disabled.
+Click to see more info.</hover-text>
+
+	<text>C&C WEAPONS: RENEGADE EDITION
+Developed by: Chrono Vortex
+Additional credit: Vertaalfout, R4V3-0N
+Currently Disabled.
+
+Makes weapons from the Tiberian Sun Pack available in stores, and adds new equipment and encounters based on C&C.
+
+To enable C&C Weapons, go to the Multiverse Forums and visit the Addon Catalogue section!</text>
+</event>
