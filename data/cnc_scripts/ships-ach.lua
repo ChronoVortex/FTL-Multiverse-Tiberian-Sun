@@ -146,6 +146,7 @@ end)
 script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, function(ship)
     local shipAchData = userdata_table(ship, "mods.cnc.achTracking")
     if ship.iShipId == 1 and not shipAchData.systemFiresCounted and should_track_achievement("ACH_SHIP_BANSHEE_3", Hyperspace.ships.player, "PLAYER_SHIP_BANSHEE") then
+        if ship.vSystemList:size() <= 0 then return end
         for system in vter(ship.vSystemList) do
             if ship:HasSystem(system:GetId()) and not system.bOnFire then return end
         end

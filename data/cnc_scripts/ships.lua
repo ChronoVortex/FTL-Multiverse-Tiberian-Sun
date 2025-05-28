@@ -4,6 +4,7 @@ end
 
 local vter = mods.multiverse.vter
 local userdata_table = mods.multiverse.userdata_table
+local time_increment = mods.multiverse.time_increment
 local ShowTutorialArrow = mods.vertexutil.ShowTutorialArrow
 local HideTutorialArrow = mods.vertexutil.HideTutorialArrow
 
@@ -11,34 +12,34 @@ mods.cnconquer = {}
 
 -- Handle full specrum targeting
 script.on_internal_event(Defines.InternalEvents.SHIP_LOOP, function(ship)
-    -- Make sure weapons exist
-    local weapons = nil
-    pcall(function() weapons = ship.weaponSystem.weapons end)
-    if weapons then
+    -- Make sure weapons exist and aren't hacked
+    if ship.weaponSystem and ship.weaponSystem.weapons and ship.weaponSystem.iHackEffect < 2 then
         -- Check for cloak charge
-        local cloakCharge = false
-        if ship:HasAugmentation("TARGET_SCANNERS") > 0 then
-            pcall(function() cloakCharge = Hyperspace.ships(1 - ship.iShipId).cloakSystem.bTurnedOn end)
-        end
+        local enemyShip = Hyperspace.ships(1 - ship.iShipId)
+        local cloakCharge = ship:HasAugmentation("TARGET_SCANNERS") > 0 and
+                            ship:HasAugmentation("ADV_SCANNERS_CLOAK") <= 0 and -- This would break if this happened at the same time as the code for A.S.S.
+                            enemyShip and
+                            enemyShip.cloakSystem and
+                            enemyShip.cloakSystem.bTurnedOn
         
         -- Manually manage weapon cooldown for cloak charge
         if cloakCharge then
-            for weapon in vter(weapons) do
-                if weapon.powered and weapon.cooldown.first < weapon.cooldown.second then
-                    local currentCharge = weapon.cooldown.first + Hyperspace.FPS.SpeedFactor/16
-                    if currentCharge >= weapon.cooldown.second then
-                        if weapon.chargeLevel < weapon.weaponVisual.iChargeLevels then
-                            weapon.chargeLevel = weapon.chargeLevel + 1
-                            if weapon.chargeLevel == weapon.weaponVisual.iChargeLevels then
-                                weapon.cooldown.first = weapon.cooldown.second
-                            else
-                                weapon.cooldown.first = 0
-                            end
-                        else
-                            weapon:ForceCoolup()
-                        end
+            for weapon in vter(ship.weaponSystem.weapons) do
+                if weapon.powered and weapon.subCooldown.second <= weapon.subCooldown.first and not weapon.table["mods.multiverse.manualDecharge"] then
+                    local oldFirst = weapon.cooldown.first
+                    local oldSecond = weapon.cooldown.second
+
+                    weapon.cooldown.first = weapon.cooldown.first + time_increment()
+                    weapon.cooldown.first = math.min(weapon.cooldown.first, weapon.cooldown.second)
+                    
+                    if weapon.cooldown.second == weapon.cooldown.first and oldFirst < oldSecond and weapon.chargeLevel < weapon.blueprint.chargeLevels then
+                        weapon.chargeLevel = weapon.chargeLevel + 1
+                        weapon.weaponVisual.boostLevel = 0
+                        weapon.weaponVisual.boostAnim:SetCurrentFrame(0)
+                        if weapon.chargeLevel < weapon.blueprint.chargeLevels then weapon.cooldown.first = 0 end
                     else
-                        weapon.cooldown.first = currentCharge
+                        weapon.subCooldown.first = weapon.subCooldown.first + time_increment()
+                        weapon.subCooldown.first = math.min(weapon.subCooldown.first, weapon.subCooldown.second)
                     end
                 end
             end

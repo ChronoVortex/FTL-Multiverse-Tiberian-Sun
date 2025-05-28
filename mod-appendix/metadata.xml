@@ -7,7 +7,7 @@ Chrono Vortex
 additional credit: Vertaalfout, R4V3-0N, Felipe, TaxiService, Azri_Apoc, SecondDatke
 ]]>
     </author>
-    <version><![CDATA[ 11.0 ]]></version>
+    <version><![CDATA[ 11.1 ]]></version>
     <description>
 <![CDATA[
 To use this mod, you must also have the Vertex Tags and Utility Functions mod installed. It must be patched before this mod, so the load order should look something like this:
