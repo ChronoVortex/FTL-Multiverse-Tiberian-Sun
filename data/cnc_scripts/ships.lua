@@ -139,7 +139,7 @@ end)
 
 -- Point out the iron curtain button when the game starts
 script.on_game_event("INITIAL_START_BEACON_IRON_CURTAIN", false, function() ShowTutorialArrow(2, 132, 79) end)
-script.on_game_event("LIGHTSPEED_DROPPOINT", false, HideTutorialArrow)
+script.on_game_event("INITIAL_START_BEACON_IRON_CURTAIN_CANCEL", false, HideTutorialArrow)
 
 -- Regenerate a super shield bubble for iron curtain
 script.on_game_event("LUA_IRON_CURTAIN", false, function()
